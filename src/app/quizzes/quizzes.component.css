@@ -1,0 +1,14 @@
+.tables{
+    text-align: center;
+    width: 100%;
+    /* margin-left: 400px; */
+    background-color: #fff;
+  }
+  h1{
+    text-align: center;
+    color: white;
+  }
+  td{
+    text-align: center;
+    border-color: black;
+  }

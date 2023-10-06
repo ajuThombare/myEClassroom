@@ -1,0 +1,42 @@
+/* Style the entire mat-toolbar */
+mat-toolbar {
+    /*background-color: #528b95;  Background color */
+    background: linear-gradient(to bottom, #87CEEB, #1E90FF); /* Linear gradient from light blue to deep blue */
+
+    color: white; /* Text color */
+  }
+  
+  mat-icon {
+    font-size: 24px; 
+  
+    /* margin-right: 8px;  */
+  }
+  
+  #headerclass {
+    font-weight: bold;
+    font-style: italic;
+  }
+  
+  a.mat-button, button.mat-button {
+    color: white; 
+    text-transform: uppercase; 
+    margin-left: 10px; 
+  }
+  
+  
+  a.mat-button.logout-button {
+    color: red; 
+  }
+  
+  button.mat-icon-button {
+    color: white; 
+    background-color: transparent; /* Transparent background */
+    border: none; /* Remove border */
+    font-size: 24px; 
+    /* margin-left: 10px; spacing between icon buttons */
+  }
+  
+  .example-spacer {
+    flex: 1;
+  }
+  

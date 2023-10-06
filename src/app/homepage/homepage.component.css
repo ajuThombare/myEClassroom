@@ -1,0 +1,15 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+body
+{
+   
+    width: auto;
+    height: auto;
+}
+h1{
+    font-size: 40px;
+}
+.custom-btn-lg {
+    font-size: 30px; 
+    padding: 20px 30px; 
+  }
+  

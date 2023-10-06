@@ -1,0 +1,62 @@
+
+.text-center {
+    margin-top: 150px;
+    text-align: center;
+    color: white;
+    padding: 100px 0; 
+    font-weight: bold;
+    /* font-size: 50px;
+ */
+}
+
+.btn-lg {
+    padding: 10px 20px; 
+}
+
+.btn-primary {
+    /* background-color: rgb(227, 234, 87); */
+    border-color: #007bff;
+    color: white; 
+    border-radius: 20px;
+    color: black;
+    width: auto;
+    box-shadow: 12px;
+    font-weight: bold;
+}
+
+.btn-success {
+    background-color: #28a745; 
+    border-color: #28a745;
+    color: white;
+    border-radius: 20px;
+    color: black;
+    width: auto;
+    font-weight: bold;
+}
+
+footer {
+    text-align:end;
+    margin-top: 140px;
+    margin-bottom: 2px;
+    font-size: 20px;
+}
+
+footer a {
+    color: #050b11; 
+}
+
+.iconcon a {
+    font-size: 30px; 
+    margin-right: 15px; 
+}
+
+.iconcon a:hover {
+    color:red; 
+}
+.iconcon {
+    color: white;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    margin: 10px; 
+}

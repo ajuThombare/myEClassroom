@@ -1,0 +1,29 @@
+.sidebar {
+    width: 300px;
+    height: fit-content;
+    font-weight: bold;
+  }
+  button {
+    background-color: transparent; 
+    color: #0b0101 !important;   
+  }
+
+  
+   .list-item-content mat-icon {
+    margin-right: 10px; 
+  } 
+  .menu
+  {
+      text-align: center;
+      color: black;
+      font-weight: bold;
+      font-size: 20px;
+  }span
+  {
+      font-size: 18px;
+  }
+  mat-card
+  {
+      background:linear-gradient(to right,rgb(134, 237, 234),white,rgb(23, 175, 245));
+      animation: abc 2s infinite;
+  }

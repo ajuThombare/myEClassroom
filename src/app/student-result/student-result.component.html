@@ -1,0 +1,30 @@
+<div class="side">
+    <app-studentsidebar></app-studentsidebar>
+</div>
+
+<div class="add-note-content" style="padding-top: 20px;">
+    <h1>My Result</h1>
+    <table border="1">
+
+        <thead>
+            <tr>
+                <th>Student Id</th>
+                <th>Full Name</th>
+                <th>Subject</th>
+                <th>Obtained Marks</th>
+                <th>Max Marks</th>
+            </tr>
+        
+        </thead>
+        <tbody>
+            <tr *ngFor="let res of result">    
+                <td>{{ res.studentId }}</td>
+                <td>{{ res.name}}</td>
+                <td>{{ res.subject }}</td>
+                <td>{{ res.marks }}</td>
+                <td>{{ res.maxmarks }}</td>
+            </tr> 
+        </tbody>
+    </table>
+    
+    </div>

@@ -1,0 +1,38 @@
+
+form {
+    max-width: 700px; 
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+  }
+  
+ 
+  label {
+    font-weight: bold;
+  }
+
+  mat-select {
+    border: 1px solid #ccc;
+    border-radius: 5px; 
+    padding: 5px; 
+    width: 100%; 
+  }
+ 
+.button-container {
+  display: flex; 
+  justify-content: center;
+  margin-top: 10px; 
+  padding-left: 20px;
+  margin-right:5px;
+}
+.col-md-6 {
+  flex: 0 0 auto;
+  width: 100%;
+}
+  
+h1{
+  text-align: center;
+  color: white;
+}

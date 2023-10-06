@@ -1,0 +1,27 @@
+<div class="side">
+  <app-sidebar></app-sidebar>
+</div>
+<div class="container">
+  <h1>Create Quiz Question</h1>
+    <form (ngSubmit)="submitQuestion()" #questionForm="ngForm">
+    <label for="question">Question:</label>
+    <input type="text" id="question" name="question" [(ngModel)]="question.content" required>
+    <br>
+
+    1: <input type="text" id="option1" name="option1" [(ngModel)]="question.option1" required>
+    <br>
+
+    2:<input type="text" id="option2" name="option2" [(ngModel)]="question.option2" required>
+    <br>
+
+    3:<input type="text" id="option3" name="option3" [(ngModel)]="question.option3" required>
+    <br>
+
+    4:<input type="text" id="option4" name="option4" [(ngModel)]="question.option4" required>
+    <br><br>
+    answer:<input type="text" id="answer" name="answer" [(ngModel)]="question.answer" required>
+    <br>
+    <button type="submit" [disabled]="questionForm.invalid">Create Question</button>
+    <!-- <button type="submit" [disabled]="questionForm.invalid">Back</button> -->
+  </form>
+</div>

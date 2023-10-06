@@ -1,0 +1,38 @@
+.present-button {
+    background-color: green; 
+    color: white; 
+}
+
+.absent-button {
+    background-color: red; 
+    color: white; 
+}
+
+table {
+  align-content: center;
+  border-collapse: collapse;
+  width: 100%;
+  height: auto;
+  font-weight: bold;
+  background-color:white;
+}
+
+th, td {
+  border: 1px solid #0f0505;
+  padding: 10px;
+  text-align: center;
+  background-color: transparent;
+  text-decoration:wavy;
+}
+
+
+tr:hover {
+  background-color: rgb(147, 227, 227);
+}
+
+ h2{
+  text-align: center;
+  margin-top: 40px;
+  text-transform: capitalize;
+  font-weight: bold;
+ }

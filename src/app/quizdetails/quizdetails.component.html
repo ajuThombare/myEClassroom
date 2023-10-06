@@ -1,0 +1,29 @@
+ <div class="side">
+    <app-sidebar></app-sidebar>
+</div>
+<div class="add-note-content">
+<h1 >Quiz Details</h1>
+
+        <table class="table-con">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Subject</th>
+                    <th>Number Of Questions</th>
+                    <th>Maximun Marks</th>
+                    <th>Add Question</th>
+                    <th>Remove Question</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let quiz of quizzes"> 
+                    <td> {{ quiz.title }} </td>
+                    <td> {{ quiz.subjects}} </td>
+                    <td>{{quiz.numberOfQuestions}}</td>
+                    <td>{{quiz.maxMarks}}</td>
+                    <td><button type="button" class="btn btn-info" (click)="AddQuestion(quiz.qId)">Add Questions</button></td>
+                    <td> <button type="button" class="btn btn-danger" (click)="deleteQuestion(quiz.qId)">Delete</button></td> 
+                </tr>
+            </tbody>
+        </table>
+</div>

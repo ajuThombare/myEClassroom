@@ -1,0 +1,165 @@
+/* You can add global styles to this file, and also import other style files */
+@import "node_modules/font-awesome/css/font-awesome.css";
+@import "node_modules/bootstrap/dist/css/bootstrap.css";
+@import "~bootstrap/dist/css/bootstrap.css";
+html, body { height: 100%;  }
+
+body {
+     margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+
+    background-image: url('assets/welcome1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+    .sidebar a {
+        padding: 15px;
+        text-decoration: none;
+        font-size: 18px;
+        color: white;
+        display: block;
+    }
+
+    .sidebar a:hover {
+        background-color: #555;
+    }
+
+    /* Content styling */
+    .content {
+        margin-left: 250px;
+        padding: 20px;
+    }
+    .login-form-container {
+        width: 300px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Style the login form elements */
+    .login-form-container input[type="text"],
+    .login-form-container input[type="password"] {
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .login-form-container button {
+     background-color: #007bff; 
+        color: #fff;
+        border: none;
+        padding: 10px 30px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .login-form-container button:hover {
+        background-color: #0056b3; 
+    }
+
+
+    .reg-form-container {
+        width: 300px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Style the login form elements */
+    .reg-form-container input[type="text"],
+    .reg-form-container input[type="password"] 
+    {
+        width: 100%;
+        padding: 105pxpx;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .reg-form-container button {
+        background-color: #3c6c9f; 
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .reg-form-container button:hover {
+        background-color: #2fcaba;
+    }
+    .row.d-flex.justify-content-center {
+        margin-top: 50px; 
+    }
+    .btn-logout {
+        background-color: #d9534f; 
+        color: white;
+        margin-top: 20px; 
+    }
+    
+    .btn-logout:hover {
+        background-color: #c9302c; 
+    }
+.email-input input.form-control { 
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px; 
+  }
+  
+  
+  .role-dropdown select.form-select {
+    
+    background-color: #5e87af; 
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+   
+  }
+  .side{
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    background:linear-gradient(to right,rgb(134, 237, 234),white,rgb(23, 175, 245));
+    animation: abc 2s infinite;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+.stu-side{
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    background:linear-gradient(to right,rgb(134, 237, 234),white,rgb(23, 175, 245));
+    animation: abc 2s infinite;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+.add-note-content {
+margin-left: 300px;
+padding: 1px 16px;
+height: 100%;
+}
+/*below are sidebar styles*/
+.list-item-content {
+    display: flex;
+    align-items: center;
+    color: #050101;
+    size: 30px;
+  }
+  
+  .list-item-content mat-icon {
+    margin-right: 10px; 
+  } 

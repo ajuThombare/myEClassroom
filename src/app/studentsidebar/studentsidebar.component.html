@@ -1,0 +1,57 @@
+<div class="sidebar">
+    <mat-card>
+        <mat-action-list>
+          <div class="menu">Menu
+          <button routerLink="/studenthome" mat-list-item>
+            <div class="list-item-content">
+            <mat-icon >home</mat-icon>
+            <span><strong>Home</strong></span>
+          </div>
+          </button>
+      
+          <button mat-list-item routerLink="/studentnotes">
+            <div class="list-item-content">
+            <mat-icon mat-list-icon>library_books</mat-icon>
+          <span><strong>Notes</strong></span>
+            </div>
+          </button>
+    
+           <!-- <button mat-list-item routerLink="/quiztaker">
+            <div class="list-item-content">
+            <mat-icon mat-list-icon>list</mat-icon>
+          <span><strong>Exam</strong></span>
+          </div>
+          </button> -->
+    
+          <button mat-list-item routerLink="/myresult">
+            <div class="list-item-content">
+            <mat-icon mat-list-icon>assignment</mat-icon> 
+            <strong>My Result</strong></div>
+          </button>
+          
+          <button mat-list-item routerLink="/studentattendance">
+            <div class="list-item-content">
+            <mat-icon mat-list-icon>event_note</mat-icon>
+            <strong>My Attendance</strong>
+            </div>
+          </button>
+          
+          <button mat-list-item routerLink="/quizzess">
+            <div class="list-item-content">
+            <mat-icon mat-list-icon>quiz</mat-icon>
+            <strong>Quiz</strong>
+            </div>
+          </button>
+          
+          <button mat-list-item routerLink="/login" (click)="clearStorage()">
+            <div class="list-item-content">
+            <mat-icon mat-list-icon>logout</mat-icon> 
+            <strong>Logout</strong>
+          </div>
+          </button> 
+        </div>
+        </mat-action-list>
+      </mat-card>
+    </div>
+    
+    

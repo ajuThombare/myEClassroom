@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+    <mat-icon class="icon-margin-right">menu_book</mat-icon>
+
+    <span id="headerclass">
+        <strong><i>E_ClassRoom</i></strong>
+    </span>
+    <span class="example-spacer"></span>
+
+    <a *ngIf="isLoggedIn" (click)="'logout()'" mat-button aria-label="Logout">
+        Logout
+    </a>
+
+    <button *ngIf="isLoggedIn && user" mat-button color="primary" [routerLink]="['/admin/profile']"
+        aria-label="Profile">
+        {{ user.username }}
+    </button>
+
+    <button mat-icon-button [routerLink]="'/welcome'" aria-label="Go to Welcome" (click)="clearStorage()">
+        <mat-icon class="icon-margin-left">home</mat-icon>
+    </button>
+</mat-toolbar>

@@ -1,0 +1,15 @@
+<!-- <div class="side">
+    <app-sidebar></app-sidebar>
+  </div> -->
+  <div id="selectQuiz">
+  <form #quizform="ngForm">
+    <div class="form-group col-md-6">
+      <label for="quizSelect">Select Quiz</label>
+      <select id="quizSelect" name="quizSelect" class="form-control" [(ngModel)]="selectedQuizId" (change)="onQuizChange()" required>
+        <option value="" disabled>Select a Quiz</option>
+        <option *ngFor="let quiz of quizzes" [value]="quiz.qId">{{ quiz.subjects }}</option>
+      </select>
+    </div>
+  </form>
+</div>
+<button type="button" class="btn btn-info" (click)="AddQuestion()">Add Questions</button>

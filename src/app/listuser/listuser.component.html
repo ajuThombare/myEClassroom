@@ -1,0 +1,51 @@
+
+<nav class="navbar navbar-expand-sm navbar-da">
+
+    <div class="container-fluid">
+        <button (click)="back()" class="btn btn-primary navbar-btn" style="width:80;height: 35;">Go Back</button>
+        <ul class="nav navbar-nav">
+            <li class="nav-item">
+                <a routerLink="/welcome" routerLinkActive="active" class="nav-link">
+                    <!-- <p style="color:antiquewhite">Home </p> -->
+                </a>
+            </li>
+
+        </ul>
+        <!-- <button (click)="logOut()" class="btn btn-danger navbar-btn">Log out</button> -->
+    </div>
+</nav>
+<h2 style="text-align:center">User List</h2>
+<div class="card">
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th> First Name</th>
+                    <th> Last Name</th>
+                    <th> Mobile Number </th>
+                    <th>Email</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Country</th>
+                    <th>Username</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users"> 
+                    <td> {{ user.firstName }} </td>
+                    <td> {{ user.lastName}} </td>
+                    <td> {{ user.mobileNo}} </td>
+                    <td> {{ user.eMail}} </td>
+                    <td> {{ user.city}} </td>
+                    <td> {{ user.state}} </td>
+                    <td> {{ user.country}} </td>
+                    <td> {{ user.username}} </td>
+                    
+                     <!-- <td><button type="button" class="btn btn-info" (click)="updateUser(user.id)">Update</button></td>
+                    <td> <button type="button" class="btn btn-danger" (click)="deleteUser(user.id)">Delete</button></td>  -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

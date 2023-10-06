@@ -1,0 +1,34 @@
+<div class="side">
+    <app-sidebar></app-sidebar>
+</div>
+<div>
+    <h1 style="text-align:center" class="title">Uploaded Notes</h1>
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th> Subject</th>
+                            <th> Download</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let note of notes">
+                            <td>{{note.id}}</td>
+                            <td> {{note.title}} </td>
+                            <td>
+                                <a href="{{baseUrl}}/notes/get/{{note.id}}">
+                                    <button role="link" id="download" >
+                                        <img width="30" height="30" src="assets/download.png" />
+                                    Download</button>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

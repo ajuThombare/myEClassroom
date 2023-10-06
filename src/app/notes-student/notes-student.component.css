@@ -1,0 +1,8 @@
+.card{
+    width: 50%;
+    margin: 10px 10px 10px 10px;
+  }
+  button#download:hover{
+    background-color: #d7ef5b;
+
+  }

@@ -1,0 +1,29 @@
+<div class="side">
+    <app-studentsidebar></app-studentsidebar>
+</div>
+<div class="add-note-content">
+<h1 >Quiz Details</h1>
+
+        <table class="tables">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Subject</th>
+                    <th>Number Of Questions</th>
+                    <th>Maximun Marks</th>
+                    <th>Attempt Quiz</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let quiz of quizzes"> 
+                    <td> {{ quiz.title }} </td>
+                    <td> {{ quiz.subjects}} </td>
+                    <td>{{quiz.numberOfQuestions}}</td>
+                    <td>{{quiz.maxMarks}}</td>
+                    <td><button type="button" class="btn btn-info" (click)="Attempt(quiz)">
+                        Attempt</button></td>
+                    <!-- <td><button type="button" class="btn btn-info" (click)="Attemp(quiz.qId)">Add Questions</button></td> -->
+                </tr>
+            </tbody>
+        </table>
+</div>
