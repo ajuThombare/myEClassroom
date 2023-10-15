@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { Notes } from '../tsfiles/notes';
 import { Router } from '@angular/router';
-
 import { LocalStorageService } from 'ngx-webstorage';
 import baseUrl from '../commonurl';
 // import { HttpEventType, HttpHandler, HttpHeaders } from '@angular/common/http';
@@ -12,7 +11,9 @@ import baseUrl from '../commonurl';
   styleUrls: ['./notes-student.component.css']
 })
 export class NotesStudentComponent implements OnInit{
-  constructor(private route:Router,private userService:UserService){}
+  constructor(private route:Router,private userService:UserService
+    // , private dialog: MatDialog
+    ){}
   notes: any[] = []; 
   baseUrl:any;
   ngOnInit(): void {
@@ -29,14 +30,27 @@ export class NotesStudentComponent implements OnInit{
   downloadNotes(number:number){
     this.userService.getNoteById(number).subscribe(
       (data:any)=> {    
-        console.log(data);
-    
-        // saveAs(data.note,'File.pdf');
-        // saveAs(new File([data.body],data.HttpHeaders.get('name'),undefined));
+        // console.log(data);
       },Error=>{
         console.log(Error)
       }
     );
   }
+  openPDF(id:number) {
+    window.open(`${this.baseUrl}/notes/getstud/`+id, '_blank');
+  }
 
+  // openDialog(id:number) {
+  //   const dialogRef = this.dialog.open(ConfirmationDialog,{
+  //   data:{
+  //       message: 'Do you want to delete the product and the associated licenses?'
+  //   }
+  //   });
+     
+  //   dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+  //       if (confirmed) {
+  //           this.deleteProduct(id);
+  //       }
+  //   });
+  // }
 }

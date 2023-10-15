@@ -24,11 +24,11 @@ public userLogin() {
   // In userService, we provided a path to loginuser to connect the database.
   this.userService.loginUser(this.user).subscribe((data: any) => {
     if(data === null ){
-      alert("Wrong credentials.Or Register first");
+      alert("Wrong credentials Or Register first");
       this.user=new User(0,"","","",false,"","","","","","",""); 
     }else{
-      console.log("Login success: " + data);
-      console.log("The Role is: " + data.role);
+      console.log("Login success");
+      // console.log("The Role is: " + data.role);
       alert("Login success!");
       this.loacalStorage.store('currentuser', data);
       if (data.role == 'Student') {

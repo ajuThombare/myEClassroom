@@ -1,34 +1,54 @@
 <div class="side">
     <app-sidebar></app-sidebar>
 </div>
-<div>
-    <h1 style="text-align:center" class="title">Uploaded Notes</h1>
-    <div class="d-flex justify-content-center align-items-center">
-        <div class="card">
-            <div class="card-body">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th> Subject</th>
-                            <th> Download</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let note of notes">
-                            <td>{{note.id}}</td>
-                            <td> {{note.title}} </td>
-                            <td>
-                                <a href="{{baseUrl}}/notes/get/{{note.id}}">
-                                    <button role="link" id="download" >
-                                        <img width="30" height="30" src="assets/download.png" />
-                                    Download</button>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+
+<div class="add-note-content" style="padding-top: 20px;">
+    <h1>Uploaded Notes</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th> Subject</th>
+                <th>Uploaded Date</th>
+                <th>View Note</th>
+                <th> Download</th>
+                <th>Delete</th>
+                <th>Delete For All</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let note of notes">
+                <td>{{note.id}}</td>
+                <td> {{note.title}} </td>
+                <td> {{note.date}} </td>
+                
+                <td>
+                    <button (click)="openPDF(note.id)"
+                      role="link" id="pdfopen" title="Open PDF in new Tab">
+                        <img width="30" height="30" src="assets/view.png" />
+                        Read Note</button>
+                </td>
+                
+                <td>
+                    <a href="{{baseUrl}}/notes/get/{{note.id}}">
+                        <button role="link" id="download" title="Download File on Local Storage">
+                            <img width="30" height="30" src="assets/download.png" />
+                        Download</button>
+                    </a>
+                </td>
+                <td>
+                        <button (click)="deleteCurrentNote(note.id)" role="link" id="delete" title="Delete for Teacher only">
+                            <img width="30" height="30" src="assets/trashone.png" />
+                        Delete</button>
+                </td>
+                <td>
+                        <button (click)="deleteCurrentNoteForAll(note.id)"
+                          role="link" id="deleteforall" title="Delete for Teacher and Students">
+                            <img width="30" height="30" src="assets/trashall.png" />
+                        Delete For All</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
 </div>

@@ -18,7 +18,7 @@ body {
 
 form {
   padding: 25px;
-  margin: 0 500px; /* Center the reg form */
+  margin: 0 35%; /* Center the reg form */
   background: #fff;
   max-width: 500px;
   width: 100%;

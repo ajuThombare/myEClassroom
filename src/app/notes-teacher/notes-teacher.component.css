@@ -2,6 +2,44 @@
     width: 50%;
     margin: 10px 10px 10px 10px;
   }
-  button#download:hover{
+button#download:hover{
     background-color: #d7ef5b;
+    border-color: white;
   }
+  
+button#pdfopen:hover{
+    background-color: #54ccff;
+    border-color: white;
+  }
+button#delete:hover{
+    background-color: #fca671;
+    border-color: white;
+  }
+button#deleteforall:hover{
+    background-color: #f46150;
+    border-color: white;
+  }
+  
+h1 {
+    text-align:center;
+    color: white;
+  }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto;
+    float: right;
+    background-color: white;
+}
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+th {
+    background-color: #f2f2f2;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

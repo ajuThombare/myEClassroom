@@ -15,10 +15,11 @@ selectedFile: File | undefined;
 
   notes = new Notes(0, new Uint8Array(), "");
   noteTitle: string = "";
+  teacherid: string="";
   constructor(private route: Router, private userService: UserService, private loacalStorage:LocalStorageService) {}
 
   ngOnInit(): void {
-    // console.log(this.loacalStorage.retrieve('currentuser'));
+    this.teacherid = this.loacalStorage.retrieve('currentuser').id;
   }
 
   // Function to handle file input change
@@ -35,11 +36,13 @@ selectedFile: File | undefined;
     const formData = new FormData();
     if (this.selectedFile) {
       formData.append('noteFile', this.selectedFile, this.selectedFile.name);
+
     }
     
     // Add other form data fields as needed
-    formData.append('noteTitle', this.noteTitle);
+    formData.append('noteTitle', this.noteTitle+"-"+ this.teacherid);
 
+    
     // Send the FormData to your service for uploading
     this.userService.uploadNotes(formData).subscribe(
       (data: any) => {

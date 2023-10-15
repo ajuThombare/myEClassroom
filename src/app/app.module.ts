@@ -94,8 +94,8 @@ import { StudentResultComponent } from './student-result/student-result.componen
     MatButtonModule,
     MatSelectModule,
     NgxWebstorageModule.forRoot(),
-    NgxPaginationModule
-  
+    NgxPaginationModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -61,9 +61,22 @@ return this.httpClient.get(`${baseUrl}/notes/get/`+number,{
 });
 }
 
+public deleteNote(id:number){
+  return this.httpClient.delete(`${baseUrl}/notes/delete/${id}`);
+}
+
+public deleteStudentNote(id:number){
+  return this.httpClient.delete(`${baseUrl}/notes/delete/stud/${id}`);
+}
+
 public getAllNotes()
 {
 return this.httpClient.get(`${baseUrl}/notes/get`);
+}
+
+public getAllNotesByTeacherId(id:string)
+{
+return this.httpClient.get(`${baseUrl}/notes/get/byid/${id}`);
 }
 
 public attendance(user: User,status:string,id:number) {

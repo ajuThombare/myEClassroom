@@ -15,10 +15,9 @@ export class NavbarComponent {
 
   public logout() {
     if (this.isLoggedIn && this.user !== null) {
-      this.loacalStorage.clear('username');
-      this.loacalStorage.clear('id');
-      this.loacalStorage.clear('role');
-
+      // this.loacalStorage.clear('username');
+      // this.loacalStorage.clear('id');
+      // this.loacalStorage.clear('role');
       this.isLoggedIn = false;
       this.user = null;
       this.router.navigate(['/login']);
@@ -29,5 +28,6 @@ export class NavbarComponent {
 
   clearStorage(){
     this.loacalStorage.clear('currentuser');
+    this.loacalStorage.clear('currentquiz');
   }
 }
