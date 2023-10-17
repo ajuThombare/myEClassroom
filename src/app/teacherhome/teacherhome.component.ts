@@ -3,6 +3,7 @@ import { User } from '../tsfiles/user';
 import { LocalStorageService } from 'ngx-webstorage';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-teacherhome',
@@ -14,7 +15,10 @@ export class TeacherhomeComponent implements OnInit{
 
   ngOnInit(): void {}
   
-  constructor(private userServe : UserService,private loacalStorage:LocalStorageService,private route:Router){
+  constructor(private userServe : UserService,
+    private loacalStorage:LocalStorageService,
+    private route:Router,private dialog: MatDialog
+    ){
     this.user = this.loacalStorage.retrieve('currentuser');
   }
 
@@ -28,16 +32,31 @@ export class TeacherhomeComponent implements OnInit{
       Error=>{ console.log("somethings wrong")}
     );
   }
-  deleteUser(){
-
-    this.userServe.deleteUser(this.user.id).subscribe(
-      (data:any)=>{
-        this.loacalStorage.clear('currentuser');
-        alert("User Account Deactivated.");
-        this.route.navigateByUrl('/home');
-      },
-      Error=>{ console.log("somethings wrong")}
-    );
-
+  deleteUser() {
+    const confirmation = window.confirm("Are you sure you want to delete your account?");
+    if (confirmation) {
+      this.userServe.deleteUser(this.user.id).subscribe(
+        (data: any) => {
+          this.loacalStorage.clear('currentuser');
+          alert("User Account Deactivated.");
+          this.route.navigateByUrl('/home');
+        },
+        (error: any) => {
+          console.log("Something's wrong");
+        }
+      );
+    }
   }
+  // deleteUser(){
+
+  //   this.userServe.deleteUser(this.user.id).subscribe(
+  //     (data:any)=>{
+  //       this.loacalStorage.clear('currentuser');
+  //       alert("User Account Deactivated.");
+  //       this.route.navigateByUrl('/home');
+  //     },
+  //     Error=>{ console.log("somethings wrong")}
+  //   );
+
+  // }
 }

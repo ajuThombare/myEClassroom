@@ -23,11 +23,33 @@ selectedFile: File | undefined;
   }
 
   // Function to handle file input change
+  // onFileChange(event: any) {
+  //   // Get the selected file from the event
+  //   this.selectedFile = event.target.files[0];
+
+  // }
   onFileChange(event: any) {
     // Get the selected file from the event
     this.selectedFile = event.target.files[0];
-  }
-
+      // const file = event.target.files[0];
+      if (this.selectedFile) {
+        // Check file type
+        if (this.selectedFile.type !== 'application/pdf') {
+          // Display an error message or set a flag to indicate invalid file type.
+          console.log('Invalid file type. Please select a PDF file.');
+          return;
+        }
+        // Check file size (max 50MB)
+        const maxSize = 50 * 1024 * 1024; // 50MB in bytes
+        if (this.selectedFile.size > maxSize) {
+          // Display an error message or set a flag to indicate the file is too large.
+          console.log('File is too large. Maximum size is 50MB.');
+          return;
+        }
+    
+  
+      }
+    }
   // Function to handle form submission
   uploadNotes(event: Event) {
     event.preventDefault(); // Prevent the default form submission

@@ -37,7 +37,10 @@ export class NotesStudentComponent implements OnInit{
     );
   }
   openPDF(id:number) {
-    window.open(`${this.baseUrl}/notes/getstud/`+id, '_blank');
+    const confirmation = window.confirm("This will open Note in new tab?");
+    if (confirmation) {
+      window.open(`${this.baseUrl}/notes/getstud/`+id, '_blank');
+    }
   }
 
   // openDialog(id:number) {

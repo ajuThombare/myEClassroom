@@ -42,6 +42,7 @@ import { AddingquestioquizidComponent } from './addingquestioquizid/addingquesti
 import { NotesTeacherComponent } from './notes-teacher/notes-teacher.component';
 import { QuizzesComponent } from './quizzes/quizzes.component';
 import { StudentResultComponent } from './student-result/student-result.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -95,7 +96,7 @@ import { StudentResultComponent } from './student-result/student-result.componen
     MatSelectModule,
     NgxWebstorageModule.forRoot(),
     NgxPaginationModule,
-    
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

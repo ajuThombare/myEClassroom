@@ -33,15 +33,17 @@ public updateUser(userid:number)
 {
   this.route.navigate(['/updateuser',userid]);
 }
-public deleteUser(userid:number)
-{
-  this.userService.deleteUser(userid).subscribe(
-    (data:any)=>
-    {
-      alert("Deleted Successfully");
-     this.getAllStudents=data;
-      // this.getAllStudents = this.users.filter(user => user.role === 'student');
+public deleteUser(userid:number){
+const confirmation = window.confirm("Are you sure you want to Remove this Student from Class?");
+  if (confirmation) {
+      this.userService.deleteUser(userid).subscribe(
+        (data:any)=>
+        {
+          alert("Deleted Successfully");
+          this.getAllStudents=data;
+          // this.getAllStudents = this.users.filter(user => user.role === 'student');
+        }
+      );
     }
-  );
 }
 }

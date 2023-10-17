@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import baseUrl from '../commonurl';
 import { LocalStorageService } from 'ngx-webstorage';
+// import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-notes-teacher',
@@ -11,7 +12,11 @@ import { LocalStorageService } from 'ngx-webstorage';
 })
 export class NotesTeacherComponent  implements OnInit{
 
-constructor(private route:Router,private userService:UserService, private loacalStorage:LocalStorageService){}
+constructor(private route:Router,
+  private userService:UserService,
+  private loacalStorage:LocalStorageService,
+  // private dialog: MatDialog
+  ){}
   notes: any[] = []; 
   baseUrl:any;
   teacherid: string = '';
@@ -29,20 +34,26 @@ constructor(private route:Router,private userService:UserService, private loacal
 
   deleteCurrentNote(id:number){
     // console.log("note deleted "+id);
+    const confirmation = window.confirm("Are you sure you want to delete this note?");
+    if (confirmation) {
     this.userService.deleteNote(id).subscribe(
       (data:any)=>{
         this.getAllNotes();
       }
     );
+    }
   }
 
   deleteCurrentNoteForAll(id:number){
-    console.log("note deleted for all"+id);
+    // console.log("note deleted for all"+id);
+    const confirmation = window.confirm("Are you sure you want to delete this note for students?");
+    if (confirmation) {
     this.userService.deleteStudentNote(id).subscribe(
       (data:any)=>{
         this.getAllNotes();
       }
     );
+    }
   }
 
   getAllNotes(){
@@ -56,6 +67,9 @@ constructor(private route:Router,private userService:UserService, private loacal
   }
 
   openPDF(id:number) {
-    window.open(`${this.baseUrl}/notes/gets/`+id, '_blank');
+      const confirmation = window.confirm("This will open Note in new tab?");
+      if (confirmation) {
+        window.open(`${this.baseUrl}/notes/gets/`+id, '_blank');
+      } 
   }
 }

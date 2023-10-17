@@ -19,11 +19,6 @@ button#deleteforall:hover{
     background-color: #f46150;
     border-color: white;
   }
-  
-h1 {
-    text-align:center;
-    color: white;
-  }
 
 table {
     border-collapse: collapse;
@@ -42,4 +37,10 @@ th {
 }
 tr:nth-child(even) {
     background-color: #f2f2f2;
+}
+h1{
+  /* font-weight: bold; */
+  text-align: center;
+  font-size: 25px;
+  color: white;
 }
