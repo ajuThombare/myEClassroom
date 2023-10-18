@@ -43,8 +43,16 @@ this.question.quesId=this.activatedRoute.snapshot.params['qid'];
 public submit(){
     const usernow = this.loacalStorage.retrieve('currentuser');
     const quiznow = this.loacalStorage.retrieve('currentquiz');
+    if (!usernow) {
+      console.error('usernow is null or undefined');
+      return;
+    }
+  
     this.score = this.calculateScore();
 
+     
+
+    
     this.result.marks = this.score;
     this.result.studentId = usernow.id;
     this.result.name = usernow.firstName +" "+usernow.lastName;
@@ -53,7 +61,8 @@ public submit(){
 
     this.userService.addQuizResult(this.result).subscribe(
       (data:any)=>{
-        console.log("Quiza Result saved successfully -"+data);
+        console.log("Quiz Result saved successfully -"+data);
+        alert("Quiz Result saved successfully");
       }
     );
     this.router.navigateByUrl('/myresult');
@@ -84,17 +93,20 @@ startQuiz() {
 }
 
 nextQuestion() {
-  if (this.currentQuestionIndex < this.questions.length - 1)
-    {
-      this.currentQuestionIndex++; 
+  if (this.selectedOption) 
+  {
+    if (this.currentQuestionIndex < this.questions.length - 1) {
+      this.currentQuestionIndex++;
+      this.selectedOption = ''; // Resetting selected option
     } else {
-    // Hiding  instructions after appearing 1st question
-    this.instructions = false;
-  }
+      this.instructions = false;
+    }
+  } 
 }
+
 previousQuestion() {
   if (this.currentQuestionIndex > 0) {
-      this.currentQuestionIndex--;
+    this.currentQuestionIndex--;
   }
 }
 }

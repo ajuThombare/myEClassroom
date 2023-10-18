@@ -1,0 +1,74 @@
+/* Style the container */
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    background: whitesmoke;
+    text-align: center;
+  }
+  
+  /* Style the heading */
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Style the form labels */
+  label {
+    display: flex;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Style the form inputs ex Question in large text */
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  input[type="radio"] {
+    width: 15px; /* width of radio button */
+    height: 18px; /* height of radio button */
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  .quizcon
+  {
+    padding-left: 160px;
+    padding-top: 10%;
+  }
+  
+  .navigation-buttons {
+    margin-top: 20px; 
+    justify-content: space-between; 
+  }
+  
+  button {
+    border-radius: 3px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 2px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .container.val {
+    max-width: 700px;
+  }
+  h1{
+    /* font-weight: bold; */
+    text-align: center;
+    font-size: 25px;
+    color: white;
+}

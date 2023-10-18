@@ -1,11 +1,11 @@
 /* Style the container */
-.container {
+.editcont {
     max-width: 500px;
-    margin: 0 auto;
     padding: 20px;
     background-color: #f4f4f4;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin-left: 40%;    
   }
   
   /* Style the heading */
@@ -30,6 +30,14 @@
     border-radius: 3px;
   }
   
+  select
+  {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
   /* Style the radio button labels and options */
   label input[type="radio"] {
     margin-right: 5px;
@@ -51,11 +59,4 @@
   button:hover {
     background-color: #0056b3;
   }
-  select
-  {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
+  

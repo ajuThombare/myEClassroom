@@ -23,6 +23,8 @@ import { AddingquestioquizidComponent } from './addingquestioquizid/addingquesti
 import { NotesTeacherComponent } from './notes-teacher/notes-teacher.component';
 import { QuizzesComponent } from './quizzes/quizzes.component';
 import { StudentResultComponent } from './student-result/student-result.component';
+import { AllquestionsComponent } from './allquestions/allquestions.component';
+import { UpdateQuestionsComponent } from './update-questions/update-questions.component';
 
 const routes: Routes = [
 {path:'',component:WelcomeComponent} ,
@@ -53,7 +55,9 @@ const routes: Routes = [
 {path: 'addquestionquizid', component:AddingquestioquizidComponent},
 { path:'teachernotes',component:NotesTeacherComponent},
 { path:'quizzess',component:QuizzesComponent},
-{path:'myresult',component:StudentResultComponent}
+{path:'myresult',component:StudentResultComponent},
+{path:'viewquestions',component:AllquestionsComponent},
+{path:'updatequestions/:qid',component:UpdateQuestionsComponent}
 ];
 
 @NgModule({

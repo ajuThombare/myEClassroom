@@ -1,0 +1,35 @@
+<div class="side">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div>
+  <div class="editcont">
+    <h1>Modify Questions</h1>
+      <form  (ngSubmit)="updateQuestion()" #questionForm="ngForm">
+      <label for="question">Question:</label>
+      <input type="text" id="question" name="question" [(ngModel)]="question.content" required>
+      <br>
+  
+      1: <input type="text" id="option1" name="option1" [(ngModel)]="question.option1" required>
+      <br>
+  
+      2:<input type="text" id="option2" name="option2" [(ngModel)]="question.option2" required>
+      <br>
+  
+      3:<input type="text" id="option3" name="option3" [(ngModel)]="question.option3" required>
+      <br>
+  
+      4:<input type="text" id="option4" name="option4" [(ngModel)]="question.option4" required>
+      <br>
+      <label for="answer">Answer:</label>
+      <select id="answer" name="answer" [(ngModel)]="question.answer" required>
+        <option value="" disabled>Select an answer</option>
+        <option value="option1">{{ question.option1 }}</option>
+        <option value="option2">{{ question.option2 }}</option>
+        <option value="option3">{{ question.option3 }}</option>
+        <option value="option4">{{ question.option4 }}</option>
+      </select>
+      <br>
+      <button type="submit" >Save Changes</button>
+    </form>
+  </div>
+  </div>

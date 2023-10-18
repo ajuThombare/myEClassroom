@@ -12,22 +12,28 @@ import { LocalStorageService } from 'ngx-webstorage';
 export class QuizdetailsComponent implements OnInit{
   quizzes:any;
   quiz = new Quiz(0,"","","","", true, "");
-
-selectedQuiz: string = 'default'; // Initialize with a default value
+  teacherid :string;
+  selectedQuiz: string = 'default'; // Initialize with a default value
   questions: any[] = []; 
 
   constructor(private router:Router,private quizService:QuizService,private localStorage:LocalStorageService){
+    this.teacherid =localStorage.retrieve('currentuser').id;
   }
 
   ngOnInit(): void {
-    this.quizService.getAllQuizzes().subscribe(
-      (data:any)=>
-      {
-        console.log(data);
-      //  console.log("data retrived succesfully");
-       this.quizzes=data;
-      }
-     );
+    this.refresher();
+  }
+  public refresher(){
+
+    this.quizService.getUserQuizzes(this.teacherid).subscribe(
+  // this.quizService.getAllQuizzes().subscribe(
+    (data:any)=>
+    {
+      // console.log(data);
+    //  console.log("data retrived succesfully");
+     this.quizzes=data;
+    }
+   );
   }
   AddQuestion(qId:number)
   {
@@ -43,13 +49,31 @@ selectedQuiz: string = 'default'; // Initialize with a default value
   }
   );
   }  
+
+  ViewQuestions(qId:number)
+  {
+  this.quizService.getQuizById(qId).subscribe((data:any)=>
+  {
+    console.log(data);
+    this.localStorage.store('currentquiz',data);
+    this.router.navigate(['/viewquestions']);
+  },
+  (Error)=>
+  {
+    alert("Something went wrong");
+  }
+  );
+  } 
+
   deleteQuestion(qId:number)
   {
   this.quizService.deleteQuiz(qId).subscribe((data:any)=>
   {
     console.log("quiz deleted");
     alert("Deleted Successfully");
+    this.refresher();
     console.log(this.quizzes=data);
+
   });
   }
 }

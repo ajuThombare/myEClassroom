@@ -2,7 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { User } from '../tsfiles/user';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
-import { LocalStorageService} from 'ngx-webstorage';
+import { LocalStorageService, SessionStorageService} from 'ngx-webstorage';
 
 @Component({
   selector: 'app-login',
@@ -13,11 +13,14 @@ export class LoginComponent implements OnInit {
 user=new User(0,"","","",false,"","","","","","",""); 
 userid:number=0;
 // created object here user proprties added here thtat html data it will carry and send to db
-constructor(private userService:UserService,private router:Router, private loacalStorage:LocalStorageService)
+constructor(private userService:UserService,private router:Router, private loacalStorage:LocalStorageService,
+  private sessionStorage: SessionStorageService)
 // injucted userService connecting wth db and routing to linking pages 
 {
 }
-ngOnInit(): void { }
+ngOnInit(): void { 
+  // this.sessionStorage.store('val',Math.floor(Math.random() * 6) + 1);
+}
 
 // login form will come here
 public userLogin() {

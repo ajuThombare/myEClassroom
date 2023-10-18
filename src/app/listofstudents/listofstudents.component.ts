@@ -20,15 +20,8 @@ export class ListofstudentsComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    
-    this.userService.getAllStudents().subscribe(
-      (data:any)=>
-      {
-       console.log("data retrived succesfully");
-         this.users=data;
-      }
-     );
-}
+    this.allStudents();
+  }
 public updateUser(userid:number)
 {
   this.route.navigate(['/updateuser',userid]);
@@ -41,9 +34,20 @@ const confirmation = window.confirm("Are you sure you want to Remove this Studen
         {
           alert("Deleted Successfully");
           this.getAllStudents=data;
+          this.allStudents();
           // this.getAllStudents = this.users.filter(user => user.role === 'student');
         }
       );
     }
 }
+
+public allStudents(){
+  this.userService.getAllStudents().subscribe(
+    (data:any)=>
+    {
+     console.log("data retrived succesfully");
+       this.users=data;
+    }
+   );
+  }
 }

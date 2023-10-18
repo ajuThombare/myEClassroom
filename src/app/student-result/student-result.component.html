@@ -8,21 +8,23 @@
 
         <thead>
             <tr>
-                <th>Student Id</th>
+                <!-- <th>Student Id</th> -->
                 <th>Full Name</th>
                 <th>Subject</th>
                 <th>Obtained Marks</th>
                 <th>Max Marks</th>
+                <th>Attempted Date</th>
             </tr>
         
         </thead>
         <tbody>
             <tr *ngFor="let res of result">    
-                <td>{{ res.studentId }}</td>
+                <!-- <td>{{ res.studentId }}</td> -->
                 <td>{{ res.name}}</td>
                 <td>{{ res.subject }}</td>
                 <td>{{ res.marks }}</td>
                 <td>{{ res.maxmarks }}</td>
+                <td>{{ res.date }}</td>
             </tr> 
         </tbody>
     </table>

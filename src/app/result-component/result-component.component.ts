@@ -28,4 +28,9 @@ export class ResultComponentComponent implements OnInit {
    console.log(this.userService.getOneUserById(id));
    return "aju";
   }
+  formateDate(date:string ){
+    var datearray = date.split("-");
+    // return  datearray[2] + '/' + datearray[1] + '/' + datearray[0];
+    return "aju";
+  }
 }

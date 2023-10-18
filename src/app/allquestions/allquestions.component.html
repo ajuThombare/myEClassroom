@@ -1,0 +1,41 @@
+<div class="side">
+  <app-sidebar></app-sidebar>
+</div>
+<div class="add-note-content" style="padding-top: 20px;">
+    <h1>Questions</h1>
+    <div class="d-flex justify-content-center align-items-center">
+      <div>
+        <div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Question</th>
+                <th>option 1</th>
+                <th>option 2</th>
+                <th>option 3</th>
+                <th>option 4</th>
+                <th>Edit Question</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let question of questions | paginate:{ itemsPerPage: pageCount, currentPage: pageNumber }">
+                <td>{{ question.content }}</td>
+                <td>{{ question.option1 }}</td>
+                <td>{{ question.option2 }}</td>
+                <td>{{ question.option3 }}</td>
+                <td>{{ question.option4 }}</td>
+                <td>
+                  <form (submit)="updateData(question)">
+                    <button mat-raised-button color="warn" type="submit">Update</button>
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="text-right">
+      <pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
+    </div>
+  </div>

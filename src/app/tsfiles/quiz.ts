@@ -9,7 +9,7 @@ export class Quiz {
     active: boolean = false;
     subjects:string;
     questions: Question[] = []; 
-
+    teacherId : string;
     constructor(qId:number,title: string, description: string, maxMarks: string, 
         numberOfQuestions: string, active: boolean = false,subjects:string) {
        this.qId=qId;;
@@ -19,5 +19,6 @@ export class Quiz {
         this.numberOfQuestions = numberOfQuestions;
         this.active = active;
         this.subjects=subjects;
+        this.teacherId='';
     }
 }

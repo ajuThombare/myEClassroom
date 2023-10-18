@@ -25,7 +25,7 @@ export class StudentattendanceComponent implements OnInit {
 
       (data:any)=>
       {
-       console.log("data retrived succesfully");
+      //  console.log("data retrived succesfully");
        this.users=data;
       });
       this.status = this.route.snapshot.paramMap.get('status');
@@ -38,4 +38,14 @@ export class StudentattendanceComponent implements OnInit {
     const time = date.toLocaleTimeString(); // Get time in HH:MM:SS format
     return { day, month, year, time };
   }
+  formatDate(dateString: string): string {
+    const dateParts = dateString.split("T")[0].split("-");
+    if (dateParts.length === 3) {
+        const year = dateParts[0];
+        const month = dateParts[1];
+        const day = dateParts[2];
+        return `${day}-${month}-${year}`;
+    }
+    return dateString; // Return the original string if it doesn't match the expected format
+}
 }

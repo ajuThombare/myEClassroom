@@ -1,93 +1,41 @@
-<!-- <div class="stu-side">
-    <app-studentsidebar></app-studentsidebar>
-</div>
-<div class="container">
-    <h1>Start Quiz</h1>
-    <form #quiz="ngForm" (ngSubmit)="submit()">
-        <table>
-            <tbody>
-                <tr *ngFor="let question of questions">
-
-                    <td>
-                        <label for="question">Question:</label>
-                    </td>
-
-                    <td><input type="text" id="question" name="question" [(ngModel)]="question.content" required>
-                    </td>
-                    <td> 1: <input type="text" id="option1" name="option1" [(ngModel)]="question.option1" required>
-                    </td>
-                    <br>
-
-                    <td>
-                     2:<input type="text" id="option2" name="option2" [(ngModel)]="question.option2" required>
-                    </td>
-                    <br>
-                    <td>
-                        3:<input type="text" id="option3" name="option3" [(ngModel)]="question.option3" required>
-                    </td>
-                    <br>
-
-                    <td>
-                        4:<input type="text" id="option4" name="option4" [(ngModel)]="question.option4" required>
-                    </td>
-                    <br>
-                    <td>
-                        4:<input type="text" id="ans" name="ans" [(ngModel)]="question.givenAnswer"
-                            placeholder="Enter answer" required>
-                    </td>
-                    <br>
-                </tr>
-            </tbody>
-        </table>
-
-        <button (click)="submit()">Submit Answers</button>
-        <p>Score: {{ score }}</p>
-    </form>
-</div>
- -->
-
- <div class="stu-side">
+<div class="stu-side">
     <app-studentsidebar></app-studentsidebar>
 </div>
 <div class="quizcon">
-<div class="container val">
-
-    <h1>Start The Exam</h1>
-
-    <div class="instructions" *ngIf="instructions && !quizStarted">
-        <h2>Instructions:</h2>
-        <p>Read the instructions carefully Before Starting The Test.</p>
-        <p>There is no negative marking</p>
-        <p>Each question Carries One Mark</p>
-        <p>You can Navigate previous as well as next</p>        
-        <button (click)="startQuiz()">Start</button>
-    </div>
-
-    <button *ngIf="!instructions && !quizStarted " (click)="startQuiz()">Start Quiz</button>
-        <form *ngIf="quizStarted " #quiz="ngForm" >
-
-        <div *ngIf="currentQuestionIndex < questions.length">
-            <div class="question">
-                <label for="question">Question:</label>
-                <input type="text" id="question" name="question" [(ngModel)]="questions[currentQuestionIndex].content" disabled="true" required>
-            </div>
-
-            <div class="options">
-                <label>Options:</label>
-                <label><input type="radio" name="selectedOption" [(ngModel)]="questions[currentQuestionIndex].givenAnswer" [value]="questions[currentQuestionIndex].option1"> {{ questions[currentQuestionIndex].option1 }}</label>
-                <label><input type="radio" name="selectedOption" [(ngModel)]="questions[currentQuestionIndex].givenAnswer" [value]="questions[currentQuestionIndex].option2"> {{ questions[currentQuestionIndex].option2 }}</label>
-                <label><input type="radio" name="selectedOption" [(ngModel)]="questions[currentQuestionIndex].givenAnswer" [value]="questions[currentQuestionIndex].option3"> {{ questions[currentQuestionIndex].option3 }}</label>
-                <label><input type="radio" name="selectedOption" [(ngModel)]="questions[currentQuestionIndex].givenAnswer" [value]="questions[currentQuestionIndex].option4"> {{ questions[currentQuestionIndex].option4 }}</label>
-            </div>
+    <div class="container val">
+        <h1>Start The Exam</h1>
+        <div class="instructions" *ngIf="instructions && !quizStarted">
+            <h2>Instructions:</h2>
+            <p>Read the instructions carefully Before Starting The Test.</p>
+            <p>There is no negative marking</p>
+            <p>Each question Carries One Mark</p>
+            <p>You can Navigate previous as well as next</p>
+            <button (click)="startQuiz()">Start</button>
         </div>
+        <button *ngIf="!instructions && !quizStarted" (click)="startQuiz()">Start Quiz</button>
+        <form *ngIf="quizStarted" #quiz="ngForm">
+            <div *ngIf="currentQuestionIndex < questions.length">
+                <div class="question">
+                    <label for="question">Question: {{currentQuestionIndex+1}}</label>
+                    <input type="text" id="question" name="question" [(ngModel)]="questions[currentQuestionIndex].content" disabled="true" required>
+                </div>
 
-        <div class="navigation-buttons">
-            <button *ngIf="currentQuestionIndex > 0" (click)="previousQuestion()">Previous</button>
-            <button *ngIf="currentQuestionIndex < questions.length - 1" (click)="nextQuestion()">Next</button>
-        
-        <!-- Submit Button will apper only when all questions are completed) -->
-        <button *ngIf="currentQuestionIndex === questions.length - 1" (click)="submit()" >Submit Answers</button>
+                <div class="options">
+                    <label>Options:</label>
+                    <label><input type="radio" name="selectedOption" [(ngModel)]="selectedOption" [value]="questions[currentQuestionIndex].option1"> {{ questions[currentQuestionIndex].option1 }}</label>
+                    <label><input type="radio" name="selectedOption" [(ngModel)]="selectedOption" [value]="questions[currentQuestionIndex].option2"> {{ questions[currentQuestionIndex].option2 }}</label>
+                    <label><input type="radio" name="selectedOption" [(ngModel)]="selectedOption" [value]="questions[currentQuestionIndex].option3"> {{ questions[currentQuestionIndex].option3 }}</label>
+                    <label><input type="radio" name="selectedOption" [(ngModel)]="selectedOption" [value]="questions[currentQuestionIndex].option4"> {{ questions[currentQuestionIndex].option4 }}</label>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button *ngIf="currentQuestionIndex > 0" (click)="previousQuestion()">Previous</button>
+                <button *ngIf="currentQuestionIndex < questions.length - 1" (click)="nextQuestion()" [disabled]="!selectedOption">Next</button>
+
+                <!-- Submit Button will appear only when all questions are completed) -->
+                <button *ngIf="currentQuestionIndex === questions.length - 1" (click)="submit()">Submit Answers</button>
+            </div>
+        </form>
     </div>
-</form>
-</div>
 </div>

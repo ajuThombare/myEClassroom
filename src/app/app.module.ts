@@ -43,6 +43,8 @@ import { NotesTeacherComponent } from './notes-teacher/notes-teacher.component';
 import { QuizzesComponent } from './quizzes/quizzes.component';
 import { StudentResultComponent } from './student-result/student-result.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { AllquestionsComponent } from './allquestions/allquestions.component';
+import { UpdateQuestionsComponent } from './update-questions/update-questions.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +75,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     NotesTeacherComponent,
     QuizzesComponent,
     StudentResultComponent,
+    AllquestionsComponent,
+    UpdateQuestionsComponent,
     // QuizzesComponent,
     ],
   imports: [
