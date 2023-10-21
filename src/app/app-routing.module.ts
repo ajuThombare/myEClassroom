@@ -29,8 +29,8 @@ import { UpdateQuestionsComponent } from './update-questions/update-questions.co
 const routes: Routes = [
 {path:'',component:WelcomeComponent} ,
 {path:'welcome',component:WelcomeComponent} ,
-// first it will goes to default ptah:'' that is WelcomeComponent.html
-{path:'login',component:LoginComponent}, //navigate will come here& it will cll LoginComponent.html
+//this WelcomeComponent.html
+{path:'login',component:LoginComponent}, 
 {path:'register',component:RegisterComponent },
 //navigate will come here& it will cll RegComponent.html
 {path:'listUser',component:ListuserComponent },
@@ -38,7 +38,6 @@ const routes: Routes = [
 {path:'teacherattendance',component:AttendanceTeacherComponent},
 { path: 'dashboard', component: WelcomeComponent },
 { path: 'notes', component: NotesComponent },
-// {path:'redir-notes',redirectTo:'/notes'},
 { path: 'online-exam', component: OnlineExamComponentComponent },
 { path: 'result', component: ResultComponentComponent},
 { path: 'students', component: ListofstudentsComponent},

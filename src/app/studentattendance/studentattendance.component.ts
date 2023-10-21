@@ -11,9 +11,11 @@ import { LocalStorageService } from 'ngx-webstorage';
 export class StudentattendanceComponent implements OnInit {
   users: any[] = []; 
   user:any;
-  itemsPerPage: number = 10;
+  
   pageNumber: number = 1;
-  pageCount: number = 10;
+  itemsPerPage: number = 1;
+  pageCount: number = 5;
+
   status!:string | null;
 
   constructor(private route: ActivatedRoute, private userService: UserService,private localStorageService:LocalStorageService) {}

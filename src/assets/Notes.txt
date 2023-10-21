@@ -1,22 +1,10 @@
-<div class="side">
-    <app-studentsidebar></app-studentsidebar>
-</div>
-
-<div class="add-note-content" style="padding-top: 20px;">
-    <h1>My Result</h1>
-    <table border="1">
-
-        <thead>
-            <tr>
-                <!-- <th>Student Id</th> -->
-                <th>Full Name</th>
-                <th>Quiz Title</th>
-                <th>Subject</th>
-                <th>Obtained Marks</th>
-                <th>Max Marks</th>
-                <th>Attempted Date</th>
-            </tr>
-        </thead>
+Pagination code- 
+TS<
+  pageNumber: number = 1;
+  itemsPerPage: number = 1;
+  pageCount: number = 5;
+>
+HTML<
         <tbody>
             <tr *ngFor="let res of result | paginate:{ itemsPerPage:pageCount,currentPage:pageNumber}">    
                 <td>{{ res.name}}</td>
@@ -31,4 +19,4 @@
     <div class="text-right">
         <pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
     </div>
-</div>    
+>

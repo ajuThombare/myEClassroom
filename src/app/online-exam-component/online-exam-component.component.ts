@@ -17,7 +17,8 @@ export class OnlineExamComponentComponent implements OnInit {
   @ViewChild('questionForm') questionForm!: NgForm;
   selectedQuizId: any;
   quizid:any;
-
+  questions: Question[] = [];
+  numberOfQuestions: number = 0;
   /*! non null oprator used here to tell we wll initialize it elsewhere.*/
 quiz:any;
 existingOptions: string[] = [];// Array to hold existing options
@@ -63,6 +64,35 @@ answerOptions: string[] = []; // Array to hold answer options
       alert('Question added');
       this.question=new Question(0,"","","","","","","",""); // clearing the form
       this.existingOptions = []; // clearing the existingOptions array
+    },Error=>{
+      alert('You have reached the maximum Question limit for this Quiz.');
     });
+  }
+
+  canAddQuestionToQuiz(){
+    var numberOfQuestions : number = this.getNoQuestions();
+    
+
+    console.log("tp1");
+    console.log(numberOfQuestions);
+    console.log(this.quiz.numberOfQuestions);
+    // console.log("tp2");
+    // console.log(numberOfQuestions < this.quiz.numberOfQuestions);
+    // console.log("tp3");
+    // console.log(2>3);
+    // console.log(2<3);
+  }
+  
+  getNoQuestions(){
+    var no : number =0;
+    this.quizservice.getNumberOfQuestionByQuizById(this.quiz.qId).subscribe(
+      // this.quizservice.getQuestionByQuizById(this.quiz.qId).subscribe(
+        (data:any)=>
+        {
+          console.log("data "+typeof(data));
+          no = data;
+        }
+      );
+      return no;
   }
 }

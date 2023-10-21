@@ -1,5 +1,50 @@
 <div class="stu-side">
     <app-studentsidebar></app-studentsidebar>
+  </div>
+  <div class="quizcon">
+    <div class="container val">
+     
+      <div class="instructions" *ngIf="instructions && !quizStarted">
+         <h1>Start The Exam</h1>
+        <h2>Instructions:</h2>
+        <p>Read the instructions carefully Before Starting The Test.</p>
+        <p>There is no negative marking</p>
+        <p>Each question Carries One Mark</p>
+        <p>You can Navigate previous as well as next</p>
+        <button (click)="startQuiz()">Start</button>
+      </div>
+      <button *ngIf="!instructions && !quizStarted" (click)="startQuiz()">Start Quiz</button>
+      <form *ngIf="quizStarted" #quiz="ngForm">
+        <h1><b>{{quizName}}</b> is Started</h1>
+        <div *ngIf="currentQuestionIndex < questions.length">
+          <div class="question">
+            <label for="question">Question: {{ currentQuestionIndex + 1 }}</label>
+            <input type="text" id="question" name="question" [(ngModel)]="questions[currentQuestionIndex].content" disabled="true" required>
+          </div>
+  
+          <div class="options">
+            <label>Options:</label>
+            <label><input type="radio" name="answer" [(ngModel)]="selectedOptions[currentQuestionIndex]" [value]="questions[currentQuestionIndex].option1"> {{ questions[currentQuestionIndex].option1 }}</label>
+            <label><input type="radio" name="answer" [(ngModel)]="selectedOptions[currentQuestionIndex]" [value]="questions[currentQuestionIndex].option2"> {{ questions[currentQuestionIndex].option2 }}</label>
+            <label><input type="radio" name="answer" [(ngModel)]="selectedOptions[currentQuestionIndex]" [value]="questions[currentQuestionIndex].option3"> {{ questions[currentQuestionIndex].option3 }}</label>
+            <label><input type="radio" name="answer" [(ngModel)]="selectedOptions[currentQuestionIndex]" [value]="questions[currentQuestionIndex].option4"> {{ questions[currentQuestionIndex].option4 }}</label>
+          </div>
+        </div>
+  
+        <div class="navigation-buttons">
+          <button *ngIf="currentQuestionIndex > 0" (click)="previousQuestion()">Previous</button>
+          <button *ngIf="currentQuestionIndex < questions.length - 1" (click)="nextQuestion()" [disabled]="!selectedOptions[currentQuestionIndex]">Next</button>
+          <button *ngIf="currentQuestionIndex === questions.length - 1" (click)="submit()">Submit Answers</button>
+          <!-- <p>Total Score: {{ calculateScore() }} out of {{ questions.length }}</p> -->
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+<!-- <div class="stu-side">
+    <app-studentsidebar></app-studentsidebar>
 </div>
 <div class="quizcon">
     <div class="container val">
@@ -33,9 +78,9 @@
                 <button *ngIf="currentQuestionIndex > 0" (click)="previousQuestion()">Previous</button>
                 <button *ngIf="currentQuestionIndex < questions.length - 1" (click)="nextQuestion()" [disabled]="!selectedOption">Next</button>
 
-                <!-- Submit Button will appear only when all questions are completed) -->
+               
                 <button *ngIf="currentQuestionIndex === questions.length - 1" (click)="submit()">Submit Answers</button>
             </div>
         </form>
     </div>
-</div>
+</div>  -->

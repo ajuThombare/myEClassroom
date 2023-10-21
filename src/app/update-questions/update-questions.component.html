@@ -23,10 +23,10 @@
       <label for="answer">Answer:</label>
       <select id="answer" name="answer" [(ngModel)]="question.answer" required>
         <option value="" disabled>Select an answer</option>
-        <option value="option1">{{ question.option1 }}</option>
-        <option value="option2">{{ question.option2 }}</option>
-        <option value="option3">{{ question.option3 }}</option>
-        <option value="option4">{{ question.option4 }}</option>
+        <option [ngValue]="question.option1">{{ question.option1 }}</option>
+        <option [ngValue]="question.option2">{{ question.option2 }}</option>
+        <option [ngValue]="question.option3">{{ question.option3 }}</option>
+        <option [ngValue]="question.option4">{{ question.option4 }}</option>
       </select>
       <br>
       <button type="submit" >Save Changes</button>

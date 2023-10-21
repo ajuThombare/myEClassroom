@@ -15,6 +15,9 @@ export class QuizdetailsComponent implements OnInit{
   teacherid :string;
   selectedQuiz: string = 'default'; // Initialize with a default value
   questions: any[] = []; 
+  pageNumber: number = 1;
+  itemsPerPage: number = 1;
+  pageCount: number = 5;
 
   constructor(private router:Router,private quizService:QuizService,private localStorage:LocalStorageService){
     this.teacherid =localStorage.retrieve('currentuser').id;

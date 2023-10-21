@@ -17,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let note of notes">
+            <tr *ngFor="let note of notes | paginate:{ itemsPerPage:pageCount,currentPage:pageNumber}">
                 <td>{{note.id}}</td>
                 <td> {{note.title}} </td>
                 <td> {{note.date}} </td>
@@ -50,5 +50,7 @@
             </tr>
         </tbody>
     </table>
-    
+    <div class="text-right">
+        <pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
+    </div>
 </div>

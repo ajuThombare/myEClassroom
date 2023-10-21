@@ -29,6 +29,7 @@ export class QuizService {
   {
     return this.http.get(`${baseUrl}/question/quiz/all/${quizId}`);
   }
+
   getAllQuizzes() {
     return this.http.get(`${baseUrl}/quiz/`);
   }
@@ -74,6 +75,11 @@ public getAllQuestion()
   {
     return this.http.get(`${baseUrl}/question/quiz/${qid}`);
   }
+
+  public getNumberOfQuestionByQuizById(qid:number)
+  {
+    return this.http.get(`${baseUrl}/question/quiz/numbers/${qid}`);
+  }
   //update question
   public upadateQuestion(question:Question,qid:number) {
     return this.http.put(`${baseUrl}/question/update/${qid}`, question);
@@ -81,5 +87,8 @@ public getAllQuestion()
   public getQuestionById(quesId:number)
   {
     return this.http.get(`${baseUrl}/question/${quesId}`);
+  }
+  public markResult(result: Result){
+    return this.http.post(`${baseUrl}/result/add`,result);
   }
 }

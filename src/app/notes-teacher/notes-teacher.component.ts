@@ -11,6 +11,9 @@ import { LocalStorageService } from 'ngx-webstorage';
   styleUrls: ['./notes-teacher.component.css']
 })
 export class NotesTeacherComponent  implements OnInit{
+  pageNumber: number = 1;
+  itemsPerPage: number = 1;
+  pageCount: number = 5;
 
 constructor(private route:Router,
   private userService:UserService,
@@ -20,6 +23,7 @@ constructor(private route:Router,
   notes: any[] = []; 
   baseUrl:any;
   teacherid: string = '';
+
   ngOnInit(): void {
     this.baseUrl=baseUrl;
     this.teacherid = this.loacalStorage.retrieve('currentuser').id;

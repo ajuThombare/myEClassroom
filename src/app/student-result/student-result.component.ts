@@ -11,6 +11,10 @@ import { LocalStorageService } from 'ngx-webstorage';
 export class StudentResultComponent implements OnInit{
   result: Result[] = [];
 
+  pageNumber: number = 1;
+  itemsPerPage: number = 1;
+  pageCount: number = 5;
+
   constructor(private userService:UserService,private loacalStorage:LocalStorageService){}
 
   ngOnInit(): void {

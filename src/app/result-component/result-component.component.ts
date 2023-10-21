@@ -12,6 +12,9 @@ import { User } from '../tsfiles/user';
 export class ResultComponentComponent implements OnInit {
   score: number = 0;
   result: Result[] = [];
+  pageNumber: number = 1;
+  itemsPerPage: number = 1;
+  pageCount: number = 5;
   
   constructor(private activatedRoute: ActivatedRoute,private userService:UserService) {}
 
@@ -24,13 +27,13 @@ export class ResultComponentComponent implements OnInit {
 
   }
 
-  getNameById(id:number){
-   console.log(this.userService.getOneUserById(id));
-   return "aju";
-  }
-  formateDate(date:string ){
-    var datearray = date.split("-");
-    // return  datearray[2] + '/' + datearray[1] + '/' + datearray[0];
-    return "aju";
-  }
+  // getNameById(id:number){
+  //  console.log(this.userService.getOneUserById(id));
+  //  return "aju";
+  // }
+  // formateDate(date:string ){
+  //   var datearray = date.split("-");
+  //   // return  datearray[2] + '/' + datearray[1] + '/' + datearray[0];
+  //   return "aju";
+  // }
 }

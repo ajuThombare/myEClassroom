@@ -17,7 +17,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let quiz of quizzes"> 
+                <tr *ngFor="let quiz of quizzes | paginate:{ itemsPerPage:pageCount,currentPage:pageNumber}"> 
                     <td> {{ quiz.title }} </td>
                     <td> {{ quiz.subjects}} </td>
                     <td>{{quiz.numberOfQuestions}}</td>
@@ -28,4 +28,7 @@
                 </tr>
             </tbody>
         </table>
+        <div class="text-right">
+            <pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
+        </div>
 </div>

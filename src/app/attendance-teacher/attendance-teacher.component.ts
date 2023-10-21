@@ -12,8 +12,11 @@ import { LocalStorageService } from 'ngx-webstorage';
 export class AttendanceTeacherComponent implements OnInit {
   users:any;
   status:string='';
-   isButtonDisabled: boolean[] = [];
-   attendanceCreated: boolean;
+  isButtonDisabled: boolean[] = [];
+  attendanceCreated: boolean;
+  pageNumber: number = 1;
+  itemsPerPage: number = 1;
+  pageCount: number = 5;
    
   constructor(private route:Router,private userService:UserService,private localStorageService:LocalStorageService)
   {

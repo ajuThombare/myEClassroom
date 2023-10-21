@@ -72,7 +72,8 @@ answerOptions: string[] = []; // Array to hold answer options
       (data: any) => {
         Swal.fire('Success !!', 'Questions updated', 'success').then((e) => {
           });
-      console.log('Question updated');  
+      // console.log('Question updated'); 
+      this.router.navigateByUrl('/viewquestions'); 
     },
     (Error) => {
       Swal.fire('Error', 'error in updating Questions', 'error');

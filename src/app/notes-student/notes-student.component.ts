@@ -11,6 +11,10 @@ import baseUrl from '../commonurl';
   styleUrls: ['./notes-student.component.css']
 })
 export class NotesStudentComponent implements OnInit{
+  pageNumber: number = 1;
+  itemsPerPage: number = 1;
+  pageCount: number = 5;
+  
   constructor(private route:Router,private userService:UserService
     // , private dialog: MatDialog
     ){}

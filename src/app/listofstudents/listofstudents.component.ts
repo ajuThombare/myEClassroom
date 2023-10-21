@@ -11,9 +11,9 @@ import { User } from '../tsfiles/user';
 export class ListofstudentsComponent implements OnInit{
   users: any[] = [];
   getAllStudents: any[] = [];
-  itemsPerPage: number = 3;
   pageNumber: number = 1;
-  pageCount: number = 10;
+  itemsPerPage: number = 1;
+  pageCount: number = 5;
   constructor(private route:Router,private userService:UserService)
   {    
     this.getAllStudents = this.users.filter(user => user.role === 'student');
