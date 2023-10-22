@@ -94,10 +94,13 @@ public getAllResults(){
 public getResultsById(id:number){
   return this.httpClient.get(`${baseUrl}/result/bystudid/${id}`);
 }
-public addQuizResult(result: Result){
-  console.log(result); 
+public addQuizResult(result: Result){ 
   const res = this.httpClient.post(`${baseUrl}/result/add`,result);
   // console.log(res);
   return res;
+}
+public checkAttemptedResult(id:number,subject:string,title:string){
+  console.log("in checked attempt");
+  return this.httpClient.get(`${baseUrl}/result/check/${id}/${subject}/${title}`,{responseType :'text' as 'json'});
 }
 }

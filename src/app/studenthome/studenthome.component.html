@@ -1,170 +1,116 @@
 <div class="stu-side">
     <app-studentsidebar></app-studentsidebar>
 </div>
+
+
+<div class="form-container mat-elevation-z5 text-center"  >
+    <h1>User Profile</h1>
+<div class="profile-image">
+     <img width="120" height="120" [src]=" url"/>         
+<button mat-mini-fab (click)="inputfiled.click()">
+    <mat-icon>edit</mat-icon>
+</button>
+</div>
+<input #inputfiled type="file" (change)="onFileSelected($event)" hidden />
+
 <div class="add-note-content">
     <div class="text-center">
-        <img src="assets/profile.jpg" alt="" class="profile-image" />
-
-        <h1 class="mt20">Hello {{ user.firstName }} {{ user.lastName }} ( {{ user.role }} )</h1>
+      
+      <h1 class="mt20">Hello {{ user.firstName }} {{ user.lastName }} ( {{ user.role }} )</h1>
     </div>
+    <div class="form-container form-container-scrollable">
     <mat-card>
-        <mat-card-content>
-            <form class="mt-3" #registerform="ngForm" (ngSubmit)="updateUser()">
+      <mat-card-content>
+        <form class="mt-3" #registerform="ngForm" (ngSubmit)="updateUser()">
+  
+          <mat-form-field class="full-width">
+            <input matInput id="id" name="id" [(ngModel)]="user.id" disabled>
+            <mat-label>Role Id</mat-label>
+          </mat-form-field>
+  
+          <mat-form-field class="full-width">
+            <input matInput name="firstName" [(ngModel)]="user.firstName" required #firstname="ngModel">
+            <mat-label>First Name</mat-label>
+            <mat-error *ngIf="firstname.invalid && firstname.touched">
+              <small *ngIf="firstname.errors?.['required']">Required field</small>
+              <small *ngIf="firstname.errors?.['pattern']">Enter a valid name</small>
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="full-width">
+            <input matInput name="lastName" [(ngModel)]="user.lastName" required #lastName="ngModel">
+            <mat-label>Last Name</mat-label>
+            <mat-error *ngIf="lastName.invalid && lastName.touched">
+              <small *ngIf="lastName.errors?.['required']">Required field</small>
+              <small *ngIf="lastName.errors?.['pattern']">Enter a valid name</small>
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="full-width">
+            <input matInput name="eMail" [(ngModel)]="user.eMail" required
+              pattern="[A-Za-z0-9._%+-]{2,}@[a-zA-Z]{1,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
+              #email="ngModel">
+            <mat-label>Email</mat-label>
+            <mat-error *ngIf="email.invalid && email.touched">
+              <small *ngIf="email.errors?.['required']">Email ID is required</small>
+              <small *ngIf="email.errors?.['pattern']">Enter a valid email ID</small>
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="full-width">
+            <input matInput name="mobileNo" [(ngModel)]="user.mobileNo" required pattern="[789][0-9]{9}" #mobilenumber="ngModel">
+            <mat-label>Mobile Number</mat-label>
+            <mat-error *ngIf="mobilenumber.invalid && mobilenumber.touched">
+              <small *ngIf="mobilenumber.errors?.['required']">Required field</small>
+              <small *ngIf="mobilenumber.errors?.['pattern']">Enter a valid phone number</small>
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="full-width">
+            <input matInput name="userName" [(ngModel)]="user.username" required
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+              title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+              #userName="ngModel" [class.is-invalid]="userName.invalid&&userName.touched">
+            <mat-label>Username</mat-label>
+            <mat-error *ngIf="userName.invalid && userName.touched">
+              <small *ngIf="userName.errors?.['required']">Password is required</small>
 
-                <table class="table text-center">
-
-                    <tr>
-                        <td>Role Id</td>
-                        <td>
-                            <input type="text" id="id" name="id" class="form-control" [(ngModel)]="user.id"
-                                disabled=" true">
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>First Name</td>
-                        <td>
-                            <div>
-                                <input type="text" name="firstName" class="form-control" placeholder="First Name"
-                                    [(ngModel)]="user.firstName" required #firstname="ngModel"
-                                    [class.is-invalid]="firstname.invalid&&firstname.touched" />
-                                <div *ngIf="firstname.errors && (firstname.invalid && firstname.touched)">
-                                    <small class="text-danger" *ngIf="firstname.errors?.['required']">required
-                                        field</small>
-                                    <small class="text-danger" *ngIf="firstname.errors?.['pattern']">enter a valid
-                                        name</small>
-                                </div>
-                            </div>
-                            <!-- <input type="text" id="firstName" name="firstName" class="form-control" [(ngModel)]="user.firstName" > -->
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Last Name</td>
-                        <td>
-                            <div>
-                                <input type="text" name="lastName" class="form-control" placeholder="Last Name"
-                                    [(ngModel)]="user.lastName" required #lastName="ngModel"
-                                    [class.is-invalid]="lastName.invalid&&lastName.touched" />
-                                <div *ngIf="lastName.errors && (lastName.invalid && lastName.touched)">
-                                    <small class="text-danger" *ngIf="lastName.errors?.['required']">required
-                                        field</small>
-                                    <small class="text-danger" *ngIf="lastName.errors?.['pattern']">enter a valid
-                                        name</small>
-                                </div>
-                            </div>
-                            <!-- <input type="text" id="lastName" name="lastName" class="form-control" [(ngModel)]="user.lastName" > -->
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>E Mail</td>
-                        <td>
-                            <div>
-                                <input type="email" name="eMail" class="form-control" placeholder="Email"
-                                    [(ngModel)]="user.eMail" required
-                                    pattern="[A-Za-z0-9._%+-]{2,}@[a-zA-Z]{1,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
-                                    #email="ngModel" [class.is-invalid]="email.invalid&&email.touched" />
-                                <div *ngIf="email.errors && (email.invalid && email.touched)">
-                                    <small class="text-danger" *ngIf="email.errors?.['required']">email id is
-                                        required</small>
-                                    <small class="text-danger" *ngIf="email.errors?.['pattern']">enter valid email
-                                        id</small>
-                                </div>
-                            </div>
-                            <!-- <input type="text" id="eMail" name="eMail" class="form-control" [(ngModel)]="user.eMail"> -->
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Mobile Number</td>
-                        <td>
-                            <div>
-                                <input type="text" name="mobileNo" class="form-control" placeholder="Phone Number"
-                                    [(ngModel)]="user.mobileNo" required pattern="[789][0-9]{9}" #mobilenumber="ngModel"
-                                    [class.is-invalid]="mobilenumber.invalid&&mobilenumber.touched" />
-                                <div *ngIf="mobilenumber.errors && (mobilenumber.invalid && mobilenumber.touched)">
-                                    <small class="text-danger" *ngIf="mobilenumber.errors?.['required']">required
-                                        field</small>
-                                    <small class="text-danger" *ngIf="mobilenumber.errors?.['pattern']">enter a valid
-                                        phone number</small>
-                                </div>
-                            </div>
-                            <!-- <input type="text" id="mobileNo" name="mobileNo" class="form-control" [(ngModel)]="user.mobileNo" > -->
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>username</td>
-                        <td>
-                            <div>
-                                <input type="text" name="userName" class="form-control" placeholder="Username"
-                                    [(ngModel)]="user.username" required
-                                    title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
-                                    #userName="ngModel" [class.is-invalid]="userName.invalid&&userName.touched" />
-
-                                <!-- <small class="text-danger" [class.d-none]="password.valid||password.untouched">Required field</small> -->
-                                <div *ngIf="userName.errors && (userName.invalid && userName.touched)">
-                                    <small class="text-danger" *ngIf="userName.errors?.['required']">password is
-                                        required</small>
-                                    <small class="text-danger" *ngIf="userName.errors?.['pattern']">must contain at
-                                        least one number and one
-                                        uppercase and lowercase letter, and at least 8 or more characters</small>
-                                </div>
-                            </div>
-                            <!-- <input type="text" id="username" name="username" class="form-control" [(ngModel)]="user.username" > -->
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Password<td>
-                            <div>
-                               <input type="password" name="passWord" class="form-control" placeholder="Password" [(ngModel)]="user.password"
-                                required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                                title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
-                                #passWord="ngModel" [class.is-invalid]="passWord.invalid&&passWord.touched" />
-                              
-                                 <div *ngIf="passWord.errors && (passWord.invalid && passWord.touched)">
-
-                                <small class="text-danger" *ngIf="passWord.errors?.['required']">password is required</small>
-                                <small class="text-danger" *ngIf="passWord.errors?.['pattern']">must contain at least one number and one
-                                  uppercase and lowercase letter, and at least 8 or more characters</small>
-                              </div> 
-                            </div>
-                    </tr>
-
-                    <tr>
-                        <td>City</td>
-                        <td>
-                            <div class="form-group city">
-                                <input type="text" name="City" class="form-control" placeholder="City"
-                                    [(ngModel)]="user.city" required pattern="[a-zA-Z'-'\s]*" #City="ngModel"
-                                    [class.is-invalid]="City.invalid&&City.touched" />
-                                <!-- <small class="text-danger" [class.d-none]="state.valid||state.untouched">Required field</small> -->
-                                <div *ngIf="City.errors && (City.invalid && City.touched)">
-                                    <small class="text-danger" *ngIf="City.errors?.['required']">required field</small>
-                                    <small class="text-danger" *ngIf="City.errors?.['pattern']">enter a valid
-                                        City</small>
-                                </div>
-                            </div>
-                            <!-- <input type="text" id="city" name="city" class="form-control" [(ngModel)]="user.city"> -->
-                        </td>
-                    </tr>
-                </table>
-
-                <div class="submit-btn text-center">
-                    <div class="button">
-                        <input type="submit" value="Update User Details">
-                    </div>
-                </div>
-            </form>
-
-            <!-- <div class="delete-btn text-center">
-                <div class="button">
-                    <input value="Delete My Account" (click)="deleteUser()">
-                </div>
-            </div> -->
-        </mat-card-content>
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="full-width">
+            <input matInput type="password" name="passWord" [(ngModel)]="user.password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+              title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+              #passWord="ngModel">
+            <mat-label>Password</mat-label>
+            <mat-error *ngIf="passWord.invalid && passWord.touched">
+              <small *ngIf="passWord.errors?.['required']">Password is required</small>
+              <small *ngIf="passWord.errors?.['pattern']">Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters</small>
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="full-width">
+            <input matInput name="city" [(ngModel)]="user.city" required pattern="[a-zA-Z'-'\s]*" #City="ngModel">
+            <mat-label>City</mat-label>
+            <mat-error *ngIf="City.invalid && City.touched">
+              <small *ngIf="City.errors?.['required']">Required field</small>
+              <small *ngIf="City.errors?.['pattern']">Enter a valid City</small>
+            </mat-error>
+          </mat-form-field>
+  
+          <div class="submit-btn text-center">
+            <div class="button">
+              <button mat-raised-button color="primary" type="submit">Update User Details</button>
+            </div>
+          </div>
+        </form>
+  
+        <div class="delete-btn text-center">
+          <div class="button">
+            <button mat-raised-button color="warn" (click)="deleteUser()">Deactivate My Account</button>
+          </div>
+        </div>
+      </mat-card-content>
     </mat-card>
+  </div>
 </div>

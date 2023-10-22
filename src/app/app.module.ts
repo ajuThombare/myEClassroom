@@ -24,7 +24,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { QuizTakerComponent } from './quiz-taker/quiz-taker.component';
-import { QuizResultsComponent } from './quiz-results/quiz-results.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { TeacherhomeComponent } from './teacherhome/teacherhome.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -45,6 +44,7 @@ import { StudentResultComponent } from './student-result/student-result.componen
 import { MatDialogModule } from '@angular/material/dialog';
 import { AllquestionsComponent } from './allquestions/allquestions.component';
 import { UpdateQuestionsComponent } from './update-questions/update-questions.component';
+import { ListHistoryUsersComponent } from './list-history-users/list-history-users.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +63,6 @@ import { UpdateQuestionsComponent } from './update-questions/update-questions.co
     SidebarComponent,
     NavbarComponent,
     QuizTakerComponent,
-    QuizResultsComponent,
     HomepageComponent,
     TeacherhomeComponent,
     NotesStudentComponent,
@@ -77,7 +76,7 @@ import { UpdateQuestionsComponent } from './update-questions/update-questions.co
     StudentResultComponent,
     AllquestionsComponent,
     UpdateQuestionsComponent,
-    // QuizzesComponent,
+    ListHistoryUsersComponent,
     ],
   imports: [
     BrowserModule,

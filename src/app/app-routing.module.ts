@@ -16,7 +16,6 @@ import { TeacherhomeComponent } from './teacherhome/teacherhome.component';
 import { NotesStudentComponent } from './notes-student/notes-student.component';
 import { StudentattendanceComponent } from './studentattendance/studentattendance.component';
 import { QuizTakerComponent } from './quiz-taker/quiz-taker.component';
-import { QuizResultsComponent } from './quiz-results/quiz-results.component';
 import { AddquizComponent } from './addquiz/addquiz.component';
 import { QuizdetailsComponent } from './quizdetails/quizdetails.component';
 import { AddingquestioquizidComponent } from './addingquestioquizid/addingquestioquizid.component';
@@ -25,6 +24,7 @@ import { QuizzesComponent } from './quizzes/quizzes.component';
 import { StudentResultComponent } from './student-result/student-result.component';
 import { AllquestionsComponent } from './allquestions/allquestions.component';
 import { UpdateQuestionsComponent } from './update-questions/update-questions.component';
+import { ListHistoryUsersComponent } from './list-history-users/list-history-users.component';
 
 const routes: Routes = [
 {path:'',component:WelcomeComponent} ,
@@ -48,7 +48,6 @@ const routes: Routes = [
 {path : 'studentnotes',component:NotesStudentComponent},
 {path: 'studentattendance', component:StudentattendanceComponent},
 {path: 'quiztaker', component:QuizTakerComponent},
-{path: 'quizres', component:QuizResultsComponent},
 {path: 'addquiz', component:AddquizComponent},
 {path: 'quizdetails', component:QuizdetailsComponent},
 {path: 'addquestionquizid', component:AddingquestioquizidComponent},
@@ -56,7 +55,8 @@ const routes: Routes = [
 { path:'quizzess',component:QuizzesComponent},
 {path:'myresult',component:StudentResultComponent},
 {path:'viewquestions',component:AllquestionsComponent},
-{path:'updatequestions/:qid',component:UpdateQuestionsComponent}
+{path:'updatequestions/:qid',component:UpdateQuestionsComponent},
+{ path:'historyusers',component:ListHistoryUsersComponent}
 ];
 
 @NgModule({

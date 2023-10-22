@@ -24,7 +24,7 @@ export class QuizTakerComponent implements OnInit{
   quizStarted:boolean=false;
   score: number = 0;
   result : Result = new Result(0,0,"","",0) ;
-  attemptCount: number = 0;
+  // attemptCount: number = 0;
   quizName:string ='';
 // created object here user proprties added here thtat html data it will carry and send to db
 constructor(private quizService:QuizService,private router:Router,
@@ -35,23 +35,38 @@ ngOnInit(): void {
 this.quizName = this.loacalStorage.retrieve('currentquiz').title;
 
 this.question.quesId=this.activatedRoute.snapshot.params['qid'];
-  // this.score = 0;
-  //  if(this.attemptCount>3)
-  this.quizService.getQuestionByQuizById(this.loacalStorage.retrieve('currentquiz').qId).subscribe(
+// let attempts = '';  
+this.userService.checkAttemptedResult(
+    this.loacalStorage.retrieve('currentuser').id,
+    this.loacalStorage.retrieve('currentquiz').subjects,
+    this.quizName
+  ).subscribe(
+    (data:any)=>{
+      if(data ==='Ok'){
+        this.getAllQuetionsOfQuiz();
+        // console.log("ok -------"+data);
+      }else{
+        Swal.fire({
+              icon: 'info',
+              title: 'Maximum Attempts Reached',
+              text: 'You have already submitted the maximum number of attempts (3).',
+            }).then(()=>{
+              this.router.navigateByUrl('/quizzess');
+            });
+        // console.log("not ok -------"+data);
+      }
+    }
+  );
+}
+
+getAllQuetionsOfQuiz(){
+    this.quizService.getQuestionByQuizById(this.loacalStorage.retrieve('currentquiz').qId).subscribe(
     (data:any)=>
     {
       this.questions=data;
       console.log(this.questions);
     });
-    // Swal.fire({
-    //   icon: 'info',
-    //   title: 'Maximum Attempts Reached',
-    //   text: 'You have already submitted the maximum number of attempts (3).',
-    // }).then(()=>{
-    //   this.router.navigateByUrl('/quizzess');
-    // });
 }
-
 calculateScore() {
   let score = 0;
   for (let i = 0; i < this.questions.length; i++) {
@@ -59,7 +74,7 @@ calculateScore() {
       score++;
     }
   }
-  console.log("Total Score:", score);
+  // console.log("Total Score:", score);
   return score;
 }
 
@@ -67,7 +82,6 @@ public submit(){
     const usernow = this.loacalStorage.retrieve('currentuser');
     const quiznow = this.loacalStorage.retrieve('currentquiz');
     this.score=this.calculateScore();
-    // this.result.marks = this.score;
     this.result.studentId = usernow.id;
     this.result.name = usernow.firstName +" "+usernow.lastName;
     this.result.maxmarks = quiznow.maxMarks;
@@ -78,11 +92,9 @@ public submit(){
     const NumberOfQ = this.loacalStorage.retrieve('currentquiz').numberOfQuestions;
 
     //This is actual logic to calculate the score
-    
-    this.result.marks = ((Marksmaximum/NumberOfQ));
-    // *this.score;
+    this.result.marks = ((Marksmaximum/NumberOfQ))*this.score;
 
-    console.log('score is '+ this.result.marks);
+    // console.log('score is '+ this.result.marks);
     Swal.fire({
       icon: 'info',
       title: 'Exam Submitted',
@@ -103,8 +115,8 @@ startQuiz() {
   if (this.questions.length == 0) {
     Swal.fire({
       icon: 'error',
-      title: 'No Questions Found',
-      text: 'There are no questions for the selected quiz'+' '+this.loacalStorage.retrieve('currentquiz').qId,
+      title: 'No Questions Found for quiz- "'+this.loacalStorage.retrieve('currentquiz').title+'"',
+      // text: 'There are no questions added for the selected quiz- "'+this.loacalStorage.retrieve('currentquiz').title+'"',
     });
     this.router.navigateByUrl('/quizzess');
   }

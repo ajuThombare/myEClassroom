@@ -12,13 +12,14 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class TeacherhomeComponent implements OnInit{
   user=new User(0,"","","",false,"","","","","","",""); 
+ 
 
   ngOnInit(): void {}
-  
-  constructor(private userServe : UserService,
-    private loacalStorage:LocalStorageService,
-    private route:Router,private dialog: MatDialog
-    ){
+    constructor(
+      private userServe: UserService,
+      private loacalStorage: LocalStorageService,
+      private route: Router,
+      private dialog: MatDialog  ){
     this.user = this.loacalStorage.retrieve('currentuser');
   }
 
@@ -29,11 +30,12 @@ export class TeacherhomeComponent implements OnInit{
         this.loacalStorage.store('currentuser',this.user);
         this.route.navigateByUrl('/teacherhome');
       },
-      Error=>{ console.log("somethings wrong")}
+      (      Error: any)=>{ console.log("somethings wrong")}
     );
   }
+ 
   deleteUser() {
-    const confirmation = window.confirm("Are you sure you want to delete your account?");
+    const confirmation = window.confirm("Are you sure you want to deactivate your account?");
     if (confirmation) {
       this.userServe.deleteUser(this.user.id).subscribe(
         (data: any) => {
@@ -46,17 +48,39 @@ export class TeacherhomeComponent implements OnInit{
         }
       );
     }
-  }
-  // deleteUser(){
+  }  
+   onFileSelected(event: any) {
+    const file: File = event?.target?.files?.[0];
+  
+     if (file) {
+       // Construct a FormData object to send the file
+       const formData = new FormData();
+       formData.append('profilePicture', file);
+  
+       // Send the request to upload the file
+  //      this.userServe.uploadProfilePicture(formData).subscribe(
+  //       (data: any) => {
+  // alert("Profile Picture Uploaded Successfully");
+  //       },
+  //       (error: any) => {
+  //        console.error("Error uploading profile picture", error);
+  //         alert("Failed to upload profile picture. Please check the file type and size.");
+  //     }
+  //    );
+    }
+  
+   }
+  // url = "./assets/profile.jpg"; // Set a default image URL
 
-  //   this.userServe.deleteUser(this.user.id).subscribe(
-  //     (data:any)=>{
-  //       this.loacalStorage.clear('currentuser');
-  //       alert("User Account Deactivated.");
-  //       this.route.navigateByUrl('/home');
-  //     },
-  //     Error=>{ console.log("somethings wrong")}
-  //   );
-
+  // onFileSelected(event: any) {
+  //   if (event.target.files) {
+  //     var reader = new FileReader();
+  //     reader.readAsDataURL(event.target.files[0]);
+  //     reader.onload = (event: any) => {
+  //       this.url = event.target.result;
+  //     }
+  //   }
   // }
-}
+  
+
+  }
