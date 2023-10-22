@@ -18,7 +18,10 @@ export class StudentResultComponent implements OnInit{
   constructor(private userService:UserService,private loacalStorage:LocalStorageService){}
 
   ngOnInit(): void {
-      this.userService.getResultsById(this.loacalStorage.retrieve('currentuser').id).subscribe((data:any)=>{
+  this.refreshTabel();
+  }
+  refreshTabel(){
+    this.userService.getResultsById(this.loacalStorage.retrieve('currentuser').id).subscribe((data:any)=>{
       this.result = data;
       });
   }

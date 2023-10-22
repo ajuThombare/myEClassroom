@@ -5,13 +5,13 @@
     <!-- <h1>User Profile</h1> -->
 <div class="profile-image">
      <img width="120" height="100" [src]=" 'assets/profile.jpg'"/>         
-<button mat-mini-fab (click)="inputfiled.click()">
+<!-- <button mat-mini-fab (click)="inputfiled.click()">
     <mat-icon>edit</mat-icon>
-</button>
+</button> -->
 </div>
 
 <div class="add-note-content">
-    <input #inputfiled type="file" (change)="onFileSelected($event)" hidden />
+    <!-- <input #inputfiled type="file" (change)="onFileSelected($event)" hidden /> -->
     <div class="text-center">
     <h1 class="mt20">Hello {{ user.firstName }} {{ user.lastName }} ( {{ user.role }} )</h1>
     </div>

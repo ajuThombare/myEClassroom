@@ -44,15 +44,25 @@ export class StudenthomeComponent implements OnInit{
   }
   url = "./assets/profile.jpg"; // Set a default image URL
 
-   onFileSelected(event: any) {
+  // getImageFromDB(id:number){
+  //   this.userServe.getUserById(id).subscribe(
+  //     (data:any)=>{
+  //       this.url ='data:image/jpeg;base64,/9j/4AAQSk'+ data.img;
+  //       console.log(data.img);
+  //     }
+  //   );
+  // }
+  onFileSelected(event: any) {
      if (event.target.files) {
        var reader = new FileReader();
        reader.readAsDataURL(event.target.files[0]);
        reader.onload = (event: any) => {
          this.url = event.target.result;
+        //  this.user.trans = event.target.result;
        }
      }
   }
+
 }
 
 // import { Component, OnInit } from '@angular/core';

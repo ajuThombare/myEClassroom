@@ -7,11 +7,11 @@
     <h1>User Profile</h1>
 <div class="profile-image">
      <img width="120" height="120" [src]=" url"/>         
-<button mat-mini-fab (click)="inputfiled.click()">
-    <mat-icon>edit</mat-icon>
-</button>
+<!-- <button mat-mini-fab (click)="inputfiled.click()"> -->
+    <!-- <mat-icon>edit</mat-icon> -->
+<!-- </button> -->
 </div>
-<input #inputfiled type="file" (change)="onFileSelected($event)" hidden />
+<!-- <input #inputfiled type="file" (change)="onFileSelected($event)" accept=".JPG,.PNG" hidden /> -->
 
 <div class="add-note-content">
     <div class="text-center">
@@ -68,7 +68,7 @@
   
           <mat-form-field class="full-width">
             <input matInput name="userName" [(ngModel)]="user.username" required
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+              pattern="*(?=.*[A-Z])"
               title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
               #userName="ngModel" [class.is-invalid]="userName.invalid&&userName.touched">
             <mat-label>Username</mat-label>

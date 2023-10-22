@@ -27,16 +27,16 @@ lastName:string,
   country:string
   ){
     this.id=id;
-  this.firstName=firstName;
-  this.lastName=lastName;
-  this.eMail=eMail;
-  this.enabled=enabled;
-  this.role=role;
-  this.mobileNo=mobileNo;
-  this.username=username;
-  this.password=password;
-  this.city=city;
-  this.state=state;
-  this.country=country;
+    this.firstName=firstName;
+    this.lastName=lastName;
+    this.eMail=eMail;
+    this.enabled=enabled;
+    this.role=role;
+    this.mobileNo=mobileNo;
+    this.username=username;
+    this.password=password;
+    this.city=city;
+    this.state=state;
+    this.country=country;
   }
 }

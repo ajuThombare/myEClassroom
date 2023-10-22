@@ -59,8 +59,8 @@ answerOptions: string[] = []; // Array to hold answer options
     }
     this.answerOptions.push(this.question.answer);
     this.quizservice.addQuestionToQuiz(this.question, this.quiz.qId).subscribe(
-      (data: any) => {
-      console.log('Question added');
+      (Response) => {
+      // console.log(Response);
       alert('Question added');
       this.question=new Question(0,"","","","","","","",""); // clearing the form
       this.existingOptions = []; // clearing the existingOptions array
