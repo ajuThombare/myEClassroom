@@ -4,3 +4,23 @@ h2{
     font-size: 25px;
     color: white;
 }
+h2{
+    /* font-weight: bold; */
+    text-align: center;
+    font-size: 25px;
+    color: white;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    height: auto;
+   font-weight: bold;
+}
+
+th, td {
+    border: 1px solid #0f0505;
+    padding: 10px;
+    text-align: center;
+    background: color white;
+    text-decoration:wavy;
+}
