@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { User } from '../tsfiles/user';
-import { LocalStorageService } from 'ngx-webstorage';
+import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-attendance-teacher',
@@ -18,7 +18,7 @@ export class AttendanceTeacherComponent implements OnInit {
   itemsPerPage: number = 1;
   pageCount: number = 5;
    
-  constructor(private route:Router,private userService:UserService,private localStorageService:LocalStorageService)
+  constructor(private route:Router,private userService:UserService,private localStorageService:SessionStorageService)
   {
     this.attendanceCreated = false;
   }

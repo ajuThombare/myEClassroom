@@ -1,6 +1,6 @@
 import { Component,ViewChild  } from '@angular/core';
 import { Router } from '@angular/router';
-import { LocalStorageService } from 'ngx-webstorage';
+import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +11,7 @@ export class NavbarComponent {
   isLoggedIn: boolean = false; 
   user: any = null; 
 
-  constructor(private router: Router, private loacalStorage:LocalStorageService) {}
+  constructor(private router: Router, private loacalStorage:SessionStorageService) {}
 
   public logout() {
     if (this.isLoggedIn && this.user !== null) {

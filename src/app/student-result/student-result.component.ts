@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Result } from '../tsfiles/result';
 import { UserService } from '../user.service';
-import { LocalStorageService } from 'ngx-webstorage';
+import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-student-result',
@@ -15,7 +15,7 @@ export class StudentResultComponent implements OnInit{
   itemsPerPage: number = 1;
   pageCount: number = 5;
 
-  constructor(private userService:UserService,private loacalStorage:LocalStorageService){}
+  constructor(private userService:UserService,private loacalStorage:SessionStorageService){}
 
   ngOnInit(): void {
   this.refreshTabel();

@@ -2,7 +2,7 @@ import { Component,OnInit, ViewChild } from '@angular/core';
 import { Question } from '../tsfiles/question';
 import { QuizService } from '../quiz.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LocalStorageService } from 'ngx-webstorage';
+import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 
@@ -23,7 +23,7 @@ quiz:any;
 existingOptions: string[] = [];// Array to hold existing options
 answerOptions: string[] = []; // Array to hold answer options
     constructor(private quizservice:QuizService,private router:Router,private activatedRoute:ActivatedRoute,
-      private localStorage:LocalStorageService) {
+      private localStorage:SessionStorageService) {
   }
 
   ngOnInit(): void {

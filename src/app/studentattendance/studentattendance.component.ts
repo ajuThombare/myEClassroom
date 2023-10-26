@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user.service';
-import { LocalStorageService } from 'ngx-webstorage';
+import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-studentattendance',
@@ -18,7 +18,7 @@ export class StudentattendanceComponent implements OnInit {
 
   status!:string | null;
 
-  constructor(private route: ActivatedRoute, private userService: UserService,private localStorageService:LocalStorageService) {}
+  constructor(private route: ActivatedRoute, private userService: UserService,private localStorageService:SessionStorageService) {}
 
   ngOnInit() {
   this.user=this.localStorageService.retrieve('currentuser');

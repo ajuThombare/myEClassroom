@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../tsfiles/user';
-import { LocalStorageService } from 'ngx-webstorage';
+import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
@@ -17,7 +17,7 @@ export class TeacherhomeComponent implements OnInit{
   ngOnInit(): void {}
     constructor(
       private userServe: UserService,
-      private loacalStorage: LocalStorageService,
+      private loacalStorage: SessionStorageService,
       private route: Router,
       private dialog: MatDialog  ){
     this.user = this.loacalStorage.retrieve('currentuser');

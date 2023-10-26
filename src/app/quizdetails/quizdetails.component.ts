@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Quiz } from '../tsfiles/quiz';
 import { Router } from '@angular/router';
 import { QuizService } from '../quiz.service';
-import { LocalStorageService } from 'ngx-webstorage';
+import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-quizdetails',
@@ -19,7 +19,7 @@ export class QuizdetailsComponent implements OnInit{
   itemsPerPage: number = 1;
   pageCount: number = 5;
 
-  constructor(private router:Router,private quizService:QuizService,private localStorage:LocalStorageService){
+  constructor(private router:Router,private quizService:QuizService,private localStorage:SessionStorageService){
     this.teacherid =localStorage.retrieve('currentuser').id;
   }
 

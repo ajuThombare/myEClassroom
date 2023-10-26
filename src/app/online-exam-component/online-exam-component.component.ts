@@ -4,7 +4,7 @@ import { Question } from '../tsfiles/question';
 import { isEmpty } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LocalStorageService } from 'ngx-webstorage';
+import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-online-exam-component',
@@ -23,7 +23,7 @@ export class OnlineExamComponentComponent implements OnInit {
 quiz:any;
 existingOptions: string[] = [];// Array to hold existing options
 answerOptions: string[] = []; // Array to hold answer options
-    constructor(private quizservice:QuizService,private router:Router,private localStorage:LocalStorageService) {
+    constructor(private quizservice:QuizService,private router:Router,private localStorage:SessionStorageService) {
     }
 
   ngOnInit(): void {

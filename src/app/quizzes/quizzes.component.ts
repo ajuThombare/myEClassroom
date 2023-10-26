@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Quiz } from '../tsfiles/quiz';
 import { Router } from '@angular/router';
 import { QuizService } from '../quiz.service';
-import { LocalStorageService } from 'ngx-webstorage';
+import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-quizzes',
@@ -20,7 +20,7 @@ selectedQuiz: string = 'default'; // Initialize with a default value
   itemsPerPage: number = 1;
   pageCount: number = 5;
   
-  constructor(private router:Router,private quizService:QuizService,private localStorage:LocalStorageService)
+  constructor(private router:Router,private quizService:QuizService,private localStorage:SessionStorageService)
   {
 
   }

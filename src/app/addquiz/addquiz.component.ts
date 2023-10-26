@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Question } from '../tsfiles/question';
 import { QuizService } from '../quiz.service';
 import { Quiz } from '../tsfiles/quiz';
-import { LocalStorageService } from 'ngx-webstorage';
+import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-addquiz',
@@ -15,7 +15,7 @@ export class AddquizComponent {
   questionsArray: Question[] = [];
   subject:any;
 
-  constructor(private quizService: QuizService, private loacalStorage:LocalStorageService,) {}
+  constructor(private quizService: QuizService, private loacalStorage:SessionStorageService,) {}
 
   ngOnInit(): void {}
 
@@ -45,9 +45,6 @@ export class AddquizComponent {
     );
    
   }
-
- 
-
     
   selectSubject(value:any)
   {

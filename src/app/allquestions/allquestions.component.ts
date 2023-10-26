@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuizService } from '../quiz.service';
-import { LocalStorageService } from 'ngx-webstorage';
+import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { Quiz } from '../tsfiles/quiz';
 import { UserService } from '../user.service';
 import { Result } from '../tsfiles/result';
@@ -20,7 +20,7 @@ export class AllquestionsComponent implements OnInit{
   questions: Question[] = [];
   quiz=new Quiz(0,"","","","",true,"");
   constructor(private route:Router,private quizService:QuizService,
-  private activatedRoute:ActivatedRoute,private loacalStorage:LocalStorageService){}
+  private activatedRoute:ActivatedRoute,private loacalStorage:SessionStorageService){}
   
 ngOnInit(): void {
   this.question.quesId=this.activatedRoute.snapshot.params['qid'];

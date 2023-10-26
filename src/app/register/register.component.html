@@ -44,7 +44,7 @@
 
         <div class="form-group mobile">
           <input type="text" name="mobileNo" class="form-control" placeholder="Phone Number" [(ngModel)]="user.mobileNo"
-            required pattern="[789][0-9]{9}" #mobilenumber="ngModel"
+            required pattern="[6789][0-9]{9}" #mobilenumber="ngModel"
             [class.is-invalid]="mobilenumber.invalid&&mobilenumber.touched" />
           <div *ngIf="mobilenumber.errors && (mobilenumber.invalid && mobilenumber.touched)">
             <small class="text-danger" *ngIf="mobilenumber.errors?.['required']">required field</small>

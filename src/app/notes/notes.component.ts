@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { Notes } from '../tsfiles/notes';
-import { LocalStorageService } from 'ngx-webstorage';
+import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-notes',
@@ -16,7 +16,7 @@ selectedFile: File | undefined;
   notes = new Notes(0, new Uint8Array(), "");
   noteTitle: string = "";
   teacherid: string="";
-  constructor(private route: Router, private userService: UserService, private loacalStorage:LocalStorageService) {}
+  constructor(private route: Router, private userService: UserService, private loacalStorage:SessionStorageService) {}
 
   ngOnInit(): void {
     this.teacherid = this.loacalStorage.retrieve('currentuser').id;

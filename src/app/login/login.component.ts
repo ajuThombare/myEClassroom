@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 user=new User(0,"","","",false,"","","","","","",""); 
 userid:number=0;
 // created object here user proprties added here thtat html data it will carry and send to db
-constructor(private userService:UserService,private router:Router, private loacalStorage:LocalStorageService,
+constructor(private userService:UserService,private router:Router, private loacalStorage:SessionStorageService,
   private sessionStorage: SessionStorageService)
 // injucted userService connecting wth db and routing to linking pages 
 {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LocalStorageService } from 'ngx-webstorage';
+import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { QuizService } from '../quiz.service';
 import { Question } from '../tsfiles/question';
 import { Result } from '../tsfiles/result';
@@ -28,7 +28,7 @@ export class QuizTakerComponent implements OnInit{
   quizName:string ='';
 // created object here user proprties added here thtat html data it will carry and send to db
 constructor(private quizService:QuizService,private router:Router,
-  private activatedRoute:ActivatedRoute , private loacalStorage:LocalStorageService,
+  private activatedRoute:ActivatedRoute , private loacalStorage:SessionStorageService,
   private userService:UserService, ){}
 
 ngOnInit(): void {

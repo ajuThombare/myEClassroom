@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
-import { LocalStorageService } from 'ngx-webstorage';
+import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { Router } from '@angular/router';
 import { User } from '../tsfiles/user';
 
@@ -15,7 +15,7 @@ export class StudenthomeComponent implements OnInit{
 
   ngOnInit(): void {}
   
-  constructor(private userServe : UserService,private loacalStorage:LocalStorageService,private route:Router){
+  constructor(private userServe : UserService,private loacalStorage:SessionStorageService,private route:Router){
     this.user = this.loacalStorage.retrieve('currentuser');
   }
 

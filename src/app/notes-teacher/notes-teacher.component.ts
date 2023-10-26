@@ -2,7 +2,7 @@ import { Component,OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import baseUrl from '../commonurl';
-import { LocalStorageService } from 'ngx-webstorage';
+import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 // import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -17,7 +17,7 @@ export class NotesTeacherComponent  implements OnInit{
 
 constructor(private route:Router,
   private userService:UserService,
-  private loacalStorage:LocalStorageService,
+  private loacalStorage:SessionStorageService,
   // private dialog: MatDialog
   ){}
   notes: any[] = []; 

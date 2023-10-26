@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LocalStorageService } from 'ngx-webstorage';
+import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-studentsidebar',
@@ -8,7 +8,7 @@ import { LocalStorageService } from 'ngx-webstorage';
 })
 export class StudentsidebarComponent {
   isClicked = false;
-constructor(private loacalStorage:LocalStorageService){}
+constructor(private loacalStorage:SessionStorageService){}
 toggleClicked() {
   this.isClicked = !this.isClicked;
 }
