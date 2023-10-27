@@ -37,7 +37,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { AddquizComponent } from './addquiz/addquiz.component';
 import { QuizdetailsComponent } from './quizdetails/quizdetails.component';
-import { AddingquestioquizidComponent } from './addingquestioquizid/addingquestioquizid.component';
 import { NotesTeacherComponent } from './notes-teacher/notes-teacher.component';
 import { QuizzesComponent } from './quizzes/quizzes.component';
 import { StudentResultComponent } from './student-result/student-result.component';
@@ -70,7 +69,6 @@ import { ListHistoryUsersComponent } from './list-history-users/list-history-use
     StudentattendanceComponent,
     AddquizComponent,
     QuizdetailsComponent,
-    AddingquestioquizidComponent,
     NotesTeacherComponent,
     QuizzesComponent,
     StudentResultComponent,

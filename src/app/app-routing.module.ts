@@ -18,7 +18,6 @@ import { StudentattendanceComponent } from './studentattendance/studentattendanc
 import { QuizTakerComponent } from './quiz-taker/quiz-taker.component';
 import { AddquizComponent } from './addquiz/addquiz.component';
 import { QuizdetailsComponent } from './quizdetails/quizdetails.component';
-import { AddingquestioquizidComponent } from './addingquestioquizid/addingquestioquizid.component';
 import { NotesTeacherComponent } from './notes-teacher/notes-teacher.component';
 import { QuizzesComponent } from './quizzes/quizzes.component';
 import { StudentResultComponent } from './student-result/student-result.component';
@@ -50,7 +49,6 @@ const routes: Routes = [
 {path: 'quiztaker', component:QuizTakerComponent},
 {path: 'addquiz', component:AddquizComponent},
 {path: 'quizdetails', component:QuizdetailsComponent},
-{path: 'addquestionquizid', component:AddingquestioquizidComponent},
 { path:'teachernotes',component:NotesTeacherComponent},
 { path:'quizzess',component:QuizzesComponent},
 {path:'myresult',component:StudentResultComponent},
