@@ -3,6 +3,8 @@
 </div>
 <div class="add-note-content" style="padding-top: 20px;">
     <h1>Questions</h1>
+    <button class="backbutton" mat-raised-button style="background-color: rgb(135, 146, 251);" type="submit" (click)="back()">Back</button>
+    
     <div class="d-flex justify-content-center align-items-center">
       <div>
         <div>
@@ -15,6 +17,7 @@
                 <th>option 3</th>
                 <th>option 4</th>
                 <th>Edit Question</th>
+                <th>Delete Question</th>
               </tr>
             </thead>
             <tbody>
@@ -26,8 +29,11 @@
                 <td>{{ question.option4 }}</td>
                 <td>
                   <form (submit)="updateData(question)">
-                    <button mat-raised-button color="warn" type="submit">Update</button>
+                    <button mat-raised-button style="background-color: rgb(220, 220, 4);" type="submit">Update</button>
                   </form>
+                </td>
+                <td>
+                  <button mat-raised-button color="warn" type="submit" (click)="delete(question.quesId)">Delete</button>
                 </td>
               </tr>
             </tbody>

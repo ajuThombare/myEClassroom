@@ -8,20 +8,20 @@
             <span><strong>Home</strong></span>
           </div>
           </button>
-      
+
+          <button mat-list-item routerLink="/quizzess">
+            <div class="list-item-content">
+            <mat-icon mat-list-icon>quiz</mat-icon>
+            <strong>Quiz</strong>
+            </div>
+          </button>
+
           <button mat-list-item routerLink="/studentnotes">
             <div class="list-item-content">
             <mat-icon mat-list-icon>library_books</mat-icon>
           <span><strong>Notes</strong></span>
             </div>
           </button>
-    
-           <!-- <button mat-list-item routerLink="/quiztaker">
-            <div class="list-item-content">
-            <mat-icon mat-list-icon>list</mat-icon>
-          <span><strong>Exam</strong></span>
-          </div>
-          </button> -->
     
           <button mat-list-item routerLink="/myresult">
             <div class="list-item-content">
@@ -35,14 +35,7 @@
             <strong>My Attendance</strong>
             </div>
           </button>
-          
-          <button mat-list-item routerLink="/quizzess">
-            <div class="list-item-content">
-            <mat-icon mat-list-icon>quiz</mat-icon>
-            <strong>Quiz</strong>
-            </div>
-          </button>
-          
+
           <button mat-list-item routerLink="/login" (click)="clearStorage()">
             <div class="list-item-content">
             <mat-icon mat-list-icon>logout</mat-icon> 

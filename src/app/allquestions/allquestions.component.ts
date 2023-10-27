@@ -24,14 +24,7 @@ export class AllquestionsComponent implements OnInit{
   
 ngOnInit(): void {
   this.question.quesId=this.activatedRoute.snapshot.params['qid'];
-  
-    this.quizService.getQuestionByQuizById(this.loacalStorage.retrieve('currentquiz').qId).subscribe(
-      (data:any)=>
-      {
-        console.log(data);
-        this.questions=data;
-      }
-    );
+  this.getAllQuestions();
   }
 
   
@@ -39,5 +32,36 @@ public updateData(question: Question) {
   //validatate
   this.route.navigate(['/updatequestions',question.quesId]);
   state: { question: question } 
+}
+
+delete(qid:number){
+  const confirmation = window.confirm("Are you sure you want to delete this note?");
+  if (confirmation) {
+  this.quizService.deleteQuestion(qid).subscribe(
+    (data:any)=>{
+     console.log(qid);
+     this.getAllQuestions=data;
+     console.log(this.getAllQuestions);
+
+      alert("Deleted Successfully");
+    }
+  );
+  }
+}
+
+public getAllQuestions()
+{
+this.quizService.getQuestionByQuizById(this.loacalStorage.retrieve('currentquiz').qId).subscribe(
+  (data:any)=>
+  {
+    console.log(data);
+    this.questions=data;
+  }
+);
+}
+
+back()
+{
+this.route.navigate(['/quizdetails']);
 }
 }

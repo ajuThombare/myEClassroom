@@ -41,7 +41,7 @@ public markAttendancePresent(user:User ,index:number)
     else{
       this.status='present';
       this.userService.attendance(this.users,this.status,user.id).subscribe(data=>{
-        alert("updated succesffully");
+        // alert("updated succesffully");
         console.log(this.status+"marked");
         this.isButtonDisabled[index] = true;
       });
@@ -53,7 +53,7 @@ public markAttendanceAbsent(user:User,index: number)
 { 
   this.status='absent';
   this.userService.attendance(user,this.status,user.id).subscribe(()=>{
-    alert("updated succesffully");
+    // alert("updated succesffully");
     console.log(this.status+"marked");
     this.isButtonDisabled[index] = true;
   });

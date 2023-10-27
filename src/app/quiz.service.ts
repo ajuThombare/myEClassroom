@@ -58,8 +58,12 @@ export class QuizService {
   public getQuiz(qId:number) {
     return this.http.get(`${baseUrl}/quiz/${qId}`);
   }
-    public giveQuestion(question:Question,qid:number)
-    {
+  public deleteQuestion(quesId:number){
+    return this.http.delete(`${baseUrl}/question/${quesId}`);
+  }
+
+  public giveQuestion(question:Question,qid:number)
+  {
    return this.http.post(`${baseUrl}/quiz/add/${qid}`, question)
    }
 public getAllQuestion()

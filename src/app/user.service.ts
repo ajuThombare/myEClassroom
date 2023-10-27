@@ -73,6 +73,10 @@ public getAllNotes()
 {
 return this.httpClient.get(`${baseUrl}/notes/get`);
 }
+public getNoteAvailable(title:string)
+{
+return this.httpClient.get(`${baseUrl}/notes/check/${title}`,{responseType :'text' as 'json'});
+}
 
 public getAllNotesByTeacherId(id:string)
 {
@@ -80,7 +84,8 @@ return this.httpClient.get(`${baseUrl}/notes/get/byid/${id}`);
 }
 
 public attendance(user: User,status:string,id:number) {
-  return this.httpClient.post(`${baseUrl}/attendance/add/${status}/${id}`,{responseType :'text' as 'json'});
+  return this.httpClient.post(`${baseUrl}/attendance/add/${status}/${id}`,user);
+  // ,{responseType :'text' as 'json'}
 }
 public checkAttendence(rollNo:number,date:Date){
   return this.httpClient.get(`${baseUrl}/attendance/check/${rollNo}/${date}`);

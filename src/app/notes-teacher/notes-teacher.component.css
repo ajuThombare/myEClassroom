@@ -38,6 +38,7 @@ th {
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }
+/* button[title]:hover::after { background-color: blue} */
 /* .tool::after{
   background-color: red;
 } */

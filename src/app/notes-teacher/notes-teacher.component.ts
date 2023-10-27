@@ -42,6 +42,7 @@ constructor(private route:Router,
     if (confirmation) {
     this.userService.deleteNote(id).subscribe(
       (data:any)=>{
+        alert("Note Deleted.");
         this.getAllNotes();
       }
     );
@@ -54,6 +55,7 @@ constructor(private route:Router,
     if (confirmation) {
     this.userService.deleteStudentNote(id).subscribe(
       (data:any)=>{
+        alert("Note Deleted for Teacher and Students.");
         this.getAllNotes();
       }
     );

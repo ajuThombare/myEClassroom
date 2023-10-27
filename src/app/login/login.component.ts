@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,ErrorHandler,OnInit } from '@angular/core';
 import { User } from '../tsfiles/user';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { LocalStorageService, SessionStorageService} from 'ngx-webstorage';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit { 
+export class LoginComponent implements OnInit,ErrorHandler { 
 user=new User(0,"","","",false,"","","","","","",""); 
 userid:number=0;
 // created object here user proprties added here thtat html data it will carry and send to db
@@ -18,6 +18,10 @@ constructor(private userService:UserService,private router:Router, private loaca
 // injucted userService connecting wth db and routing to linking pages 
 {
 }
+  handleError(error: any): void {
+    // throw new Error('Method not implemented.');
+    // alert(error);
+  }
 ngOnInit(): void { 
   // this.sessionStorage.store('val',Math.floor(Math.random() * 6) + 1);
 }

@@ -52,11 +52,12 @@ answerOptions: string[] = []; // Array to hold answer options
     ];
 
     if (options.some((option, index) =>
-     options.indexOf(option) !== index)) 
-     {
-      alert("Ensure that options are unique.");
+    options.findIndex(item => item.toLowerCase() === option.toLowerCase()) !== index)) 
+    {
+      alert("Ensure that options are unique and case-insensitive");
       return;
     }
+   
     this.answerOptions.push(this.question.answer);
     this.quizservice.addQuestionToQuiz(this.question, this.quiz.qId).subscribe(
       (Response) => {
@@ -64,9 +65,20 @@ answerOptions: string[] = []; // Array to hold answer options
       alert('Question added');
       this.question=new Question(0,"","","","","","","",""); // clearing the form
       this.existingOptions = []; // clearing the existingOptions array
-    },Error=>{
-      alert('You have reached the maximum Question limit for this Quiz.');
-    });
+    },(error) => {
+      if (error.status === 409)//409, it means a conflict occurred,
+      {
+        alert('Question with the same content already exists in this quiz.');
+      } else if (error.status === 400)// 400, it means a bad request
+      {
+        alert('You have reached the maximum Question limit for this Quiz.');
+      } 
+      else {
+        // console.log(error.status);
+        alert('An error occurred while adding the question.');//generic error alert.
+      }
+    }
+  );
   }
 
   canAddQuestionToQuiz(){

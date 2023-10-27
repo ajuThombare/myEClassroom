@@ -54,32 +54,47 @@ selectedFile: File | undefined;
   uploadNotes(event: Event) {
     event.preventDefault(); // Prevent the default form submission
     
-    // Create a new FormData object to send the file
-    const formData = new FormData();
-    if (this.selectedFile) {
-      formData.append('noteFile', this.selectedFile, this.selectedFile.name);
+    if(this.validateFilds()){
+        // Create a new FormData object to send the file
+        const formData = new FormData();
+        if (this.selectedFile) {
+          formData.append('noteFile', this.selectedFile, this.selectedFile.name);
+        }
+        
+        // Add other form data fields as needed
+        formData.append('noteTitle', this.noteTitle+"-"+ this.teacherid);
 
+        // Send the FormData to your service for uploading
+            this.userService.uploadNotes(formData).subscribe(
+              (data: any) => {
+                console.log("Data uploaded successfully" + data);
+                alert("Notes Uploaded");
+                this.noteTitle ="";
+                this.notes.note = new Uint8Array();
+              },
+              (error: any) => {
+                if(error.status == 409){
+                  alert("The note is already present in DB.")
+                }else{
+                  console.error("Error uploading notes", error);
+                  alert("Error uploading notes");
+                }
+              }
+            );
+          }   
     }
-    
-    // Add other form data fields as needed
-    formData.append('noteTitle', this.noteTitle+"-"+ this.teacherid);
 
-    
-    // Send the FormData to your service for uploading
-    this.userService.uploadNotes(formData).subscribe(
-      (data: any) => {
-        console.log("Data retrieved successfully" + data);
-        alert("Notes Uploaded");
-        this.noteTitle ="";
-        this.notes.note = new Uint8Array();
-      },
-      (error: any) => {
-        console.error("Error uploading notes", error);
-        alert("Error uploading notes");
+    validateFilds() : boolean{
+      if(this.noteTitle ==""){
+        alert("Title is Mandetory.");
+        return false;
       }
-    );
-  }
-  
-  }
+      else if(this.notes.note.length == 0){
+        alert("Select PDF File.");
+        return false;
+      }
+      return true;
+    }  
+}
   
 
