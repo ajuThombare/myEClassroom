@@ -39,11 +39,11 @@ delete(qid:number){
   if (confirmation) {
   this.quizService.deleteQuestion(qid).subscribe(
     (data:any)=>{
-     console.log(qid);
-     this.getAllQuestions=data;
-     console.log(this.getAllQuestions);
-
+    //  console.log(qid);
+    //  this.getAllQuestions=data;
+    //  console.log(this.getAllQuestions);
       alert("Deleted Successfully");
+      this.getAllQuestions();
     }
   );
   }
