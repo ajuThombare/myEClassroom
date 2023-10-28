@@ -63,10 +63,9 @@
               <small class="text-danger" *ngIf="Role.errors?.['required']">Role is required</small>
             </div>
           
-          <div>
             <div class="form-row">
               <label for="country">Country</label>
-              <select  id="country" (change)="onCountryChange($event)">
+              <select  id="country" name="country" (change) ="onCountryChange($event)" [(ngModel)]="user.country">
                 <option value="">Select country</option>
                 <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
               </select>
@@ -74,20 +73,19 @@
           
             <div class="form-row">
               <label for="state">State</label>
-              <select id="state" (change)="onStateChange($event)">
-                <option value="">Select state</option>
+              <select id="state" name ="state" (change)="onStateChange($event)" [(ngModel)]="user.state">
+                <option value="{{user.state}}">{{user.state}}</option>
                 <option *ngFor="let state of states" [value]="state">{{ state }}</option>
               </select>
             </div>
           
           <div class="form-row">
               <label for="city">City</label>
-              <select  id="city" (change)="onCityChange($event)">
-                <option value="">Select city</option>
-                <option *ngFor="let city of cities" [value]="city.name">{{ city.name }}</option>
+              <select id="city" name="city" (change)="onCityChange($event)" [(ngModel)]="user.city">
+                <option value="{{user.city}}">{{user.city}}</option>
+                <option *ngFor="let city of cities"  [value]="city.name">{{ city.name }}</option>
               </select>
             </div>
-          </div>
 
       <div class="form-row">
         <label for="Username">Username:</label>

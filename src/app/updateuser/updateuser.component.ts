@@ -19,15 +19,14 @@ export class UpdateuserComponent  implements OnInit{
   countries: string[] = [];
   states: string[] = [];
   cities: any[] = [];
-    selectedCountry!: string;
-    selectedState!: string;
+  selectedCountry!: string;
+  selectedState!: string;
 
 constructor(private userService:UserService,private activatedRoute:ActivatedRoute,private route:Router,private http: HttpClient)
 {
 
 } 
   ngOnInit(): void {
-    // this.user.country = "india";
     this.http.get<any[]>('https://pkgstore.datahub.io/core/world-cities/world-cities_json/data/5b3dd46ad10990bca47b04b4739a02ba/world-cities_json.json')
     .subscribe((response) => {
       this.data = response;
@@ -35,7 +34,6 @@ constructor(private userService:UserService,private activatedRoute:ActivatedRout
     }, (error) => {
       console.error(error);
     });
-
     this.userid=this.activatedRoute.snapshot.params['userid'];
     this.userService.getUserById(this.userid).subscribe(
       (data:any)=>
@@ -52,7 +50,6 @@ constructor(private userService:UserService,private activatedRoute:ActivatedRout
   onCountryChange(event: any) {
     this.selectedCountry = event.target.value;
     this.user.country =this.selectedCountry; 
-    // console.log(this.user.country);
     this.getStates();
   }
 

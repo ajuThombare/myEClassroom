@@ -56,7 +56,6 @@ const routes: Routes = [
 {path:'updatequestions/:qid',component:UpdateQuestionsComponent},
 { path:'historyusers',component:ListHistoryUsersComponent}
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
