@@ -1,22 +1,17 @@
-Pagination code- 
-TS<
-  pageNumber: number = 1;
-  itemsPerPage: number = 1;
-  pageCount: number = 5;
->
-HTML<
-        <tbody>
-            <tr *ngFor="let res of result | paginate:{ itemsPerPage:pageCount,currentPage:pageNumber}">    
-                <td>{{ res.name}}</td>
-                <td>{{ res.title }}</td>
-                <td>{{ res.subject }}</td>
-                <td>{{ res.marks }}</td>
-                <td>{{ res.maxmarks }}</td>
-                <td>{{ res.date }}</td>
-            </tr> 
-        </tbody>
-    </table>
-    <div class="text-right">
-        <pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
-    </div>
->
+Steps to Run project - 
+
+Step 1 - Download project from - https://github.com/ajuThombare/myEClassroom.git
+Step 2 - Create eclassroom database.
+
+For FrontEnd - 
+Step 2 - Extract the zip in Folder you want to keep your peoject.
+Step 3 - Open this folder in Visual Studio Code and open Terminal. OR Open Powershel/Open CMD Here.
+Step 4 - Write the command: npm install or npm i
+Step 5 - After installing npm, write the command: ng serve or ng serve -open or ng serve -o
+Step 6 - Done!
+
+For Backend -
+Step 7 - Take JAVABackend.zip from assets folder in FrontEnd project.
+Step 8 - Extract the zip in Folder you want to keep your peoject.
+Step 9 - Import the project in STS/Eclipse.
+Step 10 - Done!
