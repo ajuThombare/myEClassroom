@@ -77,11 +77,16 @@ constructor(private userService:UserService,private activatedRoute:ActivatedRout
         console.log("data updated successfully");
         alert("Updated Successfully");
         this.route.navigate(['listUser']);
+      },
+      error=>{
+        if(error.status == 409){
+          alert(error.error);
+        }else{
+          alert("Something went wrong.")
+        }
       }
     );
   }
-  setAddressDetails(){
 
-  }
 }
 

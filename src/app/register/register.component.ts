@@ -80,7 +80,6 @@ cities: any[] = [];
         }else{
           alert("Something went wrong.")
         }
-        // console.log();
       }
     );
   }

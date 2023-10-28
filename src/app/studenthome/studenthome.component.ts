@@ -26,7 +26,13 @@ export class StudenthomeComponent implements OnInit{
         this.loacalStorage.store('currentuser',this.user);
         this.route.navigateByUrl('/studenthome');
       },
-      Error=>{ console.log("somethings wrong")}
+      error=>{
+        if(error.status == 409){
+          alert(error.error);
+        }else{
+          alert("Something went wrong.")
+        }
+      }
     );
   }
   deleteUser(){

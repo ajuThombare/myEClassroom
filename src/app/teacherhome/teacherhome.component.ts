@@ -29,8 +29,13 @@ export class TeacherhomeComponent implements OnInit{
         alert("User Details Updated");
         this.loacalStorage.store('currentuser',this.user);
         this.route.navigateByUrl('/teacherhome');
-      },
-      (      Error: any)=>{ console.log("somethings wrong")}
+      },error=>{
+        if(error.status == 409){
+          alert(error.error);
+        }else{
+          alert("Something went wrong.")
+        }
+      }
     );
   }
  
