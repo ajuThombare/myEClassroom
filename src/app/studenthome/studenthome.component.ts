@@ -13,12 +13,19 @@ export class StudenthomeComponent implements OnInit{
 
   user=new User(0,"","","",false,"","","","","","",""); 
 
-  ngOnInit(): void {}
-  
+
   constructor(private userServe : UserService,private loacalStorage:SessionStorageService,private route:Router){
-    this.user = this.loacalStorage.retrieve('currentuser');
+    
   }
 
+  ngOnInit(): void {
+    this.userServe.getUserById(this.loacalStorage.retrieve('currentuser').id).subscribe(
+      (data:any)=>{
+        this.user = data;
+      }
+    );
+    
+  }
   updateUser(){
     this.userServe.updateUser(this.user,this.user.id).subscribe(
       (data:any)=>{

@@ -22,7 +22,8 @@ button#deleteforall:hover{
   
 h1 {
     text-align:center;
-    color: white;
+    color: white;   
+    font-weight: bold;
   }
 
 table {

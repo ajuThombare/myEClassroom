@@ -53,7 +53,7 @@
           
           <div class="form-row">
             <label for="Role">Role:</label>
-            <select name="Role" class="form-control" [(ngModel)]="user.role" required #Role="ngModel"
+            <select disabled name="Role" class="form-control" [(ngModel)]="user.role" required #Role="ngModel"
               [class.is-invalid]="Role.invalid && Role.touched">
               <option value="" disabled>Select a Role</option>
               <option *ngFor="let role of role" [value]="role">{{role }}</option>

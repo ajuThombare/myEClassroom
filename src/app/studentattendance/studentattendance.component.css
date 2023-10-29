@@ -3,6 +3,8 @@ body {
 }
 h1 {
     text-align:center;
+    color: white;
+    font-weight: bold;
     /* margin-right: 20px; */
 
 }
