@@ -7,7 +7,7 @@
     <table border="1">
         <thead>
             <tr>
-                <th>Id</th>
+                <!-- <th>Id</th> -->
                 <th> Subject</th>
                 <th>Uploaded Date</th>
                 <th>View Note</th>
@@ -16,7 +16,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let note of notes | paginate:{ itemsPerPage:pageCount,currentPage:pageNumber}">
-                <td>{{note.id}}</td>
+                <!-- <td>{{note.id}}</td> -->
                 <td> {{note.title}} </td>
                 <td> {{note.date}} </td>
                 

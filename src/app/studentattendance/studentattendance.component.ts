@@ -9,37 +9,51 @@ import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
   styleUrls: ['./studentattendance.component.css']
 })
 export class StudentattendanceComponent implements OnInit {
-  users: any[] = []; 
-  user:any;
+  attendanceRecords: any[] = []; // Modify the type based on your data structure
+  user: any;
   
   pageNumber: number = 1;
   itemsPerPage: number = 1;
   pageCount: number = 5;
 
-  status!:string | null;
+  status!: string | null;
 
-  constructor(private route: ActivatedRoute, private userService: UserService,private localStorageService:SessionStorageService) {}
+  constructor(private route: ActivatedRoute, private userService: UserService, private localStorageService: SessionStorageService) {}
 
   ngOnInit() {
-  this.user=this.localStorageService.retrieve('currentuser');
+    this.user = this.localStorageService.retrieve('currentuser');
 
-    this.userService.getAttendencebyRollno(this.user.id).subscribe(
+    this.userService.getAttendencebyRollno(this.user.id).subscribe((data: any) => {
+      // Group attendance records by date
+      this.attendanceRecords = this.groupByDate(data);
+    });
 
-      (data:any)=>
-      {
-      //  console.log("data retrived succesfully");
-       this.users=data;
-      });
-      this.status = this.route.snapshot.paramMap.get('status');
+    this.status = this.route.snapshot.paramMap.get('status');
   }
-  parseDate(dateString: string) {
-    const date = new Date(dateString);
-    const day = date.getDate();
-    const month = date.getMonth() + 1; // Months are zero-based, so add 1
-    const year = date.getFullYear();
-    const time = date.toLocaleTimeString(); // Get time in HH:MM:SS format
-    return { day, month, year, time };
+
+  // Helper function to group attendance records by date
+  groupByDate(records: any[]): any[] {
+    const groupedRecords: any[] = [];
+    const dateMap = new Map();
+
+    for (const record of records) {
+      const date = record.date;
+      const formattedDate = this.formatDate(date);
+
+      if (!dateMap.has(formattedDate)) {
+        dateMap.set(formattedDate, [record]);
+      } else {
+        dateMap.get(formattedDate).push(record);
+      }
+    }
+
+    dateMap.forEach((value, key) => {
+      groupedRecords.push({ date: key, attendanceList: value });
+    });
+
+    return groupedRecords;
   }
+
   formatDate(dateString: string): string {
     const dateParts = dateString.split("T")[0].split("-");
     if (dateParts.length === 3) {
@@ -49,5 +63,9 @@ export class StudentattendanceComponent implements OnInit {
         return `${day}-${month}-${year}`;
     }
     return dateString; // Return the original string if it doesn't match the expected format
-}
+  }
+  parseTime(dateString: string): string {
+    const date = new Date(dateString);
+    return date.toLocaleTimeString(); // Get time in HH:MM:SS format
+  }
 }

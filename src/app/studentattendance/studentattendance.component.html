@@ -1,40 +1,33 @@
+
 <div class="side">
     <app-studentsidebar></app-studentsidebar>
 </div>
 
 <div class="add-note-content" style="padding-top: 20px;">
     <h1>Student Attendance</h1>
-    <table border="1">
 
-        <thead>
-            <tr>
-               
-                <th>Roll_No</th>
-                <th>Date</th>
-                <!-- <th>Month</th>
-                <th>Year</th> -->
-                <th>Time</th>
-                <th>Attendance</th>
-            </tr>
-        
-        </thead>
-        <tbody>
-                <tr *ngFor="let user of users | paginate: { itemsPerPage: pageCount, currentPage: pageNumber }  ">
-                    
-                    <td>{{ user.rollNo }}</td>
-                    <td>{{ formatDate(user.date) }}</td>
-                    <!-- <td>{{ parseDate(user.date).day }}</td>
-                    <td>{{ parseDate(user.date).month }}</td>
-                    <td>{{ parseDate(user.date).year }}</td> -->
-                    <td>{{ parseDate(user.date).time }}</td>
-                    <td>
-                    <span *ngIf="user.present; else absentText"> Present </span>
-                    <ng-template #absentText> Absent </ng-template></td>                   
-            </tr> 
-        </tbody>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Roll_No</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Attendance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of attendanceRecords | paginate: { itemsPerPage: pageCount, currentPage: pageNumber }">
+          <td>{{ user.id }}</td>
+          <td>{{ record.date }}</td>
+          <td>{{ parseTime(record.attendanceList[0].date) }}</td>
+          <td>
+            <span *ngIf="record.attendanceList[0].present; else absentText">Present</span>
+            <ng-template #absentText>Absent</ng-template>
+          </td>
+        </tr>
+      </tbody>
     </table>
-    <div class="text-right">
-        <pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
-    </div>
-</div>
     
+    <div class="text-right">
+      <pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
+    </div>
