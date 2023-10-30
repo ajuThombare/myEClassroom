@@ -70,13 +70,16 @@ export class QuizdetailsComponent implements OnInit{
 
   deleteQuestion(qId:number)
   {
-  this.quizService.deleteQuiz(qId).subscribe((data:any)=>
-  {
-    console.log("quiz deleted");
-    alert("Deleted Successfully");
-    this.refresher();
-    console.log(this.quizzes=data);
+    const confirmation = window.confirm("Are you sure you want to delete this question?");
+    if (confirmation) {
+      this.quizService.deleteQuiz(qId).subscribe((data:any)=>
+      {
+        console.log("quiz deleted");
+        alert("Deleted Successfully");
+        this.refresher();
+        console.log(this.quizzes=data);
 
-  });
+      });
+      }
   }
 }

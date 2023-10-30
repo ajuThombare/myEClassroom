@@ -15,13 +15,15 @@ table {
     float: right;
     background-color: white;
 }
-th, td {
+ th,td {
     border: 1px solid #ccc;
     padding: 10px;
     text-align: center;
 }
 th {
-    background-color: #f2f2f2;
+    /* text-align: center; */
+    background-color: black;
+    color: azure;
 }
 tr:nth-child(even) {
     background-color: #f2f2f2;

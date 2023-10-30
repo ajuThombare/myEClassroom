@@ -5,12 +5,13 @@
     <div class="container val">
      
       <div class="instructions" *ngIf="instructions && !quizStarted">
-         <h1>Start The Exam</h1>
+        <h1>Start The Exam</h1>
         <h2>Instructions:</h2>
         <p>Read the instructions carefully Before Starting The Test.</p>
-        <p>There is no negative marking</p>
-        <p>Each question Carries One Mark</p>
-        <p>You can Navigate previous as well as next</p>
+        <p>There is no negative marking.</p>
+        <p>Each question Carries {{currMarks}} Mark.</p>
+        <p>You can Navigate previous without selecting Option.</p>
+        <p>You cannot Navigate to next without selecting Option.</p>
         <button (click)="startQuiz()">Start</button>
       </div>
       <button *ngIf="!instructions && !quizStarted" (click)="startQuiz()">Start Quiz</button>

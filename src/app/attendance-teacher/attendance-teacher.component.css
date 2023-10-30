@@ -25,7 +25,11 @@ th, td {
   text-decoration:wavy;
 }
 
-
+th {
+  /* text-align: center; */
+  background-color: black;
+  color: azure;
+}
 tr:hover {
   background-color: rgb(147, 227, 227);
 }

@@ -24,6 +24,7 @@ export class QuizTakerComponent implements OnInit{
   quizStarted:boolean=false;
   score: number = 0;
   result : Result = new Result(0,0,"","",0) ;
+  currMarks:any = 0;
   // attemptCount: number = 0;
   quizName:string ='';
 // created object here user proprties added here thtat html data it will carry and send to db
@@ -32,6 +33,14 @@ constructor(private quizService:QuizService,private router:Router,
   private userService:UserService, ){}
 
 ngOnInit(): void {
+
+  const Marksmaximum = this.loacalStorage.retrieve('currentquiz').maxMarks;
+  const NumberOfQ = this.loacalStorage.retrieve('currentquiz').numberOfQuestions;
+
+  //This is actual logic to calculate the score
+  this.currMarks = (Marksmaximum/NumberOfQ);
+
+
 this.quizName = this.loacalStorage.retrieve('currentquiz').title;
 
 this.question.quesId=this.activatedRoute.snapshot.params['qid'];

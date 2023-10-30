@@ -24,3 +24,8 @@ th, td {
     background: color white;
     text-decoration:wavy;
 }
+th {
+    /* text-align: center; */
+    background-color: black;
+    color: azure;
+}
