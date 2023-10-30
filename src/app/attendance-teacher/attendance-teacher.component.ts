@@ -19,7 +19,9 @@ export class AttendanceTeacherComponent implements OnInit {
   pageCount: number = 5;
   attendanceStatus: { [key: string]: boolean } = {}; 
    
-  constructor(private route:Router,private userService:UserService,private localStorageService:SessionStorageService)
+  constructor(private route:Router,
+    private userService:UserService,
+    private localStorageService:SessionStorageService)
   {
     // this.attendanceCreated = false;
     
@@ -39,7 +41,7 @@ loadAttendanceStatus() {
   // Load button status from local storage for each student and date
   this.users.forEach((user: User) => {
     const studentKey = `${user.id}_${this.getCurrentDate()}`;
-    this.attendanceStatus[studentKey] = localStorage.getItem(studentKey) === 'true';
+    this.attendanceStatus[studentKey] = this.localStorageService.retrieve(studentKey) === 'true';
   });
 }
 
@@ -73,7 +75,7 @@ public markAttendanceAbsent(user: User, index: number) {
 
 saveButtonStateToLocalStorage(studentKey: string) {
   // Save button state for the student and date in local storage
-  localStorage.setItem(studentKey, 'true');
+  this.localStorageService.store(studentKey, 'true');
 }
 
 getCurrentDate(): string {

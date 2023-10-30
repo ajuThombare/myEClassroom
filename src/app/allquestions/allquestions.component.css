@@ -71,4 +71,8 @@
     text-align: center;
     font-size: 25px;
     color: white;
+}th {
+  /* text-align: center; */
+  background-color: black;
+  color: azure;
 }

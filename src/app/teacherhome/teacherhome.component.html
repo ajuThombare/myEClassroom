@@ -85,11 +85,11 @@
           </mat-form-field>
   
           <mat-form-field class="full-width">
-            <input matInput name="city" [(ngModel)]="user.city" required pattern="[a-zA-Z'-'\s]*" #City="ngModel">
+            <input matInput name="city" [(ngModel)]="user.city" required  #City="ngModel">
             <mat-label>City</mat-label>
             <mat-error *ngIf="City.invalid && City.touched">
               <small *ngIf="City.errors?.['required']">Required field</small>
-              <small *ngIf="City.errors?.['pattern']">Enter a valid City</small>
+              <!-- <small *ngIf="City.errors?.['pattern']">Enter a valid City</small> -->
             </mat-error>
           </mat-form-field>
   

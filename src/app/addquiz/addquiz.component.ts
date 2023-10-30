@@ -39,10 +39,14 @@ export class AddquizComponent {
         alert('Quiz added');
         this.quiz = new Quiz(0, '', '', '', '', true,"");
       },
-      (error) => {
-        alert(this.quiz.title +' named quiz already present.');
-      }
-    );
+      error=>{
+        if(error.status == 409){
+           alert(error.error);
+         }else{
+           alert("Something went wrong.")
+         }
+       }
+     );
    
   }
     
