@@ -26,8 +26,20 @@ export class NavbarComponent {
     }
   }
 
-  clearStorage(){
-    this.loacalStorage.clear('currentuser');
-    this.loacalStorage.clear('currentquiz');
+  checkAndNaigate(){
+    // console.log(this.loacalStorage.retrieve('currentuser') );
+    if(this.loacalStorage.retrieve('currentuser') == null){
+      this.loacalStorage.clear('currentuser');
+      this.loacalStorage.clear('currentquiz');
+      this.router.navigate(['/welcome']);
+    }
+    else{      
+      const confirmation = window.confirm("Are you sure you want to Logout and Go to Home.");
+        if (confirmation) {
+          this.loacalStorage.clear('currentuser');
+          this.loacalStorage.clear('currentquiz');
+          this.router.navigate(['/welcome']);
+        }
+    }
   }
 }

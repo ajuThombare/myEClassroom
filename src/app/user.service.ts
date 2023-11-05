@@ -40,6 +40,10 @@ public updateUser(user:User,userid:number)
 {
   return this.httpClient.put(`${baseUrl}/user/update/${userid}`, user)
 }
+public activateUser(userid:number)
+{
+  return this.httpClient.put(`${baseUrl}/user/activate/${userid}`,null);
+}
 public deleteUser(userid:number)
 {
   return this.httpClient.delete(`${baseUrl}/user/delete/${userid}`);
@@ -110,5 +114,18 @@ public checkAttemptedResult(id:number,subject:string,title:string){
 }
 public getAllHistoryUsers(){
   return this.httpClient.get(`${baseUrl}/user/history/get`);
+}
+registerAdmin(admin: any) {
+  return this.httpClient.post(`${baseUrl}/admin/`,admin);
+}
+loginAdmin(admin: any) {
+  return this.httpClient.post(`${baseUrl}/admin/login`, admin);
+}
+getPendingUsers() {
+  return this.httpClient.get<User[]>(`${baseUrl}/user/get/pending`);
+}
+
+approveUser(user: User) {
+  return this.httpClient.put(`${baseUrl}/approve/${user.id}`, user);
 }
 }

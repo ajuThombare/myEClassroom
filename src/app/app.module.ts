@@ -43,8 +43,8 @@ import { StudentResultComponent } from './student-result/student-result.componen
 import { MatDialogModule } from '@angular/material/dialog';
 import { AllquestionsComponent } from './allquestions/allquestions.component';
 import { UpdateQuestionsComponent } from './update-questions/update-questions.component';
-import { ListHistoryUsersComponent } from './list-history-users/list-history-users.component';
-
+import { ListHistoryUsersComponent } from './admin/list-history-users/list-history-users.component';
+import {AdminModule} from './admin/admin.module'
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,6 +77,7 @@ import { ListHistoryUsersComponent } from './list-history-users/list-history-use
     ListHistoryUsersComponent,
     ],
   imports: [
+    AdminModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -89,7 +90,6 @@ import { ListHistoryUsersComponent } from './list-history-users/list-history-use
     MatSidenavModule,
     BrowserModule,
     BrowserAnimationsModule,
-    FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,

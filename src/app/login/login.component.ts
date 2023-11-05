@@ -47,8 +47,17 @@ public userLogin() {
     }
   },
   (error) => {
-    console.error("An error occurred during login:", error);
-    alert("An error occurred. Please try again later.");
+    if(error.status ==403){
+      alert("This account is not activated by Admin.");  
+    }else{
+      console.error("An error occurred during login:", error);
+      alert("An error occurred. Please try again later.");  
+    }
   });
+}
+public validateFields(){
+  if(this.user.username == null){
+console.log("Is empty.");
+  }
 }
 }

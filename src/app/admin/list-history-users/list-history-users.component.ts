@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from '../user.service';
-import { UserHistory } from '../tsfiles/UserHistory';
+import { UserService } from '../../user.service';
+import { UserHistory } from '../../tsfiles/UserHistory';
 
 
 

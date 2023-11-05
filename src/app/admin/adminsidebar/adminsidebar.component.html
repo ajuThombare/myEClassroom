@@ -1,0 +1,38 @@
+<div class="sidebar">
+  <div class="menu">
+  <mat-card>
+    <mat-action-list>
+      <div  >Menu
+       
+        <button mat-list-item routerLink="/adminhome">
+          <div class="list-item-content">
+            <mat-icon mat-list-icon>home</mat-icon>
+            <strong>Home</strong>
+          </div>
+        </button>
+
+          <button mat-list-item routerLink="/pendingrequests">
+          <div class="list-item-content">
+            <mat-icon mat-list-icon>block</mat-icon>
+            <strong>Activation Requests</strong>
+          </div>
+        </button>
+
+        <button mat-list-item routerLink="/historyusers">
+          <div class="list-item-content">
+            <mat-icon mat-list-icon>group</mat-icon>
+            <strong>View History Users</strong>
+          </div>
+        </button>
+
+        <button mat-list-item routerLink="/loginAdmin" (click)="clearStorage()">
+          <div class="list-item-content">
+            <mat-icon mat-list-icon>logout</mat-icon>
+            <strong>Logout</strong>
+          </div>
+        </button>
+      </div>
+    </mat-action-list>
+  </mat-card>
+</div>
+</div>

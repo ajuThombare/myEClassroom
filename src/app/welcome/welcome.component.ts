@@ -20,5 +20,8 @@ this.route.navigate(['/register']);
 public login(){
 this.route.navigate(['/login']);
 }
+public loginAdmin(){
+  this.route.navigate(['/loginAdmin']);
+  }
 }
 

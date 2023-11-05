@@ -23,18 +23,21 @@ import { QuizzesComponent } from './quizzes/quizzes.component';
 import { StudentResultComponent } from './student-result/student-result.component';
 import { AllquestionsComponent } from './allquestions/allquestions.component';
 import { UpdateQuestionsComponent } from './update-questions/update-questions.component';
-import { ListHistoryUsersComponent } from './list-history-users/list-history-users.component';
+import { ListHistoryUsersComponent } from './admin/list-history-users/list-history-users.component';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
+import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { PendingRequestsComponent } from './admin/pending-requests/pending-requests.component';
 
 const routes: Routes = [
-{path:'',component:WelcomeComponent} ,
-{path:'welcome',component:WelcomeComponent} ,
+{ path:'',component:WelcomeComponent} ,
+{ path:'welcome',component:WelcomeComponent} ,
 //this WelcomeComponent.html
-{path:'login',component:LoginComponent}, 
-{path:'register',component:RegisterComponent },
+{ path:'login',component:LoginComponent}, 
+{ path:'register',component:RegisterComponent },
 //navigate will come here& it will cll RegComponent.html
-{path:'listUser',component:ListuserComponent },
-{path:'updateuser/:userid',component:UpdateuserComponent},
-{path:'teacherattendance',component:AttendanceTeacherComponent},
+{ path:'listUser',component:ListuserComponent },
+{ path:'updateuser/:userid',component:UpdateuserComponent},
+{ path:'teacherattendance',component:AttendanceTeacherComponent},
 { path: 'dashboard', component: WelcomeComponent },
 { path: 'notes', component: NotesComponent },
 { path: 'online-exam', component: OnlineExamComponentComponent },
@@ -44,17 +47,21 @@ const routes: Routes = [
 { path: 'teacherhome', component:TeacherhomeComponent},
 { path: 'studenthome/:userid', component:StudenthomeComponent},
 { path: 'studenthome', component:StudenthomeComponent},
-{path : 'studentnotes',component:NotesStudentComponent},
-{path: 'studentattendance', component:StudentattendanceComponent},
-{path: 'quiztaker', component:QuizTakerComponent},
-{path: 'addquiz', component:AddquizComponent},
-{path: 'quizdetails', component:QuizdetailsComponent},
+{ path : 'studentnotes',component:NotesStudentComponent},
+{ path: 'studentattendance', component:StudentattendanceComponent},
+{ path: 'quiztaker', component:QuizTakerComponent},
+{ path: 'addquiz', component:AddquizComponent},
+{ path: 'quizdetails', component:QuizdetailsComponent},
 { path:'teachernotes',component:NotesTeacherComponent},
 { path:'quizzess',component:QuizzesComponent},
-{path:'myresult',component:StudentResultComponent},
-{path:'viewquestions',component:AllquestionsComponent},
-{path:'updatequestions/:qid',component:UpdateQuestionsComponent},
-{ path:'historyusers',component:ListHistoryUsersComponent}
+{ path:'myresult',component:StudentResultComponent},
+{ path:'viewquestions',component:AllquestionsComponent},
+{ path:'updatequestions/:qid',component:UpdateQuestionsComponent},
+{ path:'historyusers',component:ListHistoryUsersComponent},
+{ path: 'loginAdmin',component:AdminLoginComponent},
+{ path:'adminhome',component:AdminHomeComponent},
+{ path:'pendingrequests',component:PendingRequestsComponent},
+
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -1,0 +1,88 @@
+
+<div class="side">
+    <app-adminsidebar></app-adminsidebar>
+</div> 
+
+<div class="add-note-content" style="padding-top: 20px;">
+    <div class="text-center">
+        <h1 class="mt20">Account Activation Requests</h1>
+      </div>
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <!-- <th>User ID</th> -->
+                        <th>Full Name</th>
+                        <!-- <th>Last Name</th> -->
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Mobile No</th>
+                        <th>Username</th>
+                        <!-- <th>City</th>
+                        <th>State</th>
+                        <th>Country</th> -->
+                        <th>Approve Request</th>
+                        <th>Remove Request</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of pendingUsers| paginate:{ itemsPerPage:pageCount,currentPage:pageNumber}">
+                        <!-- <td>{{ user.recordId }}</td> -->
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.firstName }}_{{ user.lastName }}</td>
+                        <td>{{ user.eMail }}</td>
+                        <td>{{ user.role }}</td>
+                        <td>{{ user.mobileNo }}</td>
+                        <td>{{ user.username }}</td>
+                        <!-- <td>{{ user.city }}</td>
+                        <td>{{ user.state }}</td>
+                        <td>{{ user.country }}</td> -->
+                        <td><button type="button" class="btn btn-info" (click)="acceptUserRequest(user.id)">Approve</button></td>
+                        <td><button type="button" class="btn btn-danger" (click)="declineUserRequest(user.id)">Decline</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="text-right">
+        <pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
+    </div>
+</div>
+<!-- 
+<div class="add-note-content">
+    <div class="text-center">
+      <h1 class="mt20">Account Activation Requests</h1>
+    </div>
+    <div class="d-flex justify-content-center align-items-center">
+        <div>
+            <div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th> No.</th>
+                            <th> First Name</th>
+                            <th> Last Name</th>
+                             <th>Remove Request</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of pendingUsers | paginate:{ itemsPerPage:pageCount,currentPage:pageNumber}">
+                            <td>{{user.id}}</td>
+                            <td> {{ user.firstName }} </td>
+                            <td> {{ user.lastName}} </td>
+                             <td><button type="button" class="btn btn-info" (click)="declineUserRequest(user.id)">Decline</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="text-right">
+        <pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
+    </div>
+    
+</div>
+
+   -->
