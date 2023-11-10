@@ -22,7 +22,7 @@ public loginUser(user:User)
   return this.httpClient.post(`${baseUrl}/user/logincheck`, user);
 
 }
- 
+
 public getUsers()
 {
   return this.httpClient.get(`${baseUrl}/user/get`);
@@ -127,5 +127,22 @@ getPendingUsers() {
 
 approveUser(user: User) {
   return this.httpClient.put(`${baseUrl}/approve/${user.id}`, user);
+}
+public createStandard(standardData: any) {
+  return this.httpClient.post(`${baseUrl}/standard/add`,standardData);
+}
+
+public getAllStandard() {
+  return this.httpClient.get(`${baseUrl}/standard/all`);
+}
+
+public createSubject(subjectData: any,standardid:number) {
+  return this.httpClient.post(`${baseUrl}/subject/add/${standardid}`,subjectData);
+}
+public getSubjectsByStandardId( standardid:string) {
+  return this.httpClient.get(`${baseUrl}/subject/bystd/${standardid}`);
+}
+public getStandardWiseSubjects() {
+  return this.httpClient.get(`${baseUrl}/subject/list/get`);
 }
 }

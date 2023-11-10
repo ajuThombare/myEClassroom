@@ -53,7 +53,8 @@
           
           <div class="form-row">
             <label for="Role">Role:</label>
-            <select name="Role" class="form-control" [(ngModel)]="user.role" required #Role="ngModel"
+            <select name="Role" class="form-control" (change)="onRoleChange($event)"
+            [(ngModel)]="user.role" required #Role="ngModel"
               [class.is-invalid]="Role.invalid && Role.touched">
               <option value="" disabled>Select a Role</option>
               <option *ngFor="let role of role" [value]="role">{{role }}</option>
@@ -63,6 +64,37 @@
               <small class="text-danger" *ngIf="Role.errors?.['required']">Role is required</small>
             </div>
           
+
+            <div class="form-row">
+              <label for="standard">Standard :</label>
+              <select name="standard" class="form-control" 
+                (change)="onStandardChange($event)"
+                [(ngModel)]="user.standardid" required #Standard="ngModel"
+                [class.is-invalid]="Standard.invalid && Standard.touched">
+                <option value="" disabled>Select a Standard</option>
+                <option *ngFor="let o of standard" [value]="o.id">{{o.name}}</option>
+              </select>
+            </div>
+              <div class="error-messages" *ngIf="Standard.errors && (Standard.invalid && Standard.touched)">
+                <small class="text-danger" *ngIf="Standard.errors?.['required']">Standard is required</small>
+              </div>
+
+
+              <div class="form-row">
+                <label for="subject">Subject :</label>
+                <select name="subject" class="form-control"
+                  [disabled]="!isTeacher" 
+                  [(ngModel)]="user.subjectid" required #Subject="ngModel"
+                  [class.is-invalid]="Subject.touched">
+                  <option value="" disabled>Select a Standard</option>
+                  <option *ngFor="let o of subject" [value]="o.sid">{{o.sname}}</option>
+                </select>
+              </div>
+                <div class="error-messages" *ngIf="Subject.errors && ( Subject.touched) && isTeacher">
+                  <small class="text-danger" *ngIf="Subject.errors?.['required']">Subject is required</small>
+                </div>
+
+
           <div>
             <div class="form-row">
               <label for="country">Country</label>
@@ -126,116 +158,3 @@
         </div>
       </form>
     </div>
-
-<!-- <div class="justify-content-center">
-  <div class="container">
-    <div class="content">
-
-      <form #registerform="ngForm" (ngSubmit)="userRegister()">
-        <h2>Registration</h2>
-
-        <div class="form-group fullname">
-          <input type="text" name="firstName" class="form-control" placeholder="First Name" [(ngModel)]="user.firstName"
-            required pattern="[A-Za-z]{1,32}" #firstname="ngModel"
-            [class.is-invalid]="firstname.invalid&&firstname.touched" />
-          <div *ngIf="firstname.errors && (firstname.invalid && firstname.touched)">
-            <small class="text-danger" *ngIf="firstname.errors?.['required']">required field</small>
-            <small class="text-danger" *ngIf="firstname.errors?.['pattern']">enter a valid name</small>
-          </div>
-        </div>
-
-        <div class="form-group fullname">
-          <input type="text" name="lastName" class="form-control" placeholder="Last Name" [(ngModel)]="user.lastName"
-            required pattern="[A-Za-z]{1,32}" #lastName="ngModel"
-            [class.is-invalid]="lastName.invalid&&lastName.touched" />
-          <div *ngIf="lastName.errors && (lastName.invalid && lastName.touched)">
-            <small class="text-danger" *ngIf="lastName.errors?.['required']">required field</small>
-            <small class="text-danger" *ngIf="lastName.errors?.['pattern']">enter a valid name</small>
-          </div>
-        </div>
-
-        <div class="form-group email">
-          <input type="email" name="eMail" class="form-control" placeholder="EMAIL" [(ngModel)]="user.eMail" required
-            pattern="[A-Za-z0-9._%+-]{2,}@[a-zA-Z]{1,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
-            #email="ngModel" [class.is-invalid]="email.invalid&&email.touched" />
-          <div *ngIf="email.errors && (email.invalid && email.touched)">
-            <small class="text-danger" *ngIf="email.errors?.['required']">email id is required</small>
-            <small class="text-danger" *ngIf="email.errors?.['pattern']">enter valid email id</small>
-          </div>
-        </div>
-
-        <div class="form-group mobile">
-          <input type="text" name="mobileNo" class="form-control" placeholder="Phone Number" [(ngModel)]="user.mobileNo"
-            required pattern="[6789][0-9]{9}" #mobilenumber="ngModel"
-            [class.is-invalid]="mobilenumber.invalid&&mobilenumber.touched" />
-          <div *ngIf="mobilenumber.errors && (mobilenumber.invalid && mobilenumber.touched)">
-            <small class="text-danger" *ngIf="mobilenumber.errors?.['required']">required field</small>
-            <small class="text-danger" *ngIf="mobilenumber.errors?.['pattern']">enter a valid phone number</small>
-          </div>
-        </div>
-        <div class="form-group role">
-          <select name="Role" class="form-select" [(ngModel)]="user.role" required #Role="ngModel"
-            [class.is-invalid]="Role.invalid && Role.touched">
-            <option value="" disabled selected>Select Role</option>
-            <option value="Teacher">Teacher</option>
-            <option value="Student">Student</option>
-          </select>
-          <div *ngIf="Role.errors && (Role.invalid && Role.touched)">
-            <small class="text-danger" *ngIf="Role.errors?.['required']">Role is required</small>
-          </div>
-        </div>
-        <div class="form-group city">
-          <input type="text" name="City" class="form-control" placeholder="City" [(ngModel)]="user.city" required
-            pattern="[a-zA-Z'-'\s]*" #City="ngModel" [class.is-invalid]="City.invalid&&City.touched" />
-          <div *ngIf="City.errors && (City.invalid && City.touched)">
-            <small class="text-danger" *ngIf="City.errors?.['required']">required field</small>
-            <small class="text-danger" *ngIf="City.errors?.['pattern']">enter a valid City</small>
-          </div>
-        </div>
-        <div class="form-group row">
-          <div class="col-md-6">
-            <select name="State" class="form-control" [(ngModel)]="user.state" required #State="ngModel">
-              <option value="" disabled>Select a State</option>
-              <option *ngFor="let state of state1" [value]="state">{{ state }}</option>
-            </select>
-          </div>
-          <div class="col-md-6">
-            <select name="Country" class="form-control" [(ngModel)]="user.country" required #Country="ngModel">
-              <option value="" disabled>Select a Country</option>
-              <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
-            </select>
-            <div *ngIf="Country.errors && (Country.invalid && Country.touched)">
-              <small class="text-danger" *ngIf="Country.errors?.['required']">Country is required</small>
-            </div>
-          </div>
-        </div>
-        <div class="form-group username">
-          <input type="text" name="userName" class="form-control" placeholder="Username" [(ngModel)]="user.username"
-            required
-            title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
-            #userName="ngModel" [class.is-invalid]="userName.invalid&&userName.touched" />
-          <div *ngIf="userName.errors && (userName.invalid && userName.touched)">
-            <small class="text-danger" *ngIf="userName.errors?.['required']">password is required</small>
-            <small class="text-danger" *ngIf="userName.errors?.['pattern']">must contain at least one number and one
-              uppercase and lowercase letter, and at least 8 or more characters</small>
-          </div>
-        </div>
-
-        <div class="form-group password">
-          <input type="password" name="passWord" class="form-control" placeholder="Password" [(ngModel)]="user.password"
-            required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-            title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
-            #passWord="ngModel" [class.is-invalid]="passWord.invalid&&passWord.touched" />
-          <div *ngIf="passWord.errors && (passWord.invalid && passWord.touched)">
-            <small class="text-danger" *ngIf="passWord.errors?.['required']">password is required</small>
-            <small class="text-danger" *ngIf="passWord.errors?.['pattern']">must contain at least one number and one
-              uppercase and lowercase letter, and at least 8 or more characters</small>
-          </div>
-        </div>
-        <div class="form-group submit-btn">
-          <div class="button">
-            <input [disabled]="!registerform.valid" type="submit" value="Register">
-          </div>
-        </div>
-      </form>
-    </div> -->

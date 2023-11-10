@@ -27,6 +27,9 @@ import { ListHistoryUsersComponent } from './admin/list-history-users/list-histo
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { PendingRequestsComponent } from './admin/pending-requests/pending-requests.component';
+import { StandardComponent } from './admin/standard/standard.component';
+import { SubjectComponent } from './admin/subject/subject.component';
+import { StandardSubjectsComponent } from './admin/standard-subjects/standard-subjects.component';
 
 const routes: Routes = [
 { path:'',component:WelcomeComponent} ,
@@ -58,10 +61,12 @@ const routes: Routes = [
 { path:'viewquestions',component:AllquestionsComponent},
 { path:'updatequestions/:qid',component:UpdateQuestionsComponent},
 { path:'historyusers',component:ListHistoryUsersComponent},
-{ path: 'loginAdmin',component:AdminLoginComponent},
+{ path:'loginAdmin',component:AdminLoginComponent},
 { path:'adminhome',component:AdminHomeComponent},
 { path:'pendingrequests',component:PendingRequestsComponent},
-
+{ path:'stdsubjects',component:StandardSubjectsComponent},
+{ path:'standard',component:StandardComponent},
+{ path:'subject',component:SubjectComponent},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

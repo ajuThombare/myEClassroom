@@ -1,0 +1,28 @@
+<div class="side">
+    <app-adminsidebar></app-adminsidebar>
+</div>
+
+
+<div class="add-note-content">
+<h1>Create Subject</h1>
+<div class="container">
+    
+    <form (ngSubmit)="saveSubject()">
+      <div class="form-row">
+        <label for="standard">Select Standard:</label>
+        <select id="standard" name="standard" [(ngModel)]="standardid" required >
+            <!-- <option value="default" selected disabled>Select Grade</option> -->
+            <option *ngFor="let o of standard" [value]="o.id">{{o.name}}</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="name">Subject Name:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="subject.sname" placeholder="Subject" required>
+      </div>
+      <div class="form-row" style="text-align: center;">
+        <button type="submit">Save Subject</button>
+      </div>
+    </form>
+  </div>
+</div>

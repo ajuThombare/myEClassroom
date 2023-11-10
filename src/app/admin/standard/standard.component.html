@@ -1,0 +1,31 @@
+<div class="side">
+    <app-adminsidebar></app-adminsidebar>
+</div>
+
+
+<div class="add-note-content">
+<h1>Create Standard</h1> 
+<div class="container">
+   
+    <form #standaredform="ngForm" (ngSubmit)="selectStandard()">
+
+        <label for="class">Choose Class:</label>
+        <input type="classField" name="classField" class="form-control" placeholder="Class" [(ngModel)]="standard.name"
+        #classField="ngModel" [class.is-invalid]="classField.invalid&&classField.touched" />
+        <!-- <select id="class" name="class" [(ngModel)]="standard" required #classField="ngModel">
+          <option value="">Select a Class</option>
+          <option value="std11">Standard 11</option>
+          <option value="std12">Standard 12</option>
+        </select> -->
+        <div class="error-message" *ngIf="classField.invalid && classField.touched">
+          <small>Class is required</small>
+        </div>
+
+   <div class="form-group" id="upload">
+        <div class="btn">
+        <button type="submit">SaveStandard</button>
+        </div>
+   </div>
+</form>
+</div>
+</div>

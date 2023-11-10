@@ -3,6 +3,8 @@ import { User } from '../tsfiles/user';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Standard } from '../tsfiles/standard';
+import { Subject } from '../tsfiles/subject';
 
 
 
@@ -18,14 +20,16 @@ role=[
   'Student',
   'Teacher',
 ];
-data: any[] = [];
-countries: string[] = [];
-states: string[] = [];
-cities: any[] = [];
+  data: any[] = [];
+  countries: string[] = [];
+  states: string[] = [];
+  cities: any[] = [];
   selectedCountry!: string;
   selectedState!: string;
-
-
+  standard:Standard[] = [];
+  subject:Subject[]=[];
+  isTeacher:boolean = false;  
+  
   constructor(private userService:UserService,private route:Router,private http: HttpClient){} 
 
 
@@ -37,6 +41,29 @@ cities: any[] = [];
       }, (error) => {
         console.error(error);
       });
+      this.userService.getAllStandard().subscribe(
+        (data:any)=>{
+          this.standard =data;
+        }
+      );
+  }
+  onRoleChange(event: any) {
+    if(event.target.value== "Teacher")
+    {
+      this.isTeacher = true;
+    }else{
+      this.isTeacher = false;
+    }
+    // console.log(event.target.value);
+  }
+  onStandardChange(event: any) {
+    console.log(event.target.value);
+    this.userService.getSubjectsByStandardId(event.target.value).subscribe(
+      (data:any)=>{
+        console.log(data);
+        this.subject =data;
+      }
+    );
   }
 
   getCountries() {

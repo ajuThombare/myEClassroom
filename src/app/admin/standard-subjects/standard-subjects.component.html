@@ -1,0 +1,29 @@
+<div class="side">
+    <app-adminsidebar></app-adminsidebar>
+</div>
+
+<div class="add-note-content">
+<h1>Standard Wise Subjects</h1> 
+<div class="card">
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Standard</th>
+                    <th>Subject</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let subject of subjects| paginate:{ itemsPerPage:pageCount,currentPage:pageNumber}">
+                    <!-- <td>{{ user.recordId }}</td> -->
+                    <td>{{ subject.standard }}</td>
+                    <td>{{ subject.sname }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="text-right">
+    <pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
+</div>
+</div>
