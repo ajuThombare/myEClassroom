@@ -77,6 +77,10 @@ public getAllNotes()
 {
 return this.httpClient.get(`${baseUrl}/notes/get`);
 }
+public getNotesByStandard(std:string)
+{
+return this.httpClient.get(`${baseUrl}/notes/get/std/${std}`);
+}
 public getNoteAvailable(title:string)
 {
 return this.httpClient.get(`${baseUrl}/notes/check/${title}`,{responseType :'text' as 'json'});

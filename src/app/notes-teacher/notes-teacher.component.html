@@ -8,10 +8,12 @@
         <thead>
             <tr>
                 <!-- <th>Id</th> -->
-                <th> Subject</th>
+                <th>Title</th>
+                <th>Standard</th> 
+                <th>Subject</th>
                 <th>Uploaded Date</th>
                 <th>View Note</th>
-                <th> Download</th>
+                <th>Download</th>
                 <th>Delete</th>
                 <th>Delete For All</th>
             </tr>
@@ -20,8 +22,10 @@
             <tr *ngFor="let note of notes | paginate:{ itemsPerPage:pageCount,currentPage:pageNumber}">
                 <!-- <td>{{note.id}}</td> -->
                 <td> {{note.title}} </td>
+                <td> {{note.standard}} </td>
+                <td> {{note.subject}} </td>
+
                 <td> {{note.date}} </td>
-                
                 <td>
                     <button (click)="openPDF(note.id)"
                       role="link" id="pdfopen" title="Open PDF in new Tab">

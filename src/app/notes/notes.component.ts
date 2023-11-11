@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { Notes } from '../tsfiles/notes';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
+import { Standard } from '../tsfiles/standard';
+import { Subject } from '../tsfiles/subject';
 
 @Component({
   selector: 'app-notes',
@@ -16,10 +18,20 @@ selectedFile: File | undefined;
   notes = new Notes(0, new Uint8Array(), "");
   noteTitle: string = "";
   teacherid: string="";
+  standard:string="";
+  subject:string="";
+  standards:Standard[]=[];
+  subjects:Subject[]=[];
+  stdselected:boolean=false;
+  subjectselected:boolean=false;
+  index:number= 0;
+
   constructor(private route: Router, private userService: UserService, private loacalStorage:SessionStorageService) {}
 
   ngOnInit(): void {
     this.teacherid = this.loacalStorage.retrieve('currentuser').id;
+    this.subjects = this.loacalStorage.retrieve('currentuser').subjects;
+    this.standards = this.loacalStorage.retrieve('currentuser').standards;
   }
 
   // Function to handle file input change
@@ -51,26 +63,35 @@ selectedFile: File | undefined;
       }
     }
   // Function to handle form submission
-  uploadNotes(event: Event) {
+  uploadNotes(event: Event) 
+  {
+    
     event.preventDefault(); // Prevent the default form submission
     
-    if(this.validateFilds()){
+    if(this.validateFilds())
+      {
         // Create a new FormData object to send the file
         const formData = new FormData();
-        if (this.selectedFile) {
+        if (this.selectedFile) 
+        {
           formData.append('noteFile', this.selectedFile, this.selectedFile.name);
         }
         
         // Add other form data fields as needed
         formData.append('noteTitle', this.noteTitle+"-"+ this.teacherid);
 
+        formData.append('subject', this.subject);
+        formData.append('standard', this.standard);
+
         // Send the FormData to your service for uploading
-            this.userService.uploadNotes(formData).subscribe(
+          this.userService.uploadNotes(formData).subscribe(
               (data: any) => {
                 console.log("Data uploaded successfully" + data);
                 alert("Notes Uploaded");
                 this.noteTitle ="";
                 this.notes.note = new Uint8Array();
+                this.stdselected=true;
+                this.subjectselected=true;
               },
               (error: any) => {
                 if(error.status == 409){
@@ -81,12 +102,20 @@ selectedFile: File | undefined;
                 }
               }
             );
-          }   
-    }
+        }   
+  }
 
     validateFilds() : boolean{
       if(this.noteTitle ==""){
         alert("Title is Mandetory.");
+        return false;
+      }
+      else if(this.standard == ""){
+        alert("Select Standard.");
+        return false;
+      }
+      else if(this.subject == ""){
+        alert("Select Subject.");
         return false;
       }
       else if(this.notes.note.length == 0){
@@ -95,6 +124,14 @@ selectedFile: File | undefined;
       }
       return true;
     }  
+
+    onStdChange(){
+      this.stdselected=false;
+    }
+    
+    onSubjectChange(){
+      this.subjectselected=false;
+    }
 }
   
 

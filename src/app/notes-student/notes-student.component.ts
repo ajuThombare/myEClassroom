@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { Notes } from '../tsfiles/notes';
 import { Router } from '@angular/router';
-import { LocalStorageService } from 'ngx-webstorage';
+import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import baseUrl from '../commonurl';
 // import { HttpEventType, HttpHandler, HttpHeaders } from '@angular/common/http';
 @Component({
@@ -15,14 +15,19 @@ export class NotesStudentComponent implements OnInit{
   itemsPerPage: number = 1;
   pageCount: number = 5;
   
-  constructor(private route:Router,private userService:UserService
-    // , private dialog: MatDialog
-    ){}
+  constructor(private route:Router,private userService:UserService,
+  private loacalStorage:SessionStorageService,
+  ){}
+
   notes: any[] = []; 
   baseUrl:any;
+
   ngOnInit(): void {
     this.baseUrl=baseUrl;
-    this.userService.getAllNotes().subscribe(    
+    // this.userService.getAllNotes().subscribe(   
+    const std = this.loacalStorage.retrieve('currentuser').standards[0].name;
+    console.log(std)
+    this.userService.getNotesByStandard(std).subscribe(  
     (data:any)=>
     {
       this.notes = data;
