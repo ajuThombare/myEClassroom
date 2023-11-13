@@ -1,27 +1,26 @@
 <div class="side">
     <app-sidebar></app-sidebar>
 </div>
-
 <div class="add-note-content" style="padding-top: 20px;">
     <h1 class="title">Student Results</h1>
     <table border="1">
-
         <thead>
             <tr>
                 <th>Student Id</th>
                 <th>Full Name</th>
-                <th>Quiz Title</th>
+                <th>Standard</th>
+                <th>Test Name</th>
                 <th>Subject</th>
                 <th>Obtained Marks</th>
                 <th>Max Marks</th>
                 <th>Attempted Date</th>
             </tr>
-        
         </thead>
         <tbody>
                 <tr *ngFor="let res of result | paginate:{ itemsPerPage:pageCount,currentPage:pageNumber}">  
                     <td>{{ res.studentId }}</td>
                     <td>{{ res.name}}</td>
+                    <td>{{res.standard}}</td>
                     <td>{{ res.title }}</td>
                     <td>{{ res.subject }}</td>
                     <td>{{ res.marks }}</td>

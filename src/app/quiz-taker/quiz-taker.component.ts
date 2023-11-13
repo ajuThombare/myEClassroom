@@ -23,9 +23,8 @@ export class QuizTakerComponent implements OnInit{
   instructions:boolean=true;
   quizStarted:boolean=false;
   score: number = 0;
-  result : Result = new Result(0,0,"","",0) ;
+  result : Result = new Result(0,0,"","",0,"") ;
   currMarks:any = 0;
-  // attemptCount: number = 0;
   quizName:string ='';
 // created object here user proprties added here thtat html data it will carry and send to db
 constructor(private quizService:QuizService,private router:Router,
@@ -39,21 +38,17 @@ ngOnInit(): void {
 
   //This is actual logic to calculate the score
   this.currMarks = (Marksmaximum/NumberOfQ);
-
-
 this.quizName = this.loacalStorage.retrieve('currentquiz').title;
-
 this.question.quesId=this.activatedRoute.snapshot.params['qid'];
-// let attempts = '';  
 this.userService.checkAttemptedResult(
     this.loacalStorage.retrieve('currentuser').id,
-    this.loacalStorage.retrieve('currentquiz').subjects,
+    this.loacalStorage.retrieve('currentquiz').subject,
     this.quizName
   ).subscribe(
     (data:any)=>{
       if(data ==='Ok'){
         this.getAllQuetionsOfQuiz();
-        // console.log("ok -------"+data);
+        console.log("ok -------"+data);
       }else{
         Swal.fire({
               icon: 'info',
@@ -94,16 +89,16 @@ public submit(){
     this.result.studentId = usernow.id;
     this.result.name = usernow.firstName +" "+usernow.lastName;
     this.result.maxmarks = quiznow.maxMarks;
-    this.result.subject = quiznow.subjects;
+    this.result.subject = quiznow.subject;
     this.result.title =  quiznow.title;
-
+    this.result.standard =  quiznow.standard;
+    this.result.standard=this.loacalStorage.retrieve('currentquiz').standard;
     const Marksmaximum = this.loacalStorage.retrieve('currentquiz').maxMarks;
     const NumberOfQ = this.loacalStorage.retrieve('currentquiz').numberOfQuestions;
 
     //This is actual logic to calculate the score
     this.result.marks = ((Marksmaximum/NumberOfQ))*this.score;
 
-    // console.log('score is '+ this.result.marks);
     Swal.fire({
       icon: 'info',
       title: 'Exam Submitted',
@@ -112,6 +107,7 @@ public submit(){
       this.quizService.markResult(this.result).subscribe(
         (data: any) => {
           this.result = data;
+    console.log(data);
         });
       this.router.navigateByUrl('/myresult');
     });
@@ -125,7 +121,6 @@ startQuiz() {
     Swal.fire({
       icon: 'error',
       title: 'No Questions Found for quiz- "'+this.loacalStorage.retrieve('currentquiz').title+'"',
-      // text: 'There are no questions added for the selected quiz- "'+this.loacalStorage.retrieve('currentquiz').title+'"',
     });
     this.router.navigateByUrl('/quizzess');
   }
@@ -151,3 +146,4 @@ previousQuestion() {
   }
 }
 }
+

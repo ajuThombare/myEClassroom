@@ -17,7 +17,7 @@
             <tbody>
                 <tr *ngFor="let quiz of quizzes | paginate:{ itemsPerPage:pageCount,currentPage:pageNumber}"> 
                     <td> {{ quiz.title }} </td>
-                    <td> {{ quiz.subjects}} </td>
+                    <td> {{ quiz.subject}} </td>
                     <td>{{quiz.numberOfQuestions}}</td>
                     <td>{{quiz.maxMarks}}</td>
                     <td><button type="button" class="btn btn-info" (click)="Attempt(quiz)">

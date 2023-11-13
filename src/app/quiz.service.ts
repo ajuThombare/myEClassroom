@@ -95,4 +95,9 @@ public getAllQuestion()
   public markResult(result: Result){
     return this.http.post(`${baseUrl}/result/add`,result);
   }
+  
+  public getQuizzesByStandard(stdid:number) {
+    return this.http.get(`${baseUrl}/quiz/getbystd/${stdid}`);
+  }
+
 }

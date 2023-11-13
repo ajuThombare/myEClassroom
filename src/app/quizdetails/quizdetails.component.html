@@ -9,6 +9,7 @@
                 <tr>
                     <th>Title</th>
                     <th>Subject</th>
+                    <th>Standard</th>
                     <th>Number Of Questions</th>
                     <th>Maximun Marks</th>
                     <th>View Questions</th>
@@ -19,7 +20,8 @@
             <tbody>
                 <tr *ngFor="let quiz of quizzes | paginate:{ itemsPerPage:pageCount,currentPage:pageNumber}"> 
                     <td> {{ quiz.title }} </td>
-                    <td> {{ quiz.subjects}} </td>
+                    <td> {{ quiz.subject}} </td>
+                    <td>{{quiz.standard}}</td>
                     <td>{{quiz.numberOfQuestions}}</td>
                     <td>{{quiz.maxMarks}}</td>
                     <td><button type="button" class="btn btn-info" (click)="ViewQuestions(quiz.qId)">View Questions</button></td>

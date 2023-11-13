@@ -3,6 +3,8 @@ import { Quiz } from '../tsfiles/quiz';
 import { Router } from '@angular/router';
 import { QuizService } from '../quiz.service';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
+import { Subject } from '../tsfiles/subject';
+import { Standard } from '../tsfiles/standard';
 
 @Component({
   selector: 'app-quizdetails',
@@ -11,14 +13,15 @@ import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 })
 export class QuizdetailsComponent implements OnInit{
   quizzes:any;
-  quiz = new Quiz(0,"","","","", true, "");
+  quiz = new Quiz(0, '', '', '', '', true, [],"",'');
   teacherid :string;
   selectedQuiz: string = 'default'; // Initialize with a default value
   questions: any[] = []; 
   pageNumber: number = 1;
   itemsPerPage: number = 1;
   pageCount: number = 5;
-
+  subjects: Subject[] = [];
+  standrds: Standard[] = [];
   constructor(private router:Router,private quizService:QuizService,private localStorage:SessionStorageService){
     this.teacherid =localStorage.retrieve('currentuser').id;
   }
@@ -32,8 +35,7 @@ export class QuizdetailsComponent implements OnInit{
   // this.quizService.getAllQuizzes().subscribe(
     (data:any)=>
     {
-      // console.log(data);
-    //  console.log("data retrived succesfully");
+      console.log(data);
      this.quizzes=data;
     }
    );

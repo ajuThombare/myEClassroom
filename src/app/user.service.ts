@@ -149,4 +149,7 @@ public getSubjectsByStandardId( standardid:string) {
 public getStandardWiseSubjects() {
   return this.httpClient.get(`${baseUrl}/subject/list/get`);
 }
+public getUsersByStandard(standardName: string): Observable<User[]> {
+  return this.httpClient.get<User[]>(`${baseUrl}/user/bystd/${standardName}`);
+}
 }

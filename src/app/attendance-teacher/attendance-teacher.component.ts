@@ -10,7 +10,7 @@ import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
   styleUrls: ['./attendance-teacher.component.css']
 })
 export class AttendanceTeacherComponent implements OnInit {
-  users:any;
+  users: User[] = [];
   status:string='';
   isButtonDisabled: { [key: number]: boolean } = {};
   // attendanceCreated: boolean;
@@ -18,30 +18,44 @@ export class AttendanceTeacherComponent implements OnInit {
   itemsPerPage: number = 1;
   pageCount: number = 5;
   attendanceStatus: { [key: string]: boolean } = {}; 
-   
+  standardName!: string;
+  selectedStandard: any;
   constructor(private route:Router,
     private userService:UserService,
-    private localStorageService:SessionStorageService)
+    private loacalStorage:SessionStorageService)
   {
     // this.attendanceCreated = false;
     
   }
   
   ngOnInit(): void {
-    this.userService.getAllStudents().subscribe(
-      (data:any)=>
-      {
-       console.log("data retrived succesfully");
-       this.users=data;
-       this.loadAttendanceStatus();
-      });
+    this.selectedStandard =
+    this.loacalStorage.retrieve('currentuser').standards[0].name;; 
+   
+        this.loadAttendanceStatus();
+        this.allStudents();
+      
 }
+public allStudents() {
+  if (this.selectedStandard) {
+    this.userService.getUsersByStandard(this.selectedStandard).subscribe(
+      (data: User[]) => {
+        console.log("data retrieved successfully", data);
 
+        // Filter users based on the selected standard
+        this.users = data;
+      },
+      (error) => {
+        console.error('Error fetching users', error);
+      }
+    );
+  }
+}
 loadAttendanceStatus() {
   // Load button status from local storage for each student and date
   this.users.forEach((user: User) => {
     const studentKey = `${user.id}_${this.getCurrentDate()}`;
-    this.attendanceStatus[studentKey] = this.localStorageService.retrieve(studentKey) === 'true';
+    this.attendanceStatus[studentKey] = this.loacalStorage.retrieve(studentKey) === 'true';
   });
 }
 
@@ -75,7 +89,7 @@ public markAttendanceAbsent(user: User, index: number) {
 
 saveButtonStateToLocalStorage(studentKey: string) {
   // Save button state for the student and date in local storage
-  this.localStorageService.store(studentKey, 'true');
+  this.loacalStorage.store(studentKey, 'true');
 }
 
 getCurrentDate(): string {

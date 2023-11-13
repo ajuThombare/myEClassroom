@@ -18,7 +18,7 @@ export class AllquestionsComponent implements OnInit{
   pageCount: number = 5;
   question=new Question(0,"","","","","","","","");
   questions: Question[] = [];
-  quiz=new Quiz(0,"","","","",true,"");
+  quiz = new Quiz(0, '', '', '', '', true, [],"",'');
   constructor(private route:Router,private quizService:QuizService,
   private activatedRoute:ActivatedRoute,private loacalStorage:SessionStorageService){}
   

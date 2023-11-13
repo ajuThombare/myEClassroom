@@ -1,10 +1,10 @@
 <div class="side">
     <app-sidebar></app-sidebar>
-</div>
-
-<div class="add-note-content">
+  </div>
+  
+  <div class="add-note-content">
     <h2>All Students</h2>
-
+  
     <div>
         <table class="tables">
             <thead>
@@ -17,7 +17,7 @@
             <tbody>
                
                 <tr *ngFor="let user of users | paginate: { itemsPerPage: pageCount, currentPage: pageNumber }; let i = index">
- 
+  
                     <td>{{ user.firstName + ' ' + user.lastName }}</td>
                     <td>
                         <button type="button" class="btn btn-danger present-button" (click)="markAttendancePresent(user, i)"
@@ -34,4 +34,4 @@
             <pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
           </div>
     </div>
-</div>
+  </div>

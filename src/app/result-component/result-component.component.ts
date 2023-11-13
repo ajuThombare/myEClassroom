@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Result } from '../tsfiles/result';
 import { UserService } from '../user.service';
 import { User } from '../tsfiles/user';
+import { Quiz } from '../tsfiles/quiz';
 
 @Component({
   selector: 'app-result-component',
@@ -15,7 +16,8 @@ export class ResultComponentComponent implements OnInit {
   pageNumber: number = 1;
   itemsPerPage: number = 1;
   pageCount: number = 5;
-  
+  quiz=new Quiz(0,"","","","",true,[],"","");
+    
   constructor(private activatedRoute: ActivatedRoute,private userService:UserService) {}
 
   ngOnInit(): void {
@@ -23,17 +25,8 @@ export class ResultComponentComponent implements OnInit {
 
     this.userService.getAllResults().subscribe((data:any)=>{
       this.result = data;
+      // console.log(data);
     });
 
   }
-
-  // getNameById(id:number){
-  //  console.log(this.userService.getOneUserById(id));
-  //  return "aju";
-  // }
-  // formateDate(date:string ){
-  //   var datearray = date.split("-");
-  //   // return  datearray[2] + '/' + datearray[1] + '/' + datearray[0];
-  //   return "aju";
-  // }
 }
