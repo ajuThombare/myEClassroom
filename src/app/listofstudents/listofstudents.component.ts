@@ -50,8 +50,7 @@ export class ListofstudentsComponent implements OnInit {
   if (this.selectedStandard) {
     this.userService.getUsersByStandard(this.selectedStandard).subscribe(
       (data: User[]) => {
-        console.log("data retrieved successfully", data);
-
+        // console.log("data retrieved successfully", data);
         // Filter users based on the selected standard
         this.users = data;
       },

@@ -93,6 +93,17 @@
             </mat-error>
           </mat-form-field>
   
+
+          <mat-form-field class="full-width">
+            <input matInput id="standard" name="standard" [(ngModel)]="user.standards[0].name" disabled>
+            <mat-label>Standard</mat-label>
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput id="subject" name="subject" [(ngModel)]="user.subjects[0].sname" disabled>
+            <mat-label>Subject</mat-label>
+          </mat-form-field>
+          
           <div class="submit-btn text-center">
             <div class="button">
               <button mat-raised-button color="primary" type="submit">Update User Details</button>

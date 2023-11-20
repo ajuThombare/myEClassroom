@@ -13,6 +13,8 @@ import { AppRoutingModule } from '../app-routing.module';
 import { StandardComponent } from './standard/standard.component';
 import { SubjectComponent } from './subject/subject.component';
 import { StandardSubjectsComponent } from './standard-subjects/standard-subjects.component';
+import { ListTeachersComponent } from './list-teachers/list-teachers.component';
+import { UpdateTeacherComponent } from './update-teacher/update-teacher.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { StandardSubjectsComponent } from './standard-subjects/standard-subjects
     PendingRequestsComponent,
     StandardComponent,
     SubjectComponent,
-    StandardSubjectsComponent
+    StandardSubjectsComponent,
+    ListTeachersComponent,
+    UpdateTeacherComponent
   ],
   imports: [
     CommonModule,

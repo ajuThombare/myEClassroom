@@ -1,0 +1,51 @@
+table {
+    border-collapse: collapse;
+    width: 800px;
+    height: auto;
+   font-weight: bold;
+}
+
+th, td {
+    border: 1px solid #0f0505;
+    padding: 10px;
+    text-align: center;
+    background: color white;
+    text-decoration:wavy;
+}
+
+
+tr:hover {
+    background-color: rgb(147, 227, 227);
+}
+
+.pagination-controls .previous,
+.pagination-controls .next {
+    color: black; /* Set the color to black */
+}
+
+.pagination-controls .previous:hover,
+.pagination-controls .next:hover {
+    background-color: black;
+    color: white; 
+}
+h2{
+    /* font-weight: bold; */
+    text-align: center;
+    font-size: 25px;
+    color: white;
+}
+th {
+    /* text-align: center; */
+    background-color: black;
+    color: azure;
+}
+
+
+
+
+
+
+
+
+
+

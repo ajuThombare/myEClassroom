@@ -52,6 +52,10 @@ public getAllStudents()
 {
 return this.httpClient.get(`${baseUrl}/user/get/students`);
 }
+public getAllTeachers()
+{
+return this.httpClient.get(`${baseUrl}/user/get/teachers`);
+}
 public uploadNotes(formData: FormData): Observable<any> {
   return this.httpClient.post(`${baseUrl}/notes/savefile`, formData);
 }

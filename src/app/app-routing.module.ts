@@ -30,6 +30,8 @@ import { PendingRequestsComponent } from './admin/pending-requests/pending-reque
 import { StandardComponent } from './admin/standard/standard.component';
 import { SubjectComponent } from './admin/subject/subject.component';
 import { StandardSubjectsComponent } from './admin/standard-subjects/standard-subjects.component';
+import { ListTeachersComponent } from './admin/list-teachers/list-teachers.component';
+import { UpdateTeacherComponent } from './admin/update-teacher/update-teacher.component';
 
 const routes: Routes = [
 { path:'',component:WelcomeComponent} ,
@@ -67,6 +69,8 @@ const routes: Routes = [
 { path:'stdsubjects',component:StandardSubjectsComponent},
 { path:'standard',component:StandardComponent},
 { path:'subject',component:SubjectComponent},
+{ path:'teacherlist',component:ListTeachersComponent},
+{ path:'updateteacher/:userid',component:UpdateTeacherComponent},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

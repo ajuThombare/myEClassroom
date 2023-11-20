@@ -97,6 +97,11 @@
               <!-- <small *ngIf="City.errors?.['pattern']">Enter a valid City</small> -->
             </mat-error>
           </mat-form-field>
+          
+          <mat-form-field class="full-width">
+            <input matInput id="standard" name="standard" [(ngModel)]="user.standards[0].name" disabled>
+            <mat-label>Standard</mat-label>
+          </mat-form-field>
   
           <div class="submit-btn text-center">
             <div class="button">
