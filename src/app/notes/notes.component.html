@@ -3,48 +3,50 @@
 </div>
 
 <div class="add-note-content">
-    <h3 class="title">Upload Notes</h3>
-    <form (submit)="uploadNotes($event)" class="mt-3">
+  <h3 class="title">Upload Notes</h3>
+  <div class="container">
+      <form (submit)="uploadNotes($event)" class="mt-3">
 
-      <div class="form-group">
-        <label for="noteTitle" class="custom-label">Note Title</label>
-        <input placeholder="Title" type="text" id="noteTitle" [(ngModel)]="noteTitle" name="noteTitle" class="form-control" required #noteTitleModel ="ngModel">
-        <div *ngIf="noteTitleModel.errors && (noteTitleModel.invalid && noteTitleModel.touched)" class="error-message">
-          <span *ngIf="noteTitleModel.errors?.['required']"><label style="color: red;">Note Title is required.</label></span>
-        </div> 
-      </div>
+          <div class="form-group">
+            <label for="noteTitle" class="custom-label">Note Title</label>
+            <input placeholder="Title" type="text" id="noteTitle" [(ngModel)]="noteTitle" name="noteTitle" class="form-control" required #noteTitleModel ="ngModel">
+            <div *ngIf="noteTitleModel.errors && (noteTitleModel.invalid && noteTitleModel.touched)" class="error-message">
+              <span *ngIf="noteTitleModel.errors?.['required']"><label style="color: red;">Note Title is required.</label></span>
+            </div> 
+          </div>
 
-      <div class="form-group">
-        <label for="standard" class="custom-label">Select Standard:</label>
-        <select id="standard" [selectedIndex]="index" name="standard" 
-        [(ngModel)]="standard" class="form-control" 
-         required (change)="onStdChange()">
-            <option value="" [selected]="stdselected" disabled>Select Standard</option>
-            <option *ngFor="let o of standards" [value]="o.name">{{o.name}}</option>
-        </select>
-      </div>
+          <div class="form-group">
+            <label for="standard" class="custom-label">Select Standard:</label>
+            <select id="standard" [selectedIndex]="index" name="standard" 
+            [(ngModel)]="standard" class="form-control" 
+            required (change)="onStdChange()">
+                <option value="" [selected]="stdselected" disabled>Select Standard</option>
+                <option *ngFor="let o of standards" [value]="o.name">{{o.name}}</option>
+            </select>
+          </div>
 
-      <div class="form-group">
-        <label for="subjects" class="custom-label">Select Subject:</label>
-        <select id="subjects" [selectedIndex]="index" name="subjects" 
-        [(ngModel)]="subject" class="form-control" 
-        (change)="onSubjectChange()" required >
-            <option value="" [selected]="subjectselected" disabled>Select Subject</option>
-            <option *ngFor="let o of subjects" [value]="o.sname">{{o.sname}}</option>
-        </select>
-      </div>
+          <div class="form-group">
+            <label for="subjects" class="custom-label">Select Subject:</label>
+            <select id="subjects" [selectedIndex]="index" name="subjects" 
+            [(ngModel)]="subject" class="form-control" 
+            (change)="onSubjectChange()" required >
+                <option value="" [selected]="subjectselected" disabled>Select Subject</option>
+                <option *ngFor="let o of subjects" [value]="o.sname">{{o.sname}}</option>
+            </select>
+          </div>
 
-      <div class="form-group">
-        <label for="noteFile" class="custom-label">Choose File <label style="color: red;">(PDF, Max Size 50MB)</label></label>
-        <input type="file" id="noteFile" [(ngModel)]="notes.note" (change)="onFileChange($event)" name="noteFile" class="form-control"
-          accept=".pdf" required>
-      </div>
+          <div class="form-group">
+            <label for="noteFile" class="custom-label">Choose File <label style="color: red;">(PDF, Max Size 50MB)</label></label>
+            <input type="file" id="noteFile" [(ngModel)]="notes.note" (change)="onFileChange($event)" name="noteFile" class="form-control"
+              accept=".pdf" required>
+          </div>
 
-      <div class="form-group" id="upload">
-        <div class="btn">
-        <button type="submit">Upload</button>
-        </div>
-      </div>
-    </form>
-    <div>
+          <div class="form-group" id="upload">
+            <div class="btn">
+            <button type="submit">Upload</button>
+            </div>
+          </div>
+        </form>
+        <div>    
+      <div>
   </div>

@@ -7,23 +7,22 @@
   <div class="form-group col-md-6">
     <label for="title">Title <label class="text-danger"> *</label> </label>
     <input type="text" id="title" name="title" class="form-control" 
-    [(ngModel)]="quiz.title" required  pattern="[A-Za-z]" #title="ngModel"/>
+    [(ngModel)]="quiz.title" required  pattern="[A-Za-z]" placeholder="Title" #title="ngModel"/>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="maxMarks">Maximum Marks <label class="text-danger"> *</label></label>
-      <input type="number" id="maxMarks" name="maxMarks" class="form-control" 
-      [(ngModel)]="quiz.maxMarks" required >
+      <label for="maxMarks">Maximum Marks <label style="color: red;">(Number Only)*</label></label>
+      <input type="number" id="maxMarks" name="maxMarks" class="form-control"
+        [(ngModel)]="quiz.maxMarks" required placeholder="Enter the maximum marks">
     </div>
-
+ 
     <div class="form-group col-md-6">
-      <label for="numberOfQuestions">Number of Questions <label class="text-danger"> *</label></label>
-      <input type="number" id="numberOfQuestions" name="numberOfQuestions" 
-      class="form-control" [(ngModel)]="quiz.numberOfQuestions" required >  
+      <label for="numberOfQuestions">Number of Questions <label style="color: red;">(Number Only)*</label></label>
+      <input type="number" id="numberOfQuestions" name="numberOfQuestions"
+        class="form-control" [(ngModel)]="quiz.numberOfQuestions" required placeholder="Enter the number of questions">
     </div>
-  </div>
-  
+  </div>  
       
   <div class="form-row">
     <label for="standard">Standard  <label class="text-danger"> *</label></label>

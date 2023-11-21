@@ -11,7 +11,7 @@
       <div class="form-row">
         <label for="standard">Select Standard:</label>
         <select id="standard" name="standard" [(ngModel)]="standardid" required >
-            <!-- <option value="default" selected disabled>Select Grade</option> -->
+            <!-- <option value="default" selected >Select Grade</option> -->
             <option *ngFor="let o of standard" [value]="o.id">{{o.name}}</option>
         </select>
       </div>
