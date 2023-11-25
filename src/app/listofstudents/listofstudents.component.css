@@ -11,8 +11,13 @@ th, td {
     text-align: center;
     background: color white;
     text-decoration:wavy;
-}
-
+    font-size: 15px;
+  }
+  th {
+    /* text-align: center; */
+    background-color: black;
+    color: azure;
+  }
 
 tr:hover {
     background-color: rgb(147, 227, 227);
@@ -28,10 +33,10 @@ tr:hover {
     background-color: black;
     color: white; 
 }
-h2{
-    /* font-weight: bold; */
+h1{
+    font-weight: bold;
     text-align: center;
-    font-size: 25px;
+    font-size: 30px;
     color: white;
 }
 th {

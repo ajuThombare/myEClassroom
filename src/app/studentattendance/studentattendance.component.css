@@ -1,12 +1,11 @@
 body {
     font-family: Arial, sans-serif;
 }
-h1 {
-    text-align:center;
-    color: white;
+h1{
     font-weight: bold;
-    /* margin-right: 20px; */
-
+    text-align: center;
+    font-size: 30px;
+    color: white;
 }
 table {
     border-collapse: collapse;
@@ -15,16 +14,19 @@ table {
     float: right;
     background-color: white;
 }
- th,td {
-    border: 1px solid #ccc;
+th, td {
+    border: 1px solid #0f0505;
     padding: 10px;
     text-align: center;
-}
-th {
+    background: color white;
+    text-decoration:wavy;
+    font-size: 15px;
+  }
+  th {
     /* text-align: center; */
     background-color: black;
     color: azure;
-}
+  }
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }

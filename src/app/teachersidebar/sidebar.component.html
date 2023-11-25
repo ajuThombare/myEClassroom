@@ -2,7 +2,7 @@
   <div class="menu">
   <mat-card>
     <mat-action-list>
-      <div  >Menu
+      <div>Menu
         <button routerLink="/teacherhome" mat-list-item>
           <div class="list-item-content">
             <mat-icon>home</mat-icon>
@@ -41,21 +41,21 @@
         <button mat-list-item routerLink="/result">
           <div class="list-item-content">
           <mat-icon mat-list-icon>assignment</mat-icon> 
-          <strong>Quiz Results</strong></div>
+          <span><strong>Quiz Results</strong></span></div>
         </button>
  
 
         <button mat-list-item routerLink="/teacherattendance">
           <div class="list-item-content">
             <mat-icon mat-list-icon>event_note</mat-icon>
-            <strong>Attendance</strong>
+            <span><strong>Attendance</strong></span>
           </div>
         </button>
 
         <button mat-list-item routerLink="/students">
           <div class="list-item-content">
             <mat-icon mat-list-icon>group</mat-icon>
-            <strong>View Students</strong>
+            <span><strong>View Students</strong></span>
           </div>
         </button>
 
@@ -69,7 +69,7 @@
         <button mat-list-item routerLink="/login" (click)="clearStorage()">
           <div class="list-item-content">
             <mat-icon mat-list-icon>logout</mat-icon>
-            <strong>Logout</strong>
+            <span><strong>Logout</strong></span>
           </div>
         </button>
       </div>

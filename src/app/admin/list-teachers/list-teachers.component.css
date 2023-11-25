@@ -1,6 +1,6 @@
 table {
     border-collapse: collapse;
-    width: 800px;
+    width: 100%;
     height: auto;
    font-weight: bold;
 }
@@ -11,8 +11,14 @@ th, td {
     text-align: center;
     background: color white;
     text-decoration:wavy;
+    font-size: 15px;
 }
-
+h1{
+    font-weight: bold;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+}
 
 tr:hover {
     background-color: rgb(147, 227, 227);

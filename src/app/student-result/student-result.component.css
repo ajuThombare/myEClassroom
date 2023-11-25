@@ -4,10 +4,10 @@ body {
 }
 
 h1{
-        font-weight: bold;
-        text-align: center;
-        font-size: 25px;
-        color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 30px;
+  color: white;
 }
 
 table {
@@ -18,15 +18,18 @@ table {
     background-color: white;
 }
 th, td {
-    border: 1px solid #ccc;
+    border: 1px solid #0f0505;
     padding: 10px;
     text-align: center;
-}
-th {
+    background: color white;
+    text-decoration:wavy;
+    font-size: 15px;
+  }
+  th {
     /* text-align: center; */
     background-color: black;
     color: azure;
-}
+  }
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }

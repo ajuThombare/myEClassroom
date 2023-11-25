@@ -5,20 +5,21 @@
     background-color: #fff;
   }
   h1{
-    text-align: center;
-    color: white;
     font-weight: bold;
-
+    text-align: center;
+    font-size: 30px;
+    color: white;
+}
+  th, td {
+    border: 1px solid #0f0505;
+    padding: 10px;
+    text-align: center;
+    background: color white;
+    text-decoration:wavy;
+    font-size: 15px;
   }
   th {
     /* text-align: center; */
     background-color: black;
     color: azure;
-  }
-
-  th, td {
-    border: 1px solid #0f0505;
-    padding: 10px;
-    text-align: center;
- 
   }

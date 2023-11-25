@@ -57,7 +57,13 @@ export class SubjectComponent  implements OnInit {
     if(this.subject.sname == ''){
       alert("Subject is mandetory.");
       return false;
-    }else{
+    }
+    else
+    if(this.subject.sname.length <3){
+      alert("Subject Name should be minimum 3 characters.");
+      return;
+    }
+    else{
       return true;
     }
 

@@ -19,14 +19,24 @@ export class StandardComponent implements OnInit{
 
   public selectStandard() {
     // Create a Standard object from the user's selected standard
-
+    if(this.standard.name.length ==0){
+      alert("Name is Mandetory.");
+      return;
+    }
+    if(this.standard.name.length <3){
+      alert("Name should be minimum 3 characters.");
+      return;
+    }
     this.userService.createStandard(this.standard).subscribe(
-      (data: any) => {
-        // Display a success message
-        alert('Standard is saved.');
-
-        // Navigate to the "subject" page
-        this.router.navigate(['/subject']);
+      (data: any) => {  
+        // console.log(data);        
+        if(data==null){
+          alert('Standard Already present.');
+          this.standard.name = '';
+        }else{
+          alert('Standard is saved.');
+           this.router.navigate(['/subject']);
+        }
       },
       (error: any) => {
         console.error('Error saving standard', error);

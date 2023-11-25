@@ -23,6 +23,7 @@ th, td {
     text-align: center;
     background: color white;
     text-decoration:wavy;
+    font-size: 15px;
 }
 th {
     /* text-align: center; */

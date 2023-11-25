@@ -42,7 +42,10 @@ answerOptions: string[] = []; // Array to hold answer options
       alert("Please fill all required fields.");
       return;
     }
-    
+    if(this.question.content.length <5){
+      alert("Question Length should be Minimum 5.");
+      return;
+    }
     // Check if options are unique
     const options = [
       this.question.option1,

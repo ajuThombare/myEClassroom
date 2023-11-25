@@ -3,30 +3,18 @@
 </div>
 
 <div class="add-note-content" style="padding-top: 20px;">
-
-    <div class="container-fluid ">
-        <ul class="nav navbar-nav">
-            <div class="col-md-3">
-            </div>
-            <div class="col-md-3">
-                <li class="nav-item">
-                    <a routerLink="/students" routerLinkActive="active" class="nav-link">
-                    </a>
-                </li>
-            </div>
-        </ul>
-    </div>
     <!-- </nav> -->
-    <h2 class="title" >Teacher List</h2>
-    <div class="d-flex justify-content-center align-items-center">
+    <h1 class="title" >Users List</h1>
+    <div >
         <div>
             <div>
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>No</th>
+                            <th>Person ID</th>
                             <th>First Name</th>
                             <th>Last Name</th>
+                            <th>Role</th>
                             <th>Standard</th>
                             <th>Update Teacher</th>
                             <th>Remove Teacher</th>
@@ -37,6 +25,7 @@
                             <td>{{user.id}}</td>
                             <td> {{ user.firstName }} </td>
                             <td> {{ user.lastName}} </td>
+                            <td> {{ user.role}} </td>
                             <td> {{ user.standards[0].name}} </td>
                             <td><button type="button" class="btn btn-info" (click)="updateUser(user.id)">Update</button></td>
                     <td> <button type="button" class="btn btn-danger" (click)="deleteUser(user.id)">Delete</button></td> 

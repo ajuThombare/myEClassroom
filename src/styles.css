@@ -130,7 +130,7 @@ body {
   .side{
     margin: 0;
     padding: 0;
-    width: 300px;
+    width: 260px;
     background:linear-gradient(to right,rgb(134, 237, 234),white,rgb(23, 175, 245));
     animation: abc 2s infinite;
     position: fixed;
@@ -140,7 +140,7 @@ body {
 .stu-side{
     margin: 0;
     padding: 0;
-    width: 300px;
+    width: 260px;
     background:linear-gradient(to right,rgb(134, 237, 234),white,rgb(23, 175, 245));
     animation: abc 2s infinite;
     position: fixed;
@@ -148,9 +148,10 @@ body {
     overflow: auto;
 }
 .add-note-content {
-margin-left: 300px;
+margin-left: 280px;
 padding: 1px 16px;
 height: 100%;
+padding-top: 20px;
 }
 /*below are sidebar styles*/
 .list-item-content {

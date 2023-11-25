@@ -39,9 +39,8 @@ export class ListTeachersComponent implements OnInit {
       );
     }
   }
-
  public allTeachers() {
-    this.userService.getAllTeachers().subscribe(
+    this.userService.getUsers().subscribe(
       (data: any) => {
         // console.log("data retrieved successfully", data);
 

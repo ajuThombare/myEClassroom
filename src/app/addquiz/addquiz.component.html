@@ -2,8 +2,9 @@
   <app-sidebar></app-sidebar>
 </div>
 <div class="add-note-content">
-  <h1>Create Quiz</h1>
+    <h1 class="title">Create Quiz</h1>
 <form  #quizform="ngForm" (ngSubmit)="addQuiz()">
+
   <div class="form-group col-md-6">
     <label for="title">Title <label class="text-danger"> *</label> </label>
     <input type="text" id="title" name="title" class="form-control" 
@@ -29,7 +30,7 @@
     <select name="standard" [selectedIndex]="index" class="form-control" 
       [(ngModel)]="quiz.standard" required #Standard="ngModel"
       (change)="onStdChange()">
-              <option value="" [selected]="stdselected" disabled>Select a Standard</option>
+              <option value="" [selected]="stdselected" disabled>Select Standard</option>
       <option *ngFor="let o of standards" [value]="o.name">{{o.name}}</option>
     </select>
     </div>
@@ -39,7 +40,7 @@
       <select name="subject" class="form-control" [selectedIndex]="index"
       (change)="onSubjectChange()"
         [(ngModel)]="quiz.subject" required #Subject="ngModel">
-        <option value="" [selected]="subjectselected" disabled>Select a Subject</option>
+        <option value="" [selected]="subjectselected" disabled>Select Subject</option>
         <option *ngFor="let o of subject" [value]="o.sname">{{o.sname}}</option>
       </select>
     </div>

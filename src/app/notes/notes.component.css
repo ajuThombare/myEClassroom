@@ -10,7 +10,7 @@
 .container {
   max-width: 700px;
   margin: 0 auto;
-  padding: 20px;
+  
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -28,7 +28,7 @@
     position: relative;
     overflow: hidden;
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 15px;
   }
   
   .inner {
@@ -72,3 +72,9 @@
   {
     padding-top: 20px;
   }
+  h1{
+    font-weight: bold;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+}

@@ -40,6 +40,18 @@ export class AddquizComponent {
       alert("Please fill all required fields.");
       return;
     }
+    if(this.quiz.title.length <3){
+      alert("Title should be minimum 3 characters.");
+      return;
+    }
+    if(parseInt(this.quiz.maxMarks) <5){
+      alert("Maximum Marks should be minimum 5.");
+      return;
+    }
+    if(parseInt(this.quiz.numberOfQuestions) <5){
+      alert("Number of Questions should be minimum 5.");
+      return;
+    }
 // console.log(+);
 
     this.quiz.teacherId = this.loacalStorage.retrieve('currentuser').id;

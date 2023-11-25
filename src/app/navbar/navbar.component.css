@@ -15,8 +15,12 @@ mat-toolbar {
   #headerclass {
     font-weight: bold;
     font-style: italic;
+    
   }
-  
+  #header {
+    font-weight: 40px;
+    
+  }
   a.mat-button, button.mat-button {
     color: white; 
     text-transform: uppercase; 
@@ -32,7 +36,7 @@ mat-toolbar {
     color: white; 
     background-color: transparent; /* Transparent background */
     border: none; /* Remove border */
-    font-size: 24px; 
+    font-size: 35px; 
     /* margin-left: 10px; spacing between icon buttons */
   }
   

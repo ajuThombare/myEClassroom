@@ -110,6 +110,10 @@ selectedFile: File | undefined;
         alert("Title is Mandetory.");
         return false;
       }
+      else if(this.noteTitle.length <3){
+        alert("Title should be minimum 3 characters.");
+        return false;
+      }
       else if(this.standard == ""){
         alert("Select Standard.");
         return false;
