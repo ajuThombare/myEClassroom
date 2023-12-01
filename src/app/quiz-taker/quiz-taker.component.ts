@@ -26,6 +26,8 @@ export class QuizTakerComponent implements OnInit{
   result : Result = new Result(0,0,"","",0,"") ;
   currMarks:any = 0;
   quizName:string ='';
+  timer: number = 0;
+  timerInterval: any;
 // created object here user proprties added here thtat html data it will carry and send to db
 constructor(private quizService:QuizService,private router:Router,
   private activatedRoute:ActivatedRoute , private loacalStorage:SessionStorageService,
@@ -34,10 +36,10 @@ constructor(private quizService:QuizService,private router:Router,
 ngOnInit(): void {
 
   const Marksmaximum = this.loacalStorage.retrieve('currentquiz').maxMarks;
-  const NumberOfQ = this.loacalStorage.retrieve('currentquiz').numberOfQuestions;
-
+  const numberOfQuestions = this.loacalStorage.retrieve('currentquiz').numberOfQuestions;
+  this.timer = numberOfQuestions * 60;
   //This is actual logic to calculate the score
-  this.currMarks = (Marksmaximum/NumberOfQ);
+  this.currMarks = (Marksmaximum/numberOfQuestions);
 this.quizName = this.loacalStorage.retrieve('currentquiz').title;
 this.question.quesId=this.activatedRoute.snapshot.params['qid'];
 this.userService.checkAttemptedResult(
@@ -57,7 +59,6 @@ this.userService.checkAttemptedResult(
             }).then(()=>{
               this.router.navigateByUrl('/quizzess');
             });
-        // console.log("not ok -------"+data);
       }
     }
   );
@@ -89,9 +90,9 @@ public submit(){
     this.result.studentId = usernow.id;
     this.result.name = usernow.firstName +" "+usernow.lastName;
     this.result.maxmarks = quiznow.maxMarks;
-    this.result.subject = quiznow.subject;
+    this.result.subject = quiznow.subjects;
     this.result.title =  quiznow.title;
-    this.result.standard =  quiznow.standard;
+    this.result.standard =  quiznow.standards;
     this.result.standard=this.loacalStorage.retrieve('currentquiz').standard;
     const Marksmaximum = this.loacalStorage.retrieve('currentquiz').maxMarks;
     const NumberOfQ = this.loacalStorage.retrieve('currentquiz').numberOfQuestions;
@@ -117,6 +118,13 @@ public submit(){
 startQuiz() {
   this.quizStarted = true;
   this.instructions = false;
+  this.timerInterval = setInterval(() => {
+    this.timer--;
+    if (this.timer <= 0) {
+      clearInterval(this.timerInterval);
+      this.submit(); // Auto-submits when the timer reaches zero
+    }
+  }, 1000);
   if (this.questions.length == 0) {
     Swal.fire({
       icon: 'error',
@@ -127,7 +135,17 @@ startQuiz() {
 }
 
 
-
+ngOnDestroy(): void {
+  // Clears the timer interval when the component is destroyed
+  clearInterval(this.timerInterval);
+}
+formatTime(seconds: number): string {
+  const minutes: number = Math.floor(seconds / 60);
+  const remainingSeconds: number = seconds % 60;
+  const minutesString: string = minutes < 10 ? `0${minutes}` : `${minutes}`;
+  const secondsString: string = remainingSeconds < 10 ? `0${remainingSeconds}` : `${remainingSeconds}`;
+  return `${minutesString}:${secondsString}`;
+}
 nextQuestion() {
   if (this.selectedOptions[this.currentQuestionIndex]) 
   {

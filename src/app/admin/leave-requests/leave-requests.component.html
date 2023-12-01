@@ -1,0 +1,40 @@
+<div class="side">
+    <app-adminsidebar></app-adminsidebar>
+</div> 
+
+<div class="add-note-content" style="padding-top: 20px;">
+    <div class="text-center">
+        <h1 class="mt20">Leave Requests</h1>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Teacher ID</th>
+                        <th>Teacher Name</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Accept Request</th>
+                        <th>Decline Request</th>
+                        <th>Remove Request</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let leave of pendingLeaveRequests | paginate:{ itemsPerPage: pageCount, currentPage: pageNumber }">
+                        <td>{{ leave.teacherid }}</td>
+                        <td>{{ leave.teachername }}</td>
+                        <td>{{ leave.startDate | date }}</td>
+                        <td>{{ leave.endDate | date }}</td>
+                        <td><button type="button" class="btn btn-info" (click)="acceptLeaveRequest(leave.id)">Accept</button></td>
+                        <td><button type="button" class="btn btn-danger" (click)="declineLeaveRequest(leave.id)">Decline</button></td>
+                        <td><button type="button" class="btn btn-danger" (click)="removeLeaveRequest(leave.id)">Remove</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="text-right">
+        <pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
+    </div>
+</div>

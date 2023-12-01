@@ -32,6 +32,10 @@ import { SubjectComponent } from './admin/subject/subject.component';
 import { StandardSubjectsComponent } from './admin/standard-subjects/standard-subjects.component';
 import { ListTeachersComponent } from './admin/list-teachers/list-teachers.component';
 import { UpdateTeacherComponent } from './admin/update-teacher/update-teacher.component';
+import { StudentResultsComponent } from './admin/student-results/student-results.component';
+import { TeacherLeavesComponent } from './teacher-leaves/teacher-leaves.component';
+import { LeaveRequestsComponent } from './admin/leave-requests/leave-requests.component';
+import { TeacherLeaveRequestsComponent } from './teacher-leave-requests/teacher-leave-requests.component';
 
 const routes: Routes = [
 { path:'',component:WelcomeComponent} ,
@@ -71,6 +75,11 @@ const routes: Routes = [
 { path:'subject',component:SubjectComponent},
 { path:'teacherlist',component:ListTeachersComponent},
 { path:'updateteacher/:userid',component:UpdateTeacherComponent},
+{ path:'resultsadmin',component:StudentResultsComponent},
+{ path:'teacherleaves',component:TeacherLeavesComponent},
+{ path:'leaverequests',component:LeaveRequestsComponent},
+{ path:'teacherleaverequests',component:TeacherLeaveRequestsComponent},
+
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

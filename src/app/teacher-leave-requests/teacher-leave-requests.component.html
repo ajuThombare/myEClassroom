@@ -1,0 +1,35 @@
+<div class="side">
+    <app-sidebar></app-sidebar>
+</div>
+
+<div class="add-note-content" style="padding-top: 20px;">
+    <h1>My Leave Requests</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <!-- <th>Id</th> -->
+                <th style="width: 10%;">Reason</th>
+                <th>Start Date</th> 
+                <th>End Date</th>
+                <th>Current Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let leave of leaves | paginate:{ itemsPerPage:pageCount,currentPage:pageNumber}">
+                <td>{{leave.reason}}</td>
+                <td> {{leave.startDate | date}} </td>
+                <td> {{leave.endDate | date}} </td>
+
+                <td *ngIf="leave.currentleavestatus =='Approved'" 
+                    style="color: green;  font-weight: bold;"> {{leave.currentleavestatus}}</td>
+                <td *ngIf="leave.currentleavestatus =='Declined'" 
+                    style="color: red;  font-weight: bold;"> {{leave.currentleavestatus}}</td>
+                <td *ngIf="leave.currentleavestatus =='Waiting'" 
+                    style="color: blue;  font-weight: bold;"> {{leave.currentleavestatus}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="text-right">
+        <pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
+    </div>
+</div>

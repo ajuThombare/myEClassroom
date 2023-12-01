@@ -44,7 +44,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AllquestionsComponent } from './allquestions/allquestions.component';
 import { UpdateQuestionsComponent } from './update-questions/update-questions.component';
 import { ListHistoryUsersComponent } from './admin/list-history-users/list-history-users.component';
-import {AdminModule} from './admin/admin.module'
+import {AdminModule} from './admin/admin.module';
+import { TeacherLeavesComponent } from './teacher-leaves/teacher-leaves.component';
+import { TeacherLeaveRequestsComponent } from './teacher-leave-requests/teacher-leave-requests.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,6 +77,8 @@ import {AdminModule} from './admin/admin.module'
     AllquestionsComponent,
     UpdateQuestionsComponent,
     ListHistoryUsersComponent,
+    TeacherLeavesComponent,
+    TeacherLeaveRequestsComponent,
     ],
   imports: [
     AdminModule,

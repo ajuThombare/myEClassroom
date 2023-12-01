@@ -14,8 +14,9 @@
         <p>You cannot Navigate to next without selecting Option.</p>
         <button (click)="startQuiz()">Start</button>
       </div>
-      <button *ngIf="!instructions && !quizStarted" (click)="startQuiz()">Start Quiz</button>
+      <button *ngIf="!instructions && !quizStarted" class="timer" (click)="startQuiz()">Start Quiz</button>
       <form *ngIf="quizStarted" #quiz="ngForm">
+          Time Remaining: {{ formatTime(timer) }}
         <h1><b>{{quizName}}</b> is Started</h1>
         <div *ngIf="currentQuestionIndex < questions.length">
           <div class="question">

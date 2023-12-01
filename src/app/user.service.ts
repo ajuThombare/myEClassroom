@@ -4,6 +4,7 @@ import baseUrl from './commonurl';
 import { User } from './tsfiles/user';
 import { Observable } from 'rxjs';
 import { Result } from './tsfiles/result';
+import { Leave } from './tsfiles/Leave';
 
 @Injectable({
   providedIn: 'root'
@@ -155,5 +156,31 @@ public getStandardWiseSubjects() {
 }
 public getUsersByStandard(standardName: string): Observable<User[]> {
   return this.httpClient.get<User[]>(`${baseUrl}/user/bystd/${standardName}`);
+}
+
+getAllLeaves(): Observable<any> {
+  return this.httpClient.get(`${baseUrl}/leave`);
+}
+ 
+submitLeave(leave: any): Observable<any> {
+  return this.httpClient.post(`${baseUrl}/leave/submit`, leave);
+}
+public approveRequest(userid:number)
+{
+  return this.httpClient.put(`${baseUrl}/leave/approve/${userid}`,null);
+}
+public declineRequest(userid:number)
+{
+  return this.httpClient.put(`${baseUrl}/leave/decline/${userid}`,null);
+}
+public removeRequest(userid:number)
+{
+  return this.httpClient.delete(`${baseUrl}/leave/delete/${userid}`);
+}
+getTeacherLeaveStatus(id:number) {
+  return this.httpClient.get(`${baseUrl}/leave/get/${id}`);
+}
+getLeaveRequest() {
+  return this.httpClient.get(`${baseUrl}/leave/get`);
 }
 }

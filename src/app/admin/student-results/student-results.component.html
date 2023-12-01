@@ -1,0 +1,37 @@
+<div class="side">
+    <app-adminsidebar></app-adminsidebar>
+</div>
+
+
+<div class="add-note-content" style="padding-top: 20px;">
+    <h1 style="font-weight: bold;" ><strong>All Student Results</strong></h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Student Id</th> 
+                <th>Full Name</th>
+                <th>Quiz Title</th>
+                <th>Standard</th>
+                <th>Subject</th>
+                <th>Obtained Marks</th>
+                <th>Max Marks</th>
+                <th>Attempted Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let res of result | paginate:{ itemsPerPage:pageCount,currentPage:pageNumber}">
+                <td>{{res.studentId}}</td>    
+                <td>{{ res.name}}</td>
+                <td>{{ res.title }}</td>
+                <td>{{ res.standard }}</td>
+                <td>{{ res.subject }}</td>
+                <td>{{ res.marks }}</td>
+                <td>{{ res.maxmarks }}</td>
+                <td>{{ res.date }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="text-right">
+        <pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>
+    </div>
+</div>   

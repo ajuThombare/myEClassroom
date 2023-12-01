@@ -15,6 +15,8 @@ import { SubjectComponent } from './subject/subject.component';
 import { StandardSubjectsComponent } from './standard-subjects/standard-subjects.component';
 import { ListTeachersComponent } from './list-teachers/list-teachers.component';
 import { UpdateTeacherComponent } from './update-teacher/update-teacher.component';
+import { StudentResultsComponent } from './student-results/student-results.component';
+import { LeaveRequestsComponent } from './leave-requests/leave-requests.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { UpdateTeacherComponent } from './update-teacher/update-teacher.componen
     SubjectComponent,
     StandardSubjectsComponent,
     ListTeachersComponent,
-    UpdateTeacherComponent
+    UpdateTeacherComponent,
+    StudentResultsComponent,
+    LeaveRequestsComponent
   ],
   imports: [
     CommonModule,

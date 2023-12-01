@@ -1,0 +1,21 @@
+<div class="side">
+  <app-sidebar></app-sidebar>
+</div> 
+<div class="add-note-content">
+    <h1 class="title">Apply Leave</h1>
+    <div class="container">
+      <form (submit)="submitLeave()" class="mt-3">
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="startDate" [(ngModel)]="leave.startDate" required>
+        
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="endDate" [(ngModel)]="leave.endDate" required>
+      
+        <label for="reason">Reason:</label>
+        <textarea id="reason" name="reason" [(ngModel)]="leave.reason" required></textarea>
+      
+        <button type="submit">Submit Leave</button>
+    </form>
+    </div>
+</div>
+    
