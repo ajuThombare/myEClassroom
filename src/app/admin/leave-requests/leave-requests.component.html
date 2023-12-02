@@ -13,6 +13,7 @@
                     <tr>
                         <th>Teacher ID</th>
                         <th>Teacher Name</th>
+                        <th>Leave Type</th>
                         <th>Start Date</th>
                         <th>End Date</th>
                         <th>Accept Request</th>
@@ -24,6 +25,7 @@
                     <tr *ngFor="let leave of pendingLeaveRequests | paginate:{ itemsPerPage: pageCount, currentPage: pageNumber }">
                         <td>{{ leave.teacherid }}</td>
                         <td>{{ leave.teachername }}</td>
+                        <td>{{ leave.leavetype }}</td>
                         <td>{{ leave.startDate | date }}</td>
                         <td>{{ leave.endDate | date }}</td>
                         <td><button type="button" class="btn btn-info" (click)="acceptLeaveRequest(leave.id)">Accept</button></td>

@@ -7,7 +7,7 @@
     <table border="1">
         <thead>
             <tr>
-                <!-- <th>Id</th> -->
+                <th>Leave Type</th>
                 <th style="width: 10%;">Reason</th>
                 <th>Start Date</th> 
                 <th>End Date</th>
@@ -16,6 +16,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let leave of leaves | paginate:{ itemsPerPage:pageCount,currentPage:pageNumber}">
+                <td>{{leave.leavetype}}</td>
                 <td>{{leave.reason}}</td>
                 <td> {{leave.startDate | date}} </td>
                 <td> {{leave.endDate | date}} </td>

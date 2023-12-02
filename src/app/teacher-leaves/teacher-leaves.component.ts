@@ -10,7 +10,8 @@ import { SessionStorageService } from 'ngx-webstorage';
 })
 export class TeacherLeavesComponent implements OnInit  {
   leave:Leave = new Leave(0,0,"");
-  // teacherid : number =0;
+  selected:boolean=false;
+  type:string = "";
   constructor(private userservic:UserService,private loacalStorage:SessionStorageService,) {}
   ngOnInit(): void {
     this.leave.teacherid = this.loacalStorage.retrieve('currentuser').id;
@@ -18,6 +19,7 @@ export class TeacherLeavesComponent implements OnInit  {
 
   submitLeave(): void {
       if(this.validateFilds()){
+        this.leave.leavetype= this.type;
         this.userservic.submitLeave(this.leave).subscribe(
             response => {
             //  console.log('Leave submitted successfully'+ response);
@@ -35,8 +37,15 @@ export class TeacherLeavesComponent implements OnInit  {
         );
       }  
   }
-
-
+  select(){
+    // console.log(this.type);
+      this.selected=true;
+  }
+  unselect(){
+    // console.log(this.type);
+      this.selected=false;
+      this.leave = new Leave(0,this.loacalStorage.retrieve('currentuser').id,"");
+  }
   validateFilds() : boolean{
     // const today = new Date();
     // console.log(this.leave.startDate +"+"+ today.getDate());

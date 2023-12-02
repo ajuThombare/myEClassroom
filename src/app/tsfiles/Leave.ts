@@ -7,6 +7,7 @@ export class Leave {
     status :boolean;
     currentleavestatus:string;
     teachername:string;
+    leavetype:string;
     constructor(id: number, teacherid: number,  reason: string) {
       this.id = id;
       this.teacherid = teacherid;
@@ -14,5 +15,6 @@ export class Leave {
       this.status =false;
       this.currentleavestatus = "";
       this.teachername ="";
+      this.leavetype = "";
     }
   }
