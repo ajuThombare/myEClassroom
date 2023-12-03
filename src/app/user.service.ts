@@ -112,6 +112,9 @@ public getAllResults(){
 public getResultsById(id:number){
   return this.httpClient.get(`${baseUrl}/result/bystudid/${id}`);
 }
+public getResultsByStd(std:string){
+  return this.httpClient.get(`${baseUrl}/result/bystd/${std}`);
+}
 public addQuizResult(result: Result){ 
   const res = this.httpClient.post(`${baseUrl}/result/add`,result);
   // console.log(res);
@@ -162,7 +165,7 @@ public getUsersByStandard(standardName: string): Observable<User[]> {
 }
 
 getAllLeaves(): Observable<any> {
-  return this.httpClient.get(`${baseUrl}/leave`);
+  return this.httpClient.get(`${baseUrl}/leave/all`);
 }
  
 submitLeave(leave: any): Observable<any> {

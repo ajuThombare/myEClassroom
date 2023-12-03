@@ -36,6 +36,7 @@ import { StudentResultsComponent } from './admin/student-results/student-results
 import { TeacherLeavesComponent } from './teacher-leaves/teacher-leaves.component';
 import { LeaveRequestsComponent } from './admin/leave-requests/leave-requests.component';
 import { TeacherLeaveRequestsComponent } from './teacher-leave-requests/teacher-leave-requests.component';
+import { LeaveReportsComponent } from './admin/leave-reports/leave-reports.component';
 
 const routes: Routes = [
 { path:'',component:WelcomeComponent} ,
@@ -79,6 +80,7 @@ const routes: Routes = [
 { path:'teacherleaves',component:TeacherLeavesComponent},
 { path:'leaverequests',component:LeaveRequestsComponent},
 { path:'teacherleaverequests',component:TeacherLeaveRequestsComponent},
+{ path:'adminleavereport',component:LeaveReportsComponent},
 
 ];
 @NgModule({

@@ -17,6 +17,7 @@ import { ListTeachersComponent } from './list-teachers/list-teachers.component';
 import { UpdateTeacherComponent } from './update-teacher/update-teacher.component';
 import { StudentResultsComponent } from './student-results/student-results.component';
 import { LeaveRequestsComponent } from './leave-requests/leave-requests.component';
+import { LeaveReportsComponent } from './leave-reports/leave-reports.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LeaveRequestsComponent } from './leave-requests/leave-requests.componen
     ListTeachersComponent,
     UpdateTeacherComponent,
     StudentResultsComponent,
-    LeaveRequestsComponent
+    LeaveRequestsComponent,
+    LeaveReportsComponent
   ],
   imports: [
     CommonModule,

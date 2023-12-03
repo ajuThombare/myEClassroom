@@ -12,8 +12,11 @@ export class TeacherLeavesComponent implements OnInit  {
   leave:Leave = new Leave(0,0,"");
   selected:boolean=false;
   type:string = "";
+  today= "2023-12-03";
+
   constructor(private userservic:UserService,private loacalStorage:SessionStorageService,) {}
   ngOnInit(): void {
+    // new Date().getDate;
     this.leave.teacherid = this.loacalStorage.retrieve('currentuser').id;
   }
 
@@ -47,8 +50,8 @@ export class TeacherLeavesComponent implements OnInit  {
       this.leave = new Leave(0,this.loacalStorage.retrieve('currentuser').id,"");
   }
   validateFilds() : boolean{
-    // const today = new Date();
-    // console.log(this.leave.startDate +"+"+ today.getDate());
+    // const 
+    // console.log(this.leave.startDate +"+"+ today);
     if(this.leave.startDate ==null){
       alert("Start Date is Mandetory.");
       return false;
