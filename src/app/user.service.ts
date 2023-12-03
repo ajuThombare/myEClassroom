@@ -117,6 +117,9 @@ public addQuizResult(result: Result){
   // console.log(res);
   return res;
 }
+public deleteResultsById(id:number){
+  return this.httpClient.delete(`${baseUrl}/result/delete/${id}`,{responseType :'text' as 'json'});
+}
 public checkAttemptedResult(id:number,subject:string,title:string){
   console.log("in checked attempt");
   return this.httpClient.get(`${baseUrl}/result/check/${id}/${subject}/${title}`,{responseType :'text' as 'json'});

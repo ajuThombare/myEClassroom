@@ -25,5 +25,17 @@ export class StudentResultsComponent {
       this.result = data;
       });
   }
+  deleteResult(id:number){
+    this.userService.deleteResultsById(id).subscribe(
+      (resp: any)=>{
+        this.refreshTabel();
+        alert("Deleted");
+      },
+      (error)=>{
+        console.log(error);
+        alert("Something went wrong.");
+      }
+    );
+  }
 
 }

@@ -16,6 +16,7 @@
                 <th>Obtained Marks</th>
                 <th>Max Marks</th>
                 <th>Attempted Date</th>
+                <th>Remove</th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,7 @@
                 <td>{{ res.marks }}</td>
                 <td>{{ res.maxmarks }}</td>
                 <td>{{ res.date }}</td>
+                <td> <button type="button" class="btn btn-danger" (click)="deleteResult(res.rid)">Delete</button></td> 
             </tr>
         </tbody>
     </table>

@@ -42,6 +42,7 @@ ngOnInit(): void {
   this.currMarks = (Marksmaximum/numberOfQuestions);
 this.quizName = this.loacalStorage.retrieve('currentquiz').title;
 this.question.quesId=this.activatedRoute.snapshot.params['qid'];
+
 this.userService.checkAttemptedResult(
     this.loacalStorage.retrieve('currentuser').id,
     this.loacalStorage.retrieve('currentquiz').subject,
@@ -90,7 +91,7 @@ public submit(){
     this.result.studentId = usernow.id;
     this.result.name = usernow.firstName +" "+usernow.lastName;
     this.result.maxmarks = quiznow.maxMarks;
-    this.result.subject = quiznow.subjects;
+    this.result.subject = quiznow.subject;
     this.result.title =  quiznow.title;
     this.result.standard =  quiznow.standards;
     this.result.standard=this.loacalStorage.retrieve('currentquiz').standard;
@@ -99,7 +100,7 @@ public submit(){
 
     //This is actual logic to calculate the score
     this.result.marks = ((Marksmaximum/NumberOfQ))*this.score;
-
+    console.log(this.result.subject);
     Swal.fire({
       icon: 'info',
       title: 'Exam Submitted',

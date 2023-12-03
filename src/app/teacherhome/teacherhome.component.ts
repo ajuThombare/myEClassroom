@@ -40,7 +40,7 @@ export class TeacherhomeComponent implements OnInit{
   }
  
   deleteUser() {
-    const confirmation = window.confirm("Are you sure you want to deactivate your account?");
+    const confirmation = window.confirm("Are you sure you want to delete your account?");
     if (confirmation) {
       this.userServe.deleteUser(this.user.id).subscribe(
         (data: any) => {
