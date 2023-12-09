@@ -12,11 +12,11 @@ export class TeacherLeavesComponent implements OnInit  {
   leave:Leave = new Leave(0,0,"");
   selected:boolean=false;
   type:string = "";
-  today= "2023-12-03";
+  today= this.getTodayDate();
 
   constructor(private userservic:UserService,private loacalStorage:SessionStorageService,) {}
   ngOnInit(): void {
-    // new Date().getDate;
+    console.log(this.today);  
     this.leave.teacherid = this.loacalStorage.retrieve('currentuser').id;
   }
 
@@ -86,5 +86,27 @@ export class TeacherLeavesComponent implements OnInit  {
   formatDate(date: Date): Date {
     const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: '2-digit', day: '2-digit' };
     return date;
+  }
+
+  getTodayDate():string{
+    //  +"-"+ +"-"+  
+    let newDate= "";
+    let year =new Date().getUTCFullYear(); 
+    let month=new Date().getUTCMonth()+1;
+    let day=new Date().getUTCDate();
+    newDate = newDate+year;
+    // console.log(new Date().getDate())
+    if(month < 10){
+      newDate = newDate+"-0"+month;
+    }else{
+      newDate = newDate+"-"+month;
+    }
+
+    if(day < 10){
+      newDate = newDate+"-0"+day;
+    }else{
+      newDate = newDate+"-"+day;
+    }
+    return newDate;
   }
 }

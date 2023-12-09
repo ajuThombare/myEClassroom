@@ -34,8 +34,14 @@ export class LeaveRequestsComponent implements OnInit {
     if (confirmation) {
       this.userService.approveRequest(leaveRequestId).subscribe(
         (data: any) => {
-          this.getLeaveRequets();
-          alert("Leave Approved Successfully");
+          if(data == null){
+            alert("No Leave found with this Id");
+          }else if(data.leavetype == "non"){
+            alert("Leaves approval limit exceeded for this User.");
+          }else{
+            this.getLeaveRequets();
+            alert("Leave Approved Successfully");
+          }
         },
         (error: any) => {
           alert("Something Went Wrong.");
