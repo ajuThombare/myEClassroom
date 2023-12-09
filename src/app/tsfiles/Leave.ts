@@ -1,8 +1,8 @@
 export class Leave {
     id: number;
     teacherid: number;
-    startDate!: Date;
-    endDate!: Date;
+    startDate: Date;
+    endDate: Date;
     reason: string;
     status :boolean;
     currentleavestatus:string;
@@ -16,5 +16,8 @@ export class Leave {
       this.currentleavestatus = "";
       this.teachername ="";
       this.leavetype = "";
+      this.startDate = new Date();
+      this.endDate = new Date();
+      
     }
   }

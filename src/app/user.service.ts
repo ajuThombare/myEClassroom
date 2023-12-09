@@ -189,4 +189,8 @@ getTeacherLeaveStatus(id:number) {
 getLeaveRequest() {
   return this.httpClient.get(`${baseUrl}/leave/get`);
 }
+
+getMyLeave(id:number) {
+  return this.httpClient.get(`${baseUrl}/leave/get/types/${id}`);
+}
 }

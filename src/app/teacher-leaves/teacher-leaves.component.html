@@ -7,19 +7,19 @@
 
     <div class="container">
       <div *ngIf="!selected">
-        <!-- <h1 class="title">Select Leave Type:</h1> -->
         <form class="mt-3">
           <h2 style="text-align: center;">Select Type of Leave</h2>
-          <div >
-            <label><input type="radio" name="answer" [(ngModel)]="type" value="Casual">Casual Leave</label>
-            <br>
-            <label><input type="radio" name="answer" [(ngModel)]="type" value="Sick">Sick Leave</label>
-            <br>
-            <label><input type="radio" name="answer" [(ngModel)]="type" value="Meternity">Meternity Leave</label>
-            <br>
-            <label><input type="radio" name="answer" [(ngModel)]="type" value="Earned">Earned Leave</label>
-            <br>
-          </div>
+          <div *ngFor="let map of leaves | keyvalue">
+                <div [hidden]="map.value == 0">
+                    <label >
+                      <input type="radio" name="answer" 
+                      [(ngModel)]="type" value="{{ map.key }}">
+                      {{ map.key }} Leave - (Remaining {{map.value}})
+                    </label>
+                    <br>
+                </div>
+            </div>
+
           <div style="text-align: center; ">
             <button id="proceed" *ngIf="type" (click)="select()">Proceed</button>
           </div>
@@ -47,3 +47,54 @@
   </div>
 </div>
     
+
+
+
+
+<!-- 
+<div class="side">
+  <app-sidebar></app-sidebar>
+</div> 
+<div class="add-note-content">
+  
+    <h1 class="title">Apply Leave</h1>
+
+    <div class="container">
+      <div *ngIf="!selected">
+        <form class="mt-3">
+          <h2 style="text-align: center;">Select Type of Leave</h2>
+          <div >
+            <label><input type="radio" name="answer" [(ngModel)]="type" value="Casual">Casual Leave</label>
+            <br>
+            <label><input type="radio" name="answer" [(ngModel)]="type" value="Sick">Sick Leave</label>
+            <br>
+            <label><input type="radio" name="answer" [(ngModel)]="type" value="Meternity">Meternity Leave</label>
+            <br>
+            <label><input type="radio" name="answer" [(ngModel)]="type" value="Earned">Earned Leave</label>
+            <br>
+          </div>
+          <div style="text-align: center; ">
+            <button id="proceed" *ngIf="type" (click)="select()">Proceed</button>
+          </div>
+        </form>
+      </div>
+      
+      <div *ngIf="selected">
+      <button (click)="unselect()">Back</button>
+        <form (submit)="submitLeave()" class="mt-3">
+          <h2 style="text-align: center;">{{type}}  Leave</h2>
+          <label for="startDate">Start Date:</label>
+          <input type="date" min="{{today}}" id="startDate" name="startDate" [(ngModel)]="leave.startDate" required>
+          
+          <label for="endDate">End Date:</label>
+          <input type="date" id="endDate" name="endDate" [(ngModel)]="leave.endDate" required>
+        
+          <label for="reason">Reason:</label>
+          <textarea id="reason" name="reason" [(ngModel)]="leave.reason" required></textarea>
+        
+          <button type="submit">Submit Leave</button>
+      </form>
+    </div>
+  </div>
+</div>
+     -->
