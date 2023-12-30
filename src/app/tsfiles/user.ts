@@ -19,6 +19,7 @@ export class User
     country:string;
     subjects: Subject []=[];
     standards : Standard[]=[];
+    authorities: any;
 
   constructor(
     id:number,

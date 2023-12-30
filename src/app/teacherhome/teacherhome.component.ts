@@ -4,6 +4,7 @@ import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { LoginService } from '../security-services/login.service';
 
 @Component({
   selector: 'app-teacherhome',
@@ -19,17 +20,25 @@ export class TeacherhomeComponent implements OnInit{
       private userServe: UserService,
       private loacalStorage: SessionStorageService,
       private route: Router,
-      private dialog: MatDialog  ){
+      private dialog: MatDialog,
+      private loginService: LoginService  ){
     this.user = this.loacalStorage.retrieve('currentuser');
   }
 
   updateUser(){
+    console.log(this.user);
+
     this.userServe.updateUser(this.user,this.user.id).subscribe(
       (data:any)=>{
         alert("User Details Updated");
-        this.loacalStorage.store('currentuser',this.user);
+
+        this.loginService.getCurrentUser().subscribe(
+          (curuser: any) => {
+         this.loacalStorage.store('currentuser',curuser);
+        });
         this.route.navigateByUrl('/teacherhome');
-      },error=>{
+      },
+      error=>{
         if(error.status == 409){
           alert(error.error);
         }else{

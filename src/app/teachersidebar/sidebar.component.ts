@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
+import { LoginService } from '../security-services/login.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,11 +9,11 @@ import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 })
 export class SidebarComponent {
   isClicked = false;
-  constructor(private loacalStorage:SessionStorageService){}
+  constructor(private loacalStorage:SessionStorageService,private login: LoginService){}
   toggleClicked() {
     this.isClicked = !this.isClicked;
   }
   clearStorage(){
-    this.loacalStorage.clear('currentuser');
+    this.login.logout();
   }
 }

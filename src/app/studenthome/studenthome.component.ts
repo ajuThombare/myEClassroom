@@ -3,6 +3,7 @@ import { UserService } from '../user.service';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { Router } from '@angular/router';
 import { User } from '../tsfiles/user';
+import { LoginService } from '../security-services/login.service';
 
 @Component({
   selector: 'app-studenthome',
@@ -14,7 +15,9 @@ export class StudenthomeComponent implements OnInit{
   user=new User(0,"","","",false,"","","","","","",""); 
 
 
-  constructor(private userServe : UserService,private loacalStorage:SessionStorageService,private route:Router){
+  constructor(private userServe : UserService,
+    private loacalStorage:SessionStorageService,
+    private route:Router, private loginService:LoginService){
     
   }
 
@@ -27,10 +30,17 @@ export class StudenthomeComponent implements OnInit{
     
   }
   updateUser(){
+    
+    console.log(this.user);
+
     this.userServe.updateUser(this.user,this.user.id).subscribe(
       (data:any)=>{
         alert("User Details Updated");
-        this.loacalStorage.store('currentuser',this.user);
+
+        this.loginService.getCurrentUser().subscribe(
+          (curuser: any) => {
+         this.loacalStorage.store('currentuser',curuser);
+        });
         this.route.navigateByUrl('/studenthome');
       },
       error=>{

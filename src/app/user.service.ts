@@ -20,7 +20,7 @@ export class UserService {
 public loginUser(user:User)
 {
   console.log("user service"+user);
-  return this.httpClient.post(`${baseUrl}/user/logincheck`, user);
+  return this.httpClient.post(`${baseUrl}/generate-token`, user);
 
 }
 
@@ -39,7 +39,9 @@ return this.httpClient.get(`${baseUrl}/user/onebyid/${userid}`);
 
 public updateUser(user:User,userid:number)
 {
-  return this.httpClient.put(`${baseUrl}/user/update/${userid}`, user)
+  const obj:any = user;
+  delete obj.authorities;
+  return this.httpClient.put(`${baseUrl}/user/update/${userid}`, obj)
 }
 public activateUser(userid:number)
 {

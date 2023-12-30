@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, Event, NavigationStart, NavigationEnd, NavigationError} from '@angular/router';
 import { SessionStorageService } from 'ngx-webstorage';
+import { LoginService } from '../security-services/login.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +13,7 @@ export class NavbarComponent {
   user: any = null; 
   currentRole: string;
   
-  constructor(private router: Router, private loacalStorage:SessionStorageService) {
+  constructor(private router: Router, private loacalStorage:SessionStorageService,private login:LoginService) {
     this.currentRole = "";
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
@@ -43,18 +44,16 @@ export class NavbarComponent {
   }
 
   checkAndNaigate(){
-    if(this.loacalStorage.retrieve('currentuser') == null){
-      this.loacalStorage.clear('currentuser');
-      this.loacalStorage.clear('currentquiz');
-      this.router.navigate(['/welcome']);
-    }
-    else{      
+  // console.log("is loggeddd: "+this.login.isLoggedIn());
+    if(this.login.isLoggedIn()){
       const confirmation = window.confirm("Are you sure you want to Logout and Go to Home.");
-        if (confirmation) {
-          this.loacalStorage.clear('currentuser');
-          this.loacalStorage.clear('currentquiz');
-          this.router.navigate(['/welcome']);
-        }
+      if (confirmation) {
+        this.login.logout();
+        this.router.navigate(['/welcome']);
+      }
+    }
+    else{
+      this.router.navigate(['/welcome']);
     }
   }
 }

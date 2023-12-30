@@ -12,6 +12,7 @@
                 <th>Start Date</th> 
                 <th>End Date</th>
                 <th>Current Status</th>
+                <th>Cancel Request</th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +28,8 @@
                     style="color: red;  font-weight: bold;"> {{leave.currentleavestatus}}</td>
                 <td *ngIf="leave.currentleavestatus =='Waiting'" 
                     style="color: blue;  font-weight: bold;"> {{leave.currentleavestatus}}</td>
+
+                    <td><button type="button" [disabled]="leave.currentleavestatus !='Waiting'" class="btn btn-danger" (click)="cancelLeaveRequest(leave.id)">Cancel</button></td>
             </tr>
         </tbody>
     </table>

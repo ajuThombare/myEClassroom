@@ -3,6 +3,7 @@ import { User } from '../tsfiles/user';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { LocalStorageService, SessionStorageService} from 'ngx-webstorage';
+import { LoginService } from '../security-services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -13,48 +14,55 @@ export class LoginComponent implements OnInit,ErrorHandler {
 user=new User(0,"","","",false,"","","","","","",""); 
 userid:number=0;
 // created object here user proprties added here thtat html data it will carry and send to db
-constructor(private userService:UserService,private router:Router, private loacalStorage:SessionStorageService,
-  private sessionStorage: SessionStorageService)
-// injucted userService connecting wth db and routing to linking pages 
-{
+constructor(private userService:UserService,private router:Router,
+    private loacalStorage:SessionStorageService,
+    private loginService: LoginService){
 }
   handleError(error: any): void {
-    // throw new Error('Method not implemented.');
-    // alert(error);
+
   }
-ngOnInit(): void { 
-  // this.sessionStorage.store('val',Math.floor(Math.random() * 6) + 1);
-}
+  ngOnInit(): void { 
+  }
 
 // login form will come here
 public userLogin() {
   // In userService, we provided a path to loginuser to connect the database.
-  this.userService.loginUser(this.user).subscribe((data: any) => {
-    if(data === null ){
-      alert("Wrong credentials Or Register first");
-      this.user=new User(0,"","","",false,"","","","","","",""); 
-    }else{
-      console.log("Login success");
-      // console.log("The Role is: " + data.role);
-      alert("Login success!");
-      this.loacalStorage.store('currentuser', data);
-      if (data.role == 'Student') {
-        this.userid=data.id;
-        this.router.navigate(['/studenthome',this.userid]);
-      } else {
-        this.router.navigate(['/teacherhome']);
-      }
-    }
+  this.loginService.generateToken(this.user).subscribe(
+  (data: any) => {
+
+      this.loginService.loginUser(data.token);
+
+      this.loginService.getCurrentUser().subscribe(
+        (user: any) => {
+        this.loginService.setUser(user);
+        // console.log(user);
+        // console.log(this.loginService.getUserRole());
+
+        if (this.loginService.getUserRole() == 'Admin') {
+          this.loginService.loginStatusSubject.next(true);
+          this.router.navigate(['/adminhome']);
+          console.log("Admin is logged in.")
+        } 
+        else if (this.loginService.getUserRole() == 'Teacher') {
+          this.router.navigate(['/teacherhome']);
+          this.loginService.loginStatusSubject.next(true);
+          console.log("Teacher is logged in.")
+
+        }
+        else if (this.loginService.getUserRole() == 'Student') {
+          this.userid=user.id;
+          this.router.navigate(['/studenthome',this.userid]);
+          this.loginService.loginStatusSubject.next(true);
+          console.log("Student is logged in.")
+
+        }
+      });
   },
   (error) => {
-    if(error.status ==403){
-      alert("This account is not activated by Admin.");  
-    }else{
-      console.error("An error occurred during login:", error);
-      alert("An error occurred. Please try again later.");  
-    }
+    alert(error.error.message)
   });
 }
+
 public validateFields(){
   if(this.user.username == null){
 console.log("Is empty.");

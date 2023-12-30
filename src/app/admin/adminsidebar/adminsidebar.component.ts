@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { SessionStorageService } from 'ngx-webstorage';
+import { LoginService } from 'src/app/security-services/login.service';
 
 @Component({
   selector: 'app-adminsidebar',
@@ -9,15 +10,15 @@ import { SessionStorageService } from 'ngx-webstorage';
 })
 export class AdminsidebarComponent {
   isClicked = false;
-  constructor(private loacalStorage:SessionStorageService, private route:Router){}
+  constructor(private loacalStorage:SessionStorageService, private route:Router,private login: LoginService){}
   toggleClicked() {
     this.isClicked = !this.isClicked;
   }
-  clearStorage(){
-    this.loacalStorage.clear('currentuser');
+  logout(){
+    this.login.logout();
   }
   navigatToHome(){
-    console.log("naved");
-this.route.navigateByUrl("/adminhome");
+    // console.log("naved");
+    this.route.navigateByUrl("/login");
   }
 }

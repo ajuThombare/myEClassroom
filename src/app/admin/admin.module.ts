@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { FormsModule } from '@angular/forms';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminsidebarComponent } from './adminsidebar/adminsidebar.component';
@@ -21,7 +20,6 @@ import { LeaveReportsComponent } from './leave-reports/leave-reports.component';
 
 @NgModule({
   declarations: [
-    AdminLoginComponent,
     AdminHomeComponent,
     AdminsidebarComponent,
     PendingRequestsComponent,
@@ -41,7 +39,6 @@ import { LeaveReportsComponent } from './leave-reports/leave-reports.component';
 
   ],
   exports:[
-    AdminLoginComponent,
     AdminHomeComponent,
     AdminsidebarComponent,
     PendingRequestsComponent

@@ -34,6 +34,20 @@ constructor(private userService:UserService,
         this.leaves = data;
       }
       );
+  }  
+  cancelLeaveRequest(leaveRequestId: number) {
+    const confirmation = window.confirm("Are you sure you want to Cancel this Request.");
+    if (confirmation) {
+      this.userService.removeRequest(leaveRequestId).subscribe(
+        (data: any) => {
+          this.getMyLeaves();
+          alert("Cancelled Successfully");
+        },
+        (error: any) => {
+          alert("Something Went Wrong.");
+        }
+      );
+    }
   }
 
 }

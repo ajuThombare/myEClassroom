@@ -95,6 +95,7 @@ role=[
 
 
   public userRegister(){
+    console.log(this.user)
     this.userService.registerUser(this.user).subscribe(
       (data:any)=>{
         console.log("Registered Successfully!"+data);

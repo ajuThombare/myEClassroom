@@ -24,7 +24,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { QuizTakerComponent } from './quiz-taker/quiz-taker.component';
-import { HomepageComponent } from './homepage/homepage.component';
 import { TeacherhomeComponent } from './teacherhome/teacherhome.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { NotesStudentComponent } from './notes-student/notes-student.component';
@@ -47,6 +46,7 @@ import { ListHistoryUsersComponent } from './admin/list-history-users/list-histo
 import {AdminModule} from './admin/admin.module';
 import { TeacherLeavesComponent } from './teacher-leaves/teacher-leaves.component';
 import { TeacherLeaveRequestsComponent } from './teacher-leave-requests/teacher-leave-requests.component'
+import { authInterceptorProviders } from './security-services/AuthInterceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +64,6 @@ import { TeacherLeaveRequestsComponent } from './teacher-leave-requests/teacher-
     SidebarComponent,
     NavbarComponent,
     QuizTakerComponent,
-    HomepageComponent,
     TeacherhomeComponent,
     NotesStudentComponent,
     StudentsidebarComponent,
@@ -103,7 +102,7 @@ import { TeacherLeaveRequestsComponent } from './teacher-leave-requests/teacher-
     NgxPaginationModule,
     MatDialogModule,
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -36,8 +36,12 @@ export class LeaveRequestsComponent implements OnInit {
         (data: any) => {
           if(data == null){
             alert("No Leave found with this Id");
-          }else if(data.leavetype == "non"){
-            alert("Leaves approval limit exceeded for this User.");
+          }
+          // else if(data.leavetype == "non"){
+          //   alert("Leaves approval limit exceeded for this User.");
+          // }
+          else if(data.leavetype == "nonvalid"){
+            alert("Assigned Leaves for this User are already approved.");
           }else{
             this.getLeaveRequets();
             alert("Leave Approved Successfully");
