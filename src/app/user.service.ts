@@ -28,6 +28,10 @@ public getUsers()
 {
   return this.httpClient.get(`${baseUrl}/user/get`);
 }
+public getActiveUsers()
+{
+  return this.httpClient.get(`${baseUrl}/user/get/active`);
+}
  public getUserById(userid:number)
  {
 return this.httpClient.get(`${baseUrl}/user/byid/${userid}`);

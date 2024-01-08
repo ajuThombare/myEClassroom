@@ -21,7 +21,7 @@ export class ListTeachersComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.allTeachers();
+    this.allUsers();
   }
 
   public updateUser(userid: number) {
@@ -34,13 +34,13 @@ export class ListTeachersComponent implements OnInit {
       this.userService.deleteUser(userid).subscribe(
         (data: any) => {
           alert("Deleted Successfully");
-          this.allTeachers();
+          this.allUsers();
         }
       );
     }
   }
- public allTeachers() {
-    this.userService.getUsers().subscribe(
+ public allUsers() {
+    this.userService.getActiveUsers().subscribe(
       (data: any) => {
         // console.log("data retrieved successfully", data);
 
