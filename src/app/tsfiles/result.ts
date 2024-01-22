@@ -1,3 +1,4 @@
+
 export class Result{
     rid :number;
     marks:number;
@@ -8,7 +9,7 @@ export class Result{
     name:string;
     date:string;
     title:string;
-    
+    answers:MapStructure[];
     constructor(marks:number,studentId:number,subject:string,name:string,maxmarks:number,standard:string){
         this.rid =0;
         this.marks= marks;
@@ -19,5 +20,12 @@ export class Result{
         this.name = name;
         this.date = "";
         this.title ="";
+        this.answers = [];
     }
+}
+
+interface MapStructure {
+    quesId: number;
+    givenAnswer: string;
+    // Add more keys and their types as needed
 }

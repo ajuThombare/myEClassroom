@@ -199,4 +199,5 @@ getLeaveRequest() {
 getMyLeave(id:number) {
   return this.httpClient.get(`${baseUrl}/leave/get/types/${id}`);
 }
+
 }

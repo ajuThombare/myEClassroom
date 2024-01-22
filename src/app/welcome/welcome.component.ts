@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-welcome',   // static linking
@@ -7,10 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./welcome.component.css']
 })
 
-export class WelcomeComponent {
+export class WelcomeComponent implements OnInit{
 message="Welcome To Angular Session!";
 isLoggedIn=true;
-constructor(private route:Router){//injcted router here
+constructor(private route:Router,private user:UserService){//injcted router here
+}
+ngOnInit(): void {
+ 
 }
 // if user clicked on reg it will come here and this will navigate to router
 public register(){

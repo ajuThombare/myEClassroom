@@ -4,6 +4,7 @@ import baseUrl from './commonurl';
 import { Question } from './tsfiles/question';
 import { Quiz } from './tsfiles/quiz';
 import { Result } from './tsfiles/result';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -99,5 +100,14 @@ public getAllQuestion()
   public getQuizzesByStandard(stdid:number) {
     return this.http.get(`${baseUrl}/quiz/getbystd/${stdid}`);
   }
+  // submitAnswers(studentsanswers: any) {
+  //   return this.http.post(`${baseUrl}/result/submit-answers`, JSON.stringify(studentsanswers),{responseType :'text' as 'json'});
+  // }
+  submitAnswers(payload: any): Observable<any> {
+    return this.http.post<any>(`${baseUrl}/result/submit-answers`, payload);
+  }
 
+  public marksResult(formData: FormData): Observable<any> {
+    return this.http.post(`${baseUrl}/result/add/result`, formData);
+  }
 }
